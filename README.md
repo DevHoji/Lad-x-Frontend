@@ -1,1 +1,0 @@
-# Lad-x-Frontend
