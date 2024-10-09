@@ -9,6 +9,7 @@ import LoginConfirmation from "./components/LoginConfirmation";
 import SignUp from "./components/SignUp";
 import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
+import Message from "./components/Message";
 
 const App = () => {
   return (
@@ -16,13 +17,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/message" element={<Message />} />
         <Route path="/home" element={<Home />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/confirm-account" element={<ConfirmAccount />} />
         <Route path="/new-password" element={<NewPassword />} />
         <Route path="/login-confirmation" element={<LoginConfirmation />} />
         <Route path="/sign-up" element={<SignUp />} />
-    
       </Routes>
     </Router>
   );
