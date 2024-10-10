@@ -19,7 +19,9 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"; // Down arrow
 import SearchIcon from "@mui/icons-material/Search"; // Add this line to import SearchIcon
 import InputBase from "@mui/material/InputBase"; // Add this line to import InputBase
 import Checkbox from "@mui/material/Checkbox"; // Add this line to import Checkbox
+import { Link } from "react-router-dom"; // Ensure only one 'Link' import is here
 
+// Rest of your Home component code
 const Home = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -28,29 +30,34 @@ const Home = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", height: "100vh", margin: 0, padding: 0 }}>
-      {/* Left Section */}
-      <Box sx={{ width: "245px", backgroundColor: "white", padding: "20px" }}>
-        {/* Logo */}
-        <img
-          src={LADXLogo}
-          alt="LADX Logo"
-          style={{ width: "100%", marginBottom: "20px" }}
-        />
-
+    <Box sx={{ display: "flex" }}>
+      {/* Left Sidebar */}
+      <Box sx={{ width: "250px", backgroundColor: "#FFF" }}>
         {/* List Section */}
         <List sx={{ padding: 0 }}>
           {["Home", "Delivery", "Message", "Profile"].map((text, index) => (
             <ListItem
               button
               key={text}
+              component={Link}
+              to={
+                index === 0
+                  ? "/home" // Home page
+                  : index === 1
+                  ? "/delivery" // Delivery page
+                  : index === 2
+                  ? "/message" // Message page
+                  : index === 3
+                  ? "/profile" // Profile page
+                  : "#"
+              }
               onClick={() => handleListItemClick(index)}
               sx={{
                 position: "relative",
-                marginBottom: "15px", // Wide margin between items
-                borderRadius: "20px", // Smooth curve shape
+                marginBottom: "15px",
+                borderRadius: "20px",
                 "&:hover": {
-                  backgroundColor: "#F6F6F6", // Background on hover
+                  backgroundColor: "#F6F6F6",
                 },
               }}
             >
@@ -74,6 +81,7 @@ const Home = () => {
                 {index === 2 && <MessageIcon />} {/* Message icon */}
                 {index === 3 && <PersonIcon />} {/* Profile icon */}
               </ListItemIcon>
+
               <ListItemText
                 primary={text}
                 sx={{
@@ -85,7 +93,6 @@ const Home = () => {
           ))}
         </List>
       </Box>
-
       {/* Right Section */}
       <Box sx={{ flex: 1, backgroundColor: "#F5F5F5", padding: "20px" }}>
         {/* Navbar */}
@@ -101,12 +108,16 @@ const Home = () => {
         >
           <img
             src={LADXLogo}
-            alt="LADX Logo"
+            alt="Logo"
             style={{ width: "50px", marginRight: "10px" }}
           />
           <Typography
             variant="body1"
-            sx={{ marginLeft: "auto", fontWeight: "normal" }}
+            sx={{
+              marginLeft: "100px",
+              marginRight: "auto",
+              fontWeight: "normal",
+            }}
           >
             Hi Joshua 👋
           </Typography>
@@ -143,12 +154,14 @@ const Home = () => {
             gap: "20px", // Space between boxes
             marginLeft: "20px", // Left margin
             marginRight: "auto", // Ensure boxes stay on the left with space on the right
-            maxWidth: "80%", // Limit the width of the box container
+            maxWidth: "60%", // Limit the width of the box container
             flexWrap: "wrap", // Ensure responsiveness on smaller screens
           }}
         >
           {/* First Box - Request Delivery */}
           <Box
+            component={Link} // Use Link to make this box clickable
+            to="/request" // Link to Request page
             sx={{
               width: {
                 xs: "100%", // Full width on small screens
@@ -157,20 +170,19 @@ const Home = () => {
               },
               flex: "1 1 calc(33.33% - 20px)", // Flex layout for responsiveness
               height: "150px", // Adjust height
-              backgroundColor: "white",
+              backgroundColor: "white", // Same background color
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              borderRadius: "10px",
-              boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
+              borderRadius: "10px", // Same border radius
+              boxShadow: "0 1px 5px rgba(0,0,0,0.1)", // Same box shadow
               textAlign: "center",
+              textDecoration: "none", // Remove underline for Link
+              color: "inherit", // Inherit text color
             }}
-            component="a"
-            href="https://example.com/request-delivery" // Replace with actual link
           >
-            <AddIcon sx={{ color: "#F66F1E", fontSize: "30px" }} />{" "}
-            {/* Adjusted icon size */}
+            <AddIcon sx={{ color: "#F66F1E", fontSize: "30px" }} />
             <Typography
               sx={{ color: "#210947", fontSize: "14px", marginTop: "10px" }}
             >
@@ -185,6 +197,7 @@ const Home = () => {
                 xs: "100%",
                 sm: "calc(33.33% - 20px)",
                 md: "calc(33.33% - 20px)",
+                textAlign: "center",
               },
               flex: "1 1 calc(33.33% - 20px)",
               height: "150px", // Adjusted height
@@ -194,15 +207,29 @@ const Home = () => {
               justifyContent: "space-between",
               borderRadius: "10px",
               boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
-              padding: "10px",
+              padding: "1px",
             }}
           >
             <Typography
-              sx={{ color: "#F66F1E", fontWeight: "bold", fontSize: "14px" }}
+              sx={{
+                color: "#F66F1E",
+                fontWeight: "bold",
+                fontSize: "14px",
+                // marginLeft: "100px",
+
+                marginTop: "30px",
+              }}
             >
               Traveler
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginLeft: "60px",
+              }}
+            >
               <img
                 src="../assets/profilePic.png"
                 alt="Profile"
@@ -212,11 +239,20 @@ const Home = () => {
                   borderRadius: "50%",
                 }}
               />
-              <Typography sx={{ color: "#210947", fontSize: "12px" }}>
+              <Typography
+                sx={{ color: "#210947", fontSize: "10px", textAlign: "center" }}
+              >
                 Sam Kethin
               </Typography>
             </Box>
-            <Typography sx={{ color: "#210947", fontSize: "12px" }}>
+            <Typography
+              sx={{
+                color: "#210947",
+                fontSize: "12px",
+                marginLeft: "",
+                color: "#210947",
+              }}
+            >
               Hand Bags
             </Typography>
             <Box
@@ -226,10 +262,10 @@ const Home = () => {
                 marginTop: "5px",
               }}
             >
-              <Typography sx={{ color: "blue", fontSize: "10px" }}>
+              <Typography sx={{ color: "blue", fontSize: "15px" }}>
                 On the Way!
               </Typography>
-              <Typography sx={{ color: "green", fontSize: "10px" }}>
+              <Typography sx={{ color: "green", fontSize: "15px" }}>
                 5 Hours Away
               </Typography>
             </Box>
@@ -268,26 +304,30 @@ const Home = () => {
             </Typography>
           </Box>
         </Box>
-
-        {/* Deliveries Section */}
+        {/* Deliveries Text */}
         <Typography
           sx={{
-            marginTop: "40px", // Large margin from the boxes
-            fontSize: "20px",
             fontWeight: "bold",
+            fontSize: "20px",
+            marginLeft: "20px",
+            marginTop: "50px",
+            marginBottom: "20px", // Space below the Deliveries text
           }}
         >
           Deliveries
         </Typography>
+        {/* White Container */}
         <Box
           sx={{
             backgroundColor: "white",
-            width: "1167px", // Set width to 1167px
-            height: "466px", // Set height to 466px
             padding: "20px",
             borderRadius: "10px",
             boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
-            marginTop: "10px", // Margin top for the container
+            marginTop: "20px",
+            width: "1167px", // Set width
+            height: "466px", // Set height
+            position: "relative", // Position relative to add the drag line
+            overflow: "auto", // Enable scrolling for the white container
           }}
         >
           {/* Headings with curved background */}
@@ -299,9 +339,7 @@ const Home = () => {
               backgroundColor: "#F5F5F5",
               borderRadius: "10px",
               padding: "10px",
-              marginBottom: "20px", // Space below headings
-              width: "90%", // Use 90% of the white box width
-              margin: "0 auto", // Center the heading box
+              marginBottom: "20px",
             }}
           >
             <Typography sx={{ fontWeight: "bold", fontSize: "16px" }}>
@@ -318,67 +356,78 @@ const Home = () => {
           {/* Search Input Field */}
           <Box
             sx={{
-              backgroundColor: "#F5F5F5",
-              borderRadius: "10px",
-              width: "450px",
-              height: "45px",
               display: "flex",
               alignItems: "center",
-              padding: "0 10px",
-              marginBottom: "20px", // Space below the search input
+              backgroundColor: "#F5F5F5",
+              borderRadius: "22.5px", // Smoothly curved shape
+              width: "450px", // Width
+              height: "45px", // Height
+              padding: "0 10px", // Padding inside
+              marginBottom: "20px", // Space below the input
             }}
           >
-            <SearchIcon sx={{ color: "#A0A0A0" }} /> {/* Search Icon */}
+            <SearchIcon sx={{ color: "#F66F1E" }} /> {/* Search icon */}
             <InputBase
               placeholder="Search"
-              sx={{
-                flex: 1,
-                marginLeft: "10px",
-                "& .MuiInputBase-input": {
-                  padding: "0", // Remove default padding
-                  height: "100%",
-                  borderRadius: "10px",
-                  backgroundColor: "transparent", // Transparent input background
-                },
-              }}
+              sx={{ marginLeft: "10px", flex: 1 }}
             />
           </Box>
 
-          {/* Checkbox Lists */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              marginLeft: "20px",
-            }}
-          >
+          {/* Items to be Delivered List */}
+          <Box sx={{ marginBottom: "20px" }}>
             {["Hand Bags", "Gadgets", "Food Items", "Hand Bags"].map(
-              (text, index) => (
+              (item, index) => (
                 <Box
                   key={index}
                   sx={{
                     display: "flex",
+                    justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: "10px", // Space between lists
+                    marginBottom: "10px",
                   }}
                 >
-                  <Checkbox size="small" />
-                  <Typography>{text}</Typography>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Checkbox size="small" />
+                    <Typography sx={{ marginLeft: "10px" }}>{item}</Typography>
+                  </Box>
+                  <Typography>
+                    {
+                      [
+                        "Sam Kethin",
+                        "John Durelo",
+                        "Leila Adebayo",
+                        "Sam Kethin",
+                      ][index]
+                    }
+                  </Typography>{" "}
+                  {/* Traveler's Name */}
+                  <Typography
+                    sx={{
+                      color:
+                        index === 1 ? "red" : index === 2 ? "green" : "blue", // Color based on status
+                    }}
+                  >
+                    {["In Process", "Failed", "Delivered", "In Process"][index]}{" "}
+                    {/* Status */}
+                  </Typography>
                 </Box>
               )
             )}
-            {/* Horizontal Line Below Each List */}
-            <Box
-              sx={{
-                width: "1039px",
-                height: "0.8px",
-                backgroundColor: "#F5F5F5",
-                margin: "10px 0",
-              }}
-            />
           </Box>
 
-          {/* Add additional elements inside this container as needed */}
+          {/* Drag Line */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              right: "0",
+              width: "8px",
+              height: "170px",
+              backgroundColor: "#C7C9D9",
+              borderRadius: "4px", // Smoothly curved shape
+              marginTop: "20px", // Margin from the top of the white container
+            }}
+          />
         </Box>
       </Box>
     </Box>
