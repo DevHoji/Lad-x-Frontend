@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/LADxlogo.png"; // Ensure the correct path to your logo image
-
+import test from "../assets/test.jpg"; // Ensure the correct path to your logo image
+import active from "../assets/active.jpg";
 const Request = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
@@ -10,9 +10,10 @@ const Request = () => {
     navigate("/home"); // Navigates to the Home page
   };
 
-   const handleProceedClick = () => {
-     navigate("/payment-successful"); // Navigate to PaymentSuccessful page
-   };
+  const handleProceedClick = () => {
+    navigate("/payment-successful"); // Navigate to PaymentSuccessful page
+  };
+
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
@@ -20,7 +21,7 @@ const Request = () => {
   return (
     <div style={styles.container}>
       {/* Logo at the top-left corner */}
-      <img src={logo} alt="Logo" style={styles.logo} />
+      <img src={test} alt="Logo" style={styles.logo} />
 
       {/* Header with back arrow and title */}
       <div style={styles.header}>
@@ -33,39 +34,26 @@ const Request = () => {
 
       {/* Input fields container with labels */}
       <div style={styles.inputContainer}>
-        {/* First set of input fields (left side) */}
+        {/* First set of input fields */}
         <div style={styles.inputBlock}>
           <label style={styles.label}>
-            Item(s) to be delivered (eg. Gadgets, Cloths...)
+            Item(s) to be delivered (e.g., Gadgets, Clothes...)
           </label>
           <input type="text" style={styles.inputField} />
 
           <label style={styles.label}>
-            Name of each item(s) (eg. HP Laptop, iPhone XR...)
+            Name of each item(s) (e.g., HP Laptop, iPhone XR...)
           </label>
           <input type="text" style={styles.inputField} />
 
           <label style={styles.label}>Name of Receiver</label>
           <input type="text" style={styles.inputField} />
-
-          {/* New label and input field for image upload */}
-          <label style={styles.label}>Image(s) of item(s)</label>
-          <div style={styles.fileInputContainer}>
-            <div style={styles.fileInputText}>
-              Drag and drop files here or{" "}
-              <span style={styles.chooseFileButton} onClick={togglePopup}>
-                Choose file
-              </span>
-            </div>
-            <input type="file" style={styles.fileInput} />
-          </div>
-          <div style={styles.fileFormatText}>XLS TXT, PNG, JPEG, GIF</div>
         </div>
 
-        {/* Second set of input fields (right side) */}
+        {/* Second set of input fields */}
         <div style={styles.inputBlock}>
           <label style={styles.label}>
-            Name of each item(s) (eg. HP Laptop, iPhone XR...)
+            Name of each item(s) (e.g., HP Laptop, iPhone XR...)
           </label>
           <input type="text" style={styles.inputField} />
 
@@ -77,22 +65,48 @@ const Request = () => {
 
           <label style={styles.label}>Weight of Item(s)</label>
           <input type="text" style={styles.inputField} />
+        </div>
 
-          {/* New button to connect with a traveler */}
-          <button style={styles.connectButton} onClick={togglePopup}>
-            Connect with a Traveler
-          </button>
+        {/* Image Upload and "Connect with Traveler" section */}
+        <div style={styles.fileUploadSection}>
+          <label style={styles.label}>Image(s) of item(s)</label>
+          <div style={styles.fileInputContainer}>
+            <div style={styles.fileInputText}>
+              Drag and drop files here <br /> or{" "}
+              <span style={styles.chooseFileButton} onClick={togglePopup}>
+                <br />
+                Choose file
+              </span>
+            </div>
+            <input type="file" style={styles.fileInput} />
+          </div>
+          <div style={styles.fileFormatText}>
+            XLS TXT, PNG, JPEG, GIF
+            <button style={styles.connectButton} onClick={togglePopup}>
+              Connect with a Traveler
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Popup for connecting with a traveler */}
+      {/* Popup */}
       {showPopup && (
         <div style={styles.popupOverlay}>
           <div style={styles.popupContent}>
+            <img
+              src={active}
+              alt="Two animations"
+              style={{ width: "200px", height: "auto", marginBottom: "20px" }}
+            />
             <h2 style={styles.popupTitle}>Successful!</h2>
-            <h4 style={styles.popupTitle}>You will get notification when you have <br />been matched with an Travel </h4>
-            {/* Your popup content goes here */}
-            <button style={styles.closePopupButton} onClick={togglePopup}>
+            <h4 style={styles.popupTitle}>
+              You will get notification when you have <br />
+              been matched with a Traveler.
+            </h4>
+            <button
+              style={styles.closePopupButton}
+              onClick={handleProceedClick}
+            >
               Proceed
             </button>
           </div>
@@ -136,7 +150,9 @@ const styles = {
   inputContainer: {
     display: "flex",
     justifyContent: "space-between",
-    marginTop: "30px",
+    flexWrap: "wrap", // Makes the form wrap on smaller screens
+    gap: "20px",
+    marginTop: "40px",
   },
   inputBlock: {
     display: "flex",
@@ -144,13 +160,14 @@ const styles = {
     gap: "10px",
     flex: "1",
     maxWidth: "300px",
+    minWidth: "250px", // Ensures the input blocks adjust on small screens
   },
   label: {
     fontSize: "16px",
     display: "block",
   },
   inputField: {
-    width: "222px",
+    width: "100%", // Make the input take full width of its container
     height: "40px",
     backgroundColor: "#F4F4F4",
     border: "none",
@@ -158,6 +175,9 @@ const styles = {
     fontSize: "14px",
     borderRadius: "10px",
     outline: "none",
+  },
+  fileUploadSection: {
+    order: 0, // Default order for larger screens
   },
   fileInputContainer: {
     backgroundColor: "#F9FBFE",
@@ -167,15 +187,17 @@ const styles = {
     textAlign: "center",
   },
   fileInputText: {
-    marginBottom: "10px",
+    marginBottom: "40px",
   },
   chooseFileButton: {
-    color: "#2E61B4",
+    color: "white",
+    backgroundColor: "black",
+    borderRadius: "10px",
+    padding: "2px",
     cursor: "pointer",
-    textDecoration: "underline",
   },
   fileInput: {
-    display: "none", // Hide the default file input
+    display: "none",
   },
   fileFormatText: {
     marginTop: "5px",
@@ -204,11 +226,11 @@ const styles = {
   },
   popupContent: {
     backgroundColor: "#FFFFFF",
-    padding: "200px",
+    padding: "50px",
     borderRadius: "10px",
-    //width: "100",
-   // height:"560", // Cover half of the page
     textAlign: "center",
+    width: "80%",
+    maxWidth: "500px", // Limits popup width on larger screens
   },
   popupTitle: {
     marginBottom: "20px",
@@ -220,6 +242,13 @@ const styles = {
     borderRadius: "10px",
     padding: "15px 60px",
     cursor: "pointer",
+  },
+  // Media query for small screens
+  "@media (max-width: 768px)": {
+    fileUploadSection: {
+      order: 1, // Move to the last position on small screens
+      width: "100%", // Ensure full width for small screens
+    },
   },
 };
 
