@@ -8,22 +8,25 @@ import NewPassword from "./components/NewPassword";
 import LoginConfirmation from "./components/LoginConfirmation";
 import SignUp from "./components/SignUp";
 import LandingPage from "./components/LandingPage";
-import Home from "./components/Home";
-import Message from "./components/Message";
+
 import AccountSettings from "./components/AccountSettings";
 import Request from "./components/Request";
 import Delivery from "./components/Delivery";
-import Profile from "./components/Profile";
-import PaymentSuccessful from "./components/PaymentSuccessful"
+
+import PaymentSuccessful from "./components/PaymentSuccessful";
 import TravelerProfile from "./components/TravelerProfile";
+import DeliveryTraking from "./components/DeliveryTraking";
+import NavSidebar from "./components/NavSidebar";
+import './App.css';
+
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/request" element={<Request />} />
         <Route path="/delivery" element={<Delivery />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/travelerprofile" element={<TravelerProfile/>}/>
+        <Route path="/main" element={<Delivery />} />
+        <Route path="/travelerprofile" element={<TravelerProfile />} />
         <Route path="/accountsettings" element={<AccountSettings />} />
         <Route
           path="/payment-successful"
@@ -32,13 +35,13 @@ const App = () => {
         {/* Add this line */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/message" element={<Message />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<NavSidebar />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/confirm-account" element={<ConfirmAccount />} />
         <Route path="/new-password" element={<NewPassword />} />
         <Route path="/login-confirmation" element={<LoginConfirmation />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-up" element={<SignUp />} />{" "}
+        <Route path="/delivery-tracking" element={<DeliveryTraking />} />
       </Routes>
     </Router>
   );
