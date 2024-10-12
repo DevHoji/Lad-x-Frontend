@@ -8,7 +8,12 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import LADXLogo from "../assets/ladxLogo.png"; // Adjust path if needed
+import test from "../assets/test.jpg";  // Adjust path if needed
+import homepp from "../assets/homepp.jpg"; 
+import Edit from "../assets/Edit.jpg"; 
+import User from "../assets/User.jpg"; 
+import Wikis from "../assets/Wikis.jpg"; 
+import Help from "../assets/Help.jpg"; 
 import HomeIcon from "@mui/icons-material/Home";
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import MessageIcon from "@mui/icons-material/Message";
@@ -17,7 +22,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Profile = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(3); // Set default to "Profile"
@@ -39,80 +44,13 @@ const Profile = () => {
   //    navigate("/home"); // Navigate to the Home component
   //  };
 
-
+const handleLogout = () => {
+  navigate("/login"); // Navigate back to the login page
+};
   return (
-    <Box sx={{ display: "flex", height: "100vh" }}>
-      {/* Left Sidebar (Same as Home Page) */}
-      <Box
-        sx={{
-          width: "245px",
-          backgroundColor: "white",
-          padding: "20px",
-          boxShadow: "2px 0px 5px rgba(0, 0, 0, 0.1)",
-          zIndex: 1,
-        }}
-      >
-        <img
-          src={LADXLogo}
-          alt="LADX Logo"
-          style={{ width: "100%", marginBottom: "20px" }}
-        />
-
-        <List sx={{ padding: 0 }}>
-          {["Home", "Delivery", "Message", "Profile"].map((text, index) => (
-            <ListItem
-              button
-              key={text}
-              onClick={() => handleListItemClick(index)}
-              component={Link}
-              to={
-                index === 0
-                  ? "/"
-                  : index === 1
-                  ? "/delivery"
-                  : index === 2
-                  ? "/message"
-                  : "/profile"
-              }
-              sx={{
-                position: "relative",
-                marginBottom: "15px",
-                borderRadius: "20px",
-                "&:hover": {
-                  backgroundColor: "#F6F6F6",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  position: "absolute",
-                  left: 0,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: selectedIndex === index ? "4px" : "0px",
-                  height: "100%",
-                  backgroundColor: "#F66F1E",
-                  transition: "width 0.3s",
-                }}
-              />
-              <ListItemIcon sx={{ minWidth: "40px" }}>
-                {index === 0 && <HomeIcon />} {/* Home icon */}
-                {index === 1 && <DeliveryDiningIcon />} {/* Delivery icon */}
-                {index === 2 && <MessageIcon />} {/* Message icon */}
-                {index === 3 && <PersonIcon />} {/* Profile icon */}
-              </ListItemIcon>
-              <ListItemText
-                primary={text}
-                sx={{
-                  color: index === 3 ? "red" : "inherit",
-                  fontWeight: "normal",
-                }}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-
+    <Box sx={{ display: "flex", height: "100vh", paddingTop:"60px" }}>
+      {/*{/* Left Sidebar */}
+     
       {/* Right Section (Content) */}
       <Box
         sx={{
@@ -122,52 +60,7 @@ const Profile = () => {
           flexDirection: "column",
         }}
       >
-        {/* Navbar (Same as Home Page) */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "white",
-            padding: "10px",
-            position: "relative",
-            boxShadow: "0 1px 5px rgba(0,0,0,0.2)",
-            zIndex: 2,
-          }}
-        >
-          <img
-            src={LADXLogo}
-            alt="LADX Logo"
-            style={{ width: "50px", marginRight: "10px" }}
-          />
-          <Typography
-            variant="body1"
-            sx={{ marginLeft: "auto", fontWeight: "normal" }}
-          >
-            Hi Joshua 👋
-          </Typography>
-          <IconButton sx={{ position: "relative", marginLeft: "10px" }}>
-            <NotificationsIcon />
-            <Box
-              sx={{
-                position: "absolute",
-                top: "0",
-                right: "0",
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                backgroundColor: "green",
-              }}
-            />
-          </IconButton>
-          <IconButton sx={{ borderRadius: "50%", marginLeft: "10px" }}>
-            <img
-              src="../assets/profilePic.png"
-              alt="Profile"
-              style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-            />
-          </IconButton>
-        </Box>
-
+        
         {/* Main Content with White Background */}
 
         {/* Profile Section */}
@@ -197,7 +90,7 @@ const Profile = () => {
             }}
           >
             <img
-              src="../assets/penIcon.png" // Update with the correct path for the pen icon or use a placeholder
+              src={Edit} // Update with the correct path for the pen icon or use a placeholder
               alt="Edit"
               style={{
                 width: "50%", // Adjust icon size if needed
@@ -207,7 +100,7 @@ const Profile = () => {
           </Box>
 
           <img
-            src="../assets/profilePic.png"
+            src={homepp}
             alt="Profile"
             style={{
               width: "150px",
@@ -293,7 +186,7 @@ const Profile = () => {
               // Navigate to Account Settings
             >
               <img
-                src="../assets/personIcon.png" // Placeholder for person icon
+                src={User}// Placeholder for person icon
                 alt="Account Settings"
                 style={{
                   width: "30px",
@@ -316,7 +209,7 @@ const Profile = () => {
             sx={{ display: "flex", alignItems: "center", marginBottom: "40px" }}
           >
             <img
-              src="../assets/worldIcon.png" // Update with the correct path for the world icon
+              src={Wikis} // Update with the correct path for the world icon
               alt="Language Icon"
               style={{
                 width: "30px",
@@ -339,7 +232,7 @@ const Profile = () => {
           {/* Help & Support Section */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <img
-              src="../assets/questionMarkIcon.png" // Update with the correct path for the question mark icon
+              src={Help} // Update with the correct path for the question mark icon
               alt="Help Icon"
               style={{
                 width: "30px",
@@ -405,7 +298,7 @@ const Profile = () => {
                 }}
               >
                 <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                  X
+                  x
                 </Typography>
               </Box>
               {/* Upload Profile Photo Heading */}
@@ -602,11 +495,12 @@ const Profile = () => {
               {/* Update Button */}
               <Box
                 sx={{
-                  width: "353px",
-                  height: "79px",
+                  width: "253px",
+                  height: "59px",
                   backgroundColor: "#210947",
                   color: "white",
                   display: "flex",
+                  marginTop: "10px",
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "10px",
