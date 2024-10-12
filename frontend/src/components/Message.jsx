@@ -19,7 +19,8 @@ import SendIcon from "@mui/icons-material/Send";
 import SearchIcon from "@mui/icons-material/Search";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-import LADXLogo from "../assets/ladxLogo.png"; // Replace with your logo
+import test from "../assets/test.jpg";  // Replace with your logo
+import homepp from "../assets/homepp.jpg"; 
 import ProfileImage from "../assets/profileImage.png"; // Replace with your profile image
 
 const Message = () => {
@@ -47,98 +48,19 @@ const Message = () => {
 
   return (
     <div>
-      {/* Navbar */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          p: 2,
-          bgcolor: "white",
-          zIndex: 10,
-          boxShadow: "0 4px 10px rgba(1,1,1,0.1)",
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <img src={LADXLogo} alt="Logo" style={{ width: "50px" }} />
-          <Typography variant="h6" sx={{ ml: 2 }}>
-            Hi Joshua! 👋
-          </Typography>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <IconButton>
-            <NotificationsIcon />
-          </IconButton>
-          <img
-            src={ProfileImage}
-            alt="Profile"
-            style={{ width: "50px", borderRadius: "50%" }}
-          />
-        </Box>
-      </Box>
+      
 
       {/* Main Section (Sidebar, Messages, and Chat) */}
       <Box
         sx={{
           display: "flex",
           flexGrow: 1,
-          height: "90vh",
+          height: "100vh",
+          paddingTop: "50px", // Adjust based on your header height
         }}
       >
-        {/* Sidebar */}
-        <Box
-          sx={{
-            width: "20%",
-            bgcolor: "#f0f0f0",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            p: 4,
-            position: "relative",
-            borderRight: "1px solid #ddd",
-          }}
-        >
-          <Box>
-            <Button
-              startIcon={<HomeIcon />}
-              fullWidth
-              sx={{ justifyContent: "flex-start", mb: 2 }}
-            >
-              Home
-            </Button>
-            <Button
-              startIcon={<LocalShippingIcon />}
-              fullWidth
-              sx={{ justifyContent: "flex-start", mb: 2 }}
-            >
-              Delivery
-            </Button>
-            <Button
-              startIcon={<MessageIcon />}
-              fullWidth
-              sx={{ justifyContent: "flex-start", mb: 2 }}
-            >
-              Message
-            </Button>
-            <Button
-              startIcon={<PersonIcon />}
-              fullWidth
-              sx={{ justifyContent: "flex-start", mb: 2 }}
-            >
-              Profile
-            </Button>
-            <Button
-              startIcon={<LogoutIcon />}
-              fullWidth
-              sx={{ justifyContent: "flex-start", mb: 2 }}
-              onClick={handleLogout}
-            >
-              Logout
-            </Button>
-          </Box>
-        </Box>
-
-        {/* Messages*/}
+       
+        {/* Messages */}
         <Box sx={{ display: "flex", flexGrow: 1, flexDirection: "column" }}>
           {/* Messages List */}
           <Box
@@ -205,9 +127,15 @@ const Message = () => {
 
           {/*Chat */}
         </Box>
+
         {/* Chat Board */}
         <Box
-          sx={{ flexGrow: 2, display: "flex", flexDirection: "column", p: 4 }}
+          sx={{
+            flexGrow: 2,
+            display: "flex",
+            flexDirection: "column",
+            p: { xs: 2, sm: 3, md: 4 }, // Responsive padding
+          }}
         >
           <Typography variant="h6" sx={{ mb: 2 }}>
             Chat with John Doe
@@ -220,6 +148,7 @@ const Message = () => {
               borderRadius: "8px",
               boxShadow: "inset 0 4px 8px rgba(0, 0, 0, 0.1)",
               mb: 4,
+              maxHeight: { xs: "300px", sm: "400px", md: "500px" }, // Max height for responsiveness
             }}
           >
             {/* Message from John Doe */}
@@ -234,7 +163,7 @@ const Message = () => {
                 variant="body1"
                 sx={{
                   bgcolor: "#e5e5e5",
-                  height: "100px",
+                  height: "auto", // Allow dynamic height
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -243,6 +172,7 @@ const Message = () => {
                   borderBottomLeftRadius: "30px",
                   padding: "10px",
                   maxWidth: "70%",
+                  wordWrap: "break-word", // Wrap long messages
                 }}
               >
                 John Doe: Hey, how are you?
@@ -261,7 +191,7 @@ const Message = () => {
                 variant="body1"
                 sx={{
                   bgcolor: "#e5e5e5",
-                  height: "100px",
+                  height: "auto", // Allow dynamic height
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -270,12 +200,14 @@ const Message = () => {
                   borderTopLeftRadius: "30px",
                   padding: "10px",
                   maxWidth: "70%",
+                  wordWrap: "break-word", // Wrap long messages
                 }}
               >
                 You: I'm good, thanks!
               </Typography>
             </Box>
 
+            {/* Repeat similar structure for more messages */}
             {/* Message from John Doe */}
             <Box
               sx={{
@@ -288,7 +220,7 @@ const Message = () => {
                 variant="body1"
                 sx={{
                   bgcolor: "#e5e5e5",
-                  height: "100px",
+                  height: "auto", // Allow dynamic height
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -297,6 +229,7 @@ const Message = () => {
                   borderBottomLeftRadius: "30px",
                   padding: "10px",
                   maxWidth: "70%",
+                  wordWrap: "break-word", // Wrap long messages
                 }}
               >
                 John Doe: Hey, how are you?
@@ -315,7 +248,7 @@ const Message = () => {
                 variant="body1"
                 sx={{
                   bgcolor: "#e5e5e5",
-                  height: "100px",
+                  height: "auto", // Allow dynamic height
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -324,69 +257,18 @@ const Message = () => {
                   borderTopLeftRadius: "30px",
                   padding: "10px",
                   maxWidth: "70%",
+                  wordWrap: "break-word", // Wrap long messages
                 }}
               >
                 You: I'm good, thanks!
               </Typography>
             </Box>
 
-            {/* Message from John Doe */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-start",
-                mb: 2,
-              }}
-            >
-              <Typography
-                variant="body1"
-                sx={{
-                  bgcolor: "#e5e5e5",
-                  height: "100px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderTopRightRadius: "30px",
-                  borderTopLeftRadius: "30px",
-                  borderBottomLeftRadius: "30px",
-                  padding: "10px",
-                  maxWidth: "70%",
-                }}
-              >
-                John Doe: Hey, how are you?
-              </Typography>
-            </Box>
-
-            {/* Message from You */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                mb: 2,
-              }}
-            >
-              <Typography
-                variant="body1"
-                sx={{
-                  bgcolor: "#e5e5e5",
-                  height: "100px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderTopRightRadius: "30px",
-                  borderBottomRightRadius: "30px",
-                  borderTopLeftRadius: "30px",
-                  padding: "10px",
-                  maxWidth: "70%",
-                }}
-              >
-                You: I'm good, thanks!
-              </Typography>
-            </Box>
+            {/* Add other messages here... */}
           </Box>
 
           {/* Separator */}
-          <Box sx={{ borderTop: "1px solid #ddd", mb: 2 }}></Box>
+          <Box sx={{ borderTop: "1px solid #ddd", mb: 2 }} />
 
           {/* Message Input Section */}
           <Box
@@ -404,7 +286,12 @@ const Message = () => {
               placeholder="Type a message..."
               fullWidth
               variant="outlined"
-              sx={{ mr: 2 }}
+              sx={{
+                mr: 2,
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "30px", // Rounded input field
+                },
+              }}
             />
             <IconButton color="primary">
               <SendIcon />
