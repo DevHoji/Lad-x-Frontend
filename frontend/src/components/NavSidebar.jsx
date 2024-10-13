@@ -27,6 +27,7 @@ import Home from './Home'; // adjust the path based on your file structure
 import Delivery from './Delivery'; // adjust the path based on your file structure
 import Message from './Message'; // adjust the path based on your file structure
 import Profile from "./Profile";
+import AccountSettings from "./AccountSettings";
 // Sample notification data
 const notifications = [
   {
@@ -137,7 +138,9 @@ const NavSidebar = () => {
               <ListItemIcon>
                 <Avatar src={notification.avatar || profilePic} alt="Profile" />
               </ListItemIcon>
-              <Box sx={{ display: "flex", flexDirection: "column", marginLeft: 2 }}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", marginLeft: 2 }}
+              >
                 <Typography variant="body2" sx={{ fontWeight: "bold" }}>
                   {notification.name}
                 </Typography>
@@ -164,17 +167,17 @@ const NavSidebar = () => {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         {/* Sidebar under the Navbar */}
         <Box sx={{ display: "flex", flexDirection: "row" }}>
-        <Box
-  sx={{
-    width: isMobile ? "60px" : "250px",
-    backgroundColor: "#FFF",
-    paddingTop: "15px",
-    position: "fixed",
-    top: "60px", // Adjust to position below the fixed navbar
-    height: "calc(100vh - 60px)", // Adjust height to take full viewport height minus the navbar
-    marginTop: "10px", // Optional: Add margin-top to separate from navbar
-  }}
->
+          <Box
+            sx={{
+              width: isMobile ? "60px" : "250px",
+              backgroundColor: "#FFF",
+              paddingTop: "15px",
+              position: "fixed",
+              top: "60px", // Adjust to position below the fixed navbar
+              height: "calc(100vh - 60px)", // Adjust height to take full viewport height minus the navbar
+              marginTop: "10px", // Optional: Add margin-top to separate from navbar
+            }}
+          >
             <List sx={{ padding: 0 }}>
               {["Home", "Delivery", "Message", "Profile"].map((text, index) => (
                 <ListItem
@@ -186,7 +189,9 @@ const NavSidebar = () => {
                     marginBottom: "15px",
                     borderRadius: "20px",
                     cursor: "pointer",
-                    "&:hover": { backgroundColor: "#F6F6F6" },
+                    backgroundColor:
+                      selectedIndex === index ? "#F6F6F6" : "transparent", // Change background color when selected
+                    "&:hover": { backgroundColor: "#F6F6F6" }, // Keep hover effect for other items
                   }}
                 >
                   {/* Orange Line Indicator */}
@@ -209,7 +214,9 @@ const NavSidebar = () => {
                     {index === 3 && <PersonIcon />}
                   </ListItemIcon>
                   {!isMobile && (
-                    <Typography sx={{ fontWeight: "normal" }}>{text}</Typography>
+                    <Typography sx={{ fontWeight: "normal" }}>
+                      {text}
+                    </Typography>
                   )}
                 </ListItem>
               ))}
@@ -218,13 +225,15 @@ const NavSidebar = () => {
               <ListItem
                 button
                 key="Logout"
-                onClick={() => handleListItemClick(4, "Logout")}
+                onClick={() => handleListItemClick(4, "Home")}
                 sx={{
                   position: "relative",
                   marginBottom: "15px",
                   borderRadius: "20px",
                   cursor: "pointer",
-                  "&:hover": { backgroundColor: "#F6F6F6" },
+                  backgroundColor:
+                    selectedIndex === 4 ? "#F6F6F6" : "transparent", // Change background color when selected
+                  "&:hover": { backgroundColor: "#F6F6F6" }, // Keep hover effect for Logout
                 }}
               >
                 <Box
@@ -262,7 +271,8 @@ const NavSidebar = () => {
             {content === "Home" && <Home />}
             {content === "Delivery" && <Delivery />}
             {content === "Message" && <Message />}
-            {content === "Profile" && <Profile />}
+            {content === "Profile" && <Profile setContent={setContent} />}
+            {content === "AccountSettings" && <AccountSettings />}
             {/* Add any additional components if necessary */}
           </Box>
         </Box>
