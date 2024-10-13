@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import test from "../assets/test.jpg"; // Ensure the correct path to your logo image
 import active from "../assets/active.jpg";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  IconButton,
+  Grid,
+  Paper,
+} from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CloseIcon from "@mui/icons-material/Close"; // Importing Close icon
-import { padding } from "@mui/system";
 
 const Request = () => {
   const navigate = useNavigate();
@@ -23,249 +31,226 @@ const Request = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <Box
+      sx={{
+        backgroundColor: "#FFFFFF",
+        height: "100vh",
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        overflowY: "auto",
+        maxWidth: "1200px",
+        margin: "0 auto",
+      }}
+    >
       {/* Logo at the top-left corner */}
-      <img src={test} alt="Logo" style={styles.logo} />
+      <img
+        src={test}
+        alt="Logo"
+        style={{ width: "150px", marginBottom: "20px" }}
+      />
 
       {/* Header with back arrow and title */}
-      <div style={styles.header}>
-        {/* Back arrow */}
-        <div style={styles.backArrow} onClick={handleBackClick}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "30px",
+          width: "100%",
+        }}
+      >
+        <IconButton
+          onClick={handleBackClick}
+          sx={{
+            backgroundColor: "#F5F5F5",
+            borderRadius: "50%",
+            width: "50px",
+            height: "50px",
+            marginRight: "20px",
+          }}
+        >
           <ArrowBackIcon />
-        </div>
-        <h1 style={styles.title}>Request Delivery</h1>
-      </div>
+        </IconButton>
+        <Typography variant="h5" fontWeight="bold">
+          Request Delivery
+        </Typography>
+      </Box>
 
       {/* Input fields container with labels */}
-      <div style={styles.inputContainer}>
-        {/* First set of input fields */}
-        <div style={styles.inputBlock}>
-          <label style={styles.label}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          {/* Item(s) to be delivered */}
+          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
             Item(s) to be delivered (e.g., Gadgets, Clothes...)
-          </label>
-          <input type="text" style={styles.inputField} />
-
-          <label style={styles.label}>
+          </Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+          />
+          {/* Name of each item(s) */}
+          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
             Name of each item(s) (e.g., HP Laptop, iPhone XR...)
-          </label>
-          <input type="text" style={styles.inputField} />
+          </Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+          />
+          {/* Name of Receiver */}
+          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+            Name of Receiver
+          </Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+          />
+        </Grid>
 
-          <label style={styles.label}>Name of Receiver</label>
-          <input type="text" style={styles.inputField} />
-        </div>
+        <Grid item xs={12} sm={6}>
+          {/* Address delivering to */}
+          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+            Address delivering to
+          </Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+          />
+          {/* Phone Number of Receiver */}
+          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+            Phone Number of Receiver
+          </Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+          />
+          {/* Weight of Item(s) */}
+          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+            Weight of Item(s)
+          </Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+          />
+        </Grid>
+      </Grid>
 
-        {/* Second set of input fields */}
-        <div style={styles.inputBlock}>
-          <label style={styles.label}>Address delivering to</label>
-          <input type="text" style={styles.inputField} />
+      {/* Image Upload and "Connect with Traveler" section */}
+      <Box sx={{ width: "100%", marginBottom: "20px" }}>
+        <Typography variant="body1" sx={{ marginBottom: "10px" }}>
+          Image(s) of item(s)
+        </Typography>
+        <Paper
+          sx={{
+            backgroundColor: "#F9FBFE",
+            border: "2px dashed #2E61B4",
+            padding: "20px",
+            borderRadius: "10px",
+            textAlign: "center",
+          }}
+        >
+          <Typography>
+            Drag and drop files here <br /> or{" "}
+            <Button
+              onClick={togglePopup}
+              sx={{
+                textTransform: "none",
+                color: "white",
+                backgroundColor: "black",
+                padding: "5px 10px",
+                borderRadius: "10px",
+              }}
+            >
+              Choose file
+            </Button>
+          </Typography>
+        </Paper>
+        <Typography sx={{ marginTop: "5px", fontSize: "14px" }}>
+          Supported file types: XLS, TXT, PNG, JPEG, GIF
+        </Typography>
+      </Box>
 
-          <label style={styles.label}>Phone Number of Receiver</label>
-          <input type="text" style={styles.inputField} />
-
-          <label style={styles.label}>Weight of Item(s)</label>
-          <input type="text" style={styles.inputField} />
-        </div>
-
-        {/* Image Upload and "Connect with Traveler" section */}
-        <div style={styles.fileUploadSection}>
-          <label style={styles.label}>Image(s) of item(s)</label>
-          <div style={styles.fileInputContainer}>
-            <div style={styles.fileInputText}>
-              Drag and drop files here <br /> or{" "}
-              <span style={styles.chooseFileButton} onClick={togglePopup}>
-                Choose file
-              </span>
-            </div>
-            <input type="file" style={styles.fileInput} />
-          </div>
-          <div style={styles.fileFormatText}>XLS, TXT, PNG, JPEG, GIF</div>
-        </div>
-      </div>
-      <button style={styles.connectButton} onClick={togglePopup}>
+      <Button
+        onClick={togglePopup}
+        sx={{
+          backgroundColor: "#210947",
+          color: "#FFFFFF",
+          borderRadius: "20px",
+          padding: "20px",
+          height: "60px",
+          width: "fit-content",
+        }}
+      >
         Connect with a Traveler
-      </button>
-      {/* Popup */}
+      </Button>
+
       {showPopup && (
-        <div style={styles.popupOverlay}>
-          <div style={styles.popupContent}>
-            <CloseIcon style={styles.closeIcon} onClick={togglePopup} />{" "}
-            {/* Close icon */}
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <Paper
+            sx={{
+              backgroundColor: "#FFFFFF",
+              padding: "50px",
+              borderRadius: "10px",
+              textAlign: "center",
+              width: "80%",
+              maxWidth: "500px",
+              position: "relative",
+            }}
+          >
+            <IconButton
+              onClick={togglePopup}
+              sx={{ position: "absolute", top: "10px", right: "10px" }}
+            >
+              <CloseIcon />
+            </IconButton>
             <img
               src={active}
               alt="Two animations"
               style={{ width: "200px", height: "auto", marginBottom: "20px" }}
             />
-            <h2 style={styles.popupTitle}>Successful!</h2>
-            <h4 style={styles.popupTitle}>
+            <Typography variant="h6" sx={{ marginBottom: "20px" }}>
+              Successful!
+            </Typography>
+            <Typography variant="body1" sx={{ marginBottom: "20px" }}>
               You will get a notification when you have <br />
               been matched with a Traveler.
-            </h4>
-            <button
-              style={styles.closePopupButton}
+            </Typography>
+            <Button
               onClick={handleProceedClick}
+              sx={{
+                backgroundColor: "#F66F1E",
+                color: "#FFFFFF",
+                borderRadius: "20px",
+                height: "40px",
+                marginTop: "20px",
+                padding: "10px 20px",
+              }}
             >
               Proceed
-            </button>
-          </div>
-        </div>
+            </Button>
+          </Paper>
+        </Box>
       )}
-    </div>
+    </Box>
   );
-};
-
-const styles = {
-  container: {
-    backgroundColor: "#FFFFFF",
-    height: "100vh",
-    padding: "20px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    overflowY: "auto", // Allows scrolling if content exceeds viewport height
-  },
-  logo: {
-    width: "150px",
-    marginBottom: "20px",
-  },
-  header: {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "30px",
-    width: "100%",
-    justifyContent: "flex-start", // Aligns items to the left
-  },
-  backArrow: {
-    width: "50px",
-    height: "50px",
-    backgroundColor: "#F5F5F5",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    fontSize: "20px",
-    marginRight: "20px",
-  },
-  title: {
-    fontSize: "24px",
-    fontWeight: "bold",
-  },
-  inputContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap", // Makes the form wrap on smaller screens
-    gap: "20px",
-    marginTop: "40px",
-    width: "100%",
-  },
-  inputBlock: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    flex: "1 1 calc(50% - 20px)", // Adjust width based on available space
-    minWidth: "250px", // Ensures the input blocks adjust on small screens
-    maxWidth: "300px", // Prevents blocks from becoming too wide
-  },
-  label: {
-    fontSize: "16px",
-    display: "block",
-  },
-  inputField: {
-    width: "100%", // Make the input take full width of its container
-    height: "40px",
-    backgroundColor: "#F4F4F4",
-    border: "none",
-    padding: "10px",
-    fontSize: "14px",
-    borderRadius: "10px",
-    outline: "none",
-  },
-  fileUploadSection: {
-    order: 0, // Default order for larger screens
-    width: "100%",
-  },
-  fileInputContainer: {
-    backgroundColor: "#F9FBFE",
-    border: "2px dashed #2E61B4",
-    width:"300px",
-    padding: "10px",
-    borderRadius: "10px",
-    textAlign: "center",
-  },
-  fileInputText: {
-    marginBottom: "20px", // Reduced bottom margin for compactness
-  },
-  chooseFileButton: {
-    color: "white",
-    backgroundColor: "black",
-    borderRadius: "10px",
-    padding: "2px",
-    cursor: "pointer",
-  },
-  fileInput: {
-    display: "none",
-  },
-  fileFormatText: {
-    marginTop: "5px",
-    fontSize: "14px",
-    display: "flex",
-    justifyContent: "flex-start",
-    flexWrap: "wrap",
-    gap: "10px", // Added gap for margin between formats
-  },
-  fileFormatMargin: {
-    marginLeft: "10px", // Adds margin between formats
-  },
-  connectButton: {
-    backgroundColor: "#210947",
-    color: "#FFFFFF",
-    border: "none",
-    borderRadius: "20px",
-    padding:"20px",
-    height: "60px",
-    marginTop: "20px",
-    cursor: "pointer",
-    width: "fit-content", // Ensure button width is based on content
-  },
-  popupOverlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 1000,
-  },
-  popupContent: {
-    backgroundColor: "#FFFFFF",
-    padding: "50px",
-    borderRadius: "10px",
-    textAlign: "center",
-    width: "80%",
-    maxWidth: "500px", // Limits popup width on larger screens
-    position: "relative", // Allows positioning of the close icon
-  },
-  popupTitle: {
-    marginBottom: "20px",
-  },
-  closeIcon: {
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    cursor: "pointer",
-  },
-  closePopupButton: {
-    backgroundColor: "#F66F1E",
-    color: "#FFFFFF",
-    border: "none",
-    borderRadius: "20px",
-    height: "40px",
-    cursor: "pointer",
-    marginTop: "20px",
-  },
 };
 
 export default Request;
