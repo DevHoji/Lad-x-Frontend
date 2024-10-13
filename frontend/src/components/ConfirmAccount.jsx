@@ -1,68 +1,61 @@
-// src/components/ConfirmAccount.js
-
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
-import LADXLogo from "../assets/ladxLogo.png"; // Ensure the correct path to your logo
-import ProfileImage from "../assets/profileImage.png"; // Replace with your profile image path
-import SmallImage from "../assets/smallImage.png"; // Replace with your small image path
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import LADXLogo from "../assets/ladxLogo.png";
+import ProfileImage from "../assets/profileImage.png";
+import SmallImage from "../assets/smallImage.png";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmAccount = () => {
-  const [code, setCode] = useState(Array(6).fill("")); // State for the verification code
-  const [timeLeft, setTimeLeft] = useState(60); // Countdown timer state
-  const [isTimeUp, setIsTimeUp] = useState(false); // State to check if time is up
-  const inputRefs = useRef([]); // Refs to hold references to the input fields
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [code, setCode] = useState(Array(6).fill(""));
+  const [timeLeft, setTimeLeft] = useState(60);
+  const [isTimeUp, setIsTimeUp] = useState(false);
+  const inputRefs = useRef([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (timeLeft > 0) {
       const timerId = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
-
       return () => clearInterval(timerId);
     } else {
-      setIsTimeUp(true); // Time is up
+      setIsTimeUp(true);
     }
   }, [timeLeft]);
 
   const handleCodeChange = (index, value) => {
     const newCode = [...code];
-    newCode[index] = value.slice(0, 1); // Allow only one character
+    newCode[index] = value.slice(0, 1);
     setCode(newCode);
 
-    // Automatically focus on the next input if it's filled
     if (value && index < inputRefs.current.length - 1) {
       inputRefs.current[index + 1].focus();
     }
   };
 
   const handleConfirm = () => {
-    // Always navigate to the new password page for now
-    navigate("/new-password"); // Change to your New Password page route
+    navigate("/new-password");
   };
 
   return (
     <Container
       sx={{
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: { xs: "center", md: "space-between" },
         alignItems: "center",
+        flexDirection: { xs: "column", md: "row" },
         height: "100vh",
         width: "100vw",
-        position: "relative",
+        px: { xs: 2, sm: 4, md: 8 },
       }}
     >
       {/* Left Side: Images */}
       <Box
         sx={{
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           flexDirection: "column",
           justifyContent: "space-between",
           height: "90vh",
-          position: "absolute",
-          top: 20,
-          left: 20,
         }}
       >
         <img src={LADXLogo} alt="LADX Logo" style={{ width: "150px" }} />
@@ -85,12 +78,11 @@ const ConfirmAccount = () => {
       {/* Confirm Account Section */}
       <Box
         sx={{
-          width: "400px",
-          p: 4,
+          width: { xs: "100%", sm: "90%", md: "400px" },
+          p: { xs: 2, sm: 3, md: 4 },
           mx: "auto",
         }}
       >
-        {/* Center the headings */}
         <Typography variant="h4" align="center" sx={{ mb: 4 }}>
           Confirm Account
         </Typography>
@@ -98,37 +90,43 @@ const ConfirmAccount = () => {
           Enter the verification code sent to you
         </Typography>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mb: 2,
+            px: { xs: 1, sm: 2 },
+          }}
+        >
           {code.map((digit, index) => (
             <TextField
               key={index}
               variant="outlined"
               inputProps={{ maxLength: 1 }}
               sx={{
-                width: "50px",
-                borderRadius: "25px", // Smoothly curved shape for egg-like oval
-                backgroundColor: "white", // Optional: white background for better visibility
-                // Customize border style if needed
+                width: { xs: "45px", sm: "55px", md: "65px" }, // Wider width
+                height: { xs: "65px", sm: "75px", md: "85px" }, // Taller height for egg shape
+                borderRadius: "50px", // Smoothly curved shape for egg-like oval
+                backgroundColor: "white",
                 "& .MuiOutlinedInput-root": {
                   "& fieldset": {
-                    borderColor: "#210947", // Border color
+                    borderColor: "#210947",
                   },
                   "&:hover fieldset": {
-                    borderColor: "#1A0735", // Border color on hover
+                    borderColor: "#1A0735",
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#1A0735", // Border color on focus
+                    borderColor: "#1A0735",
                   },
                 },
               }}
               value={digit}
               onChange={(e) => handleCodeChange(index, e.target.value)}
-              inputRef={(ref) => (inputRefs.current[index] = ref)} // Store reference
+              inputRef={(ref) => (inputRefs.current[index] = ref)}
             />
           ))}
         </Box>
 
-        {/* Error Message for wrong code or timeout */}
         {isTimeUp && (
           <Typography color="red" sx={{ mb: 2 }}>
             Wrong code.
@@ -148,7 +146,6 @@ const ConfirmAccount = () => {
             },
           }}
           onClick={handleConfirm}
-          // Confirm button is always enabled
         >
           Confirm
         </Button>
