@@ -8,11 +8,8 @@ import NewPassword from "./components/NewPassword";
 import LoginConfirmation from "./components/LoginConfirmation";
 import SignUp from "./components/SignUp";
 import LandingPage from "./components/LandingPage";
-
-import AccountSettings from "./components/AccountSettings";
 import Request from "./components/Request";
 import Delivery from "./components/Delivery";
-
 import PaymentSuccessful from "./components/PaymentSuccessful";
 import TravelerProfile from "./components/TravelerProfile";
 import DeliveryTraking from "./components/DeliveryTraking";
@@ -27,7 +24,7 @@ const App = () => {
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/main" element={<Delivery />} />
         <Route path="/travelerprofile" element={<TravelerProfile />} />
-        <Route path="/accountsettings" element={<AccountSettings />} />
+       
         <Route
           path="/payment-successful"
           element={<PaymentSuccessful />}
