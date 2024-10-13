@@ -19,9 +19,8 @@ import NotificationsIcon from "@mui/icons-material/Notifications"; // Fat bell i
 import { Add as AddIcon } from "@mui/icons-material"; // Plus sign icon
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"; // Down arrow icon
 import SearchIcon from "@mui/icons-material/Search"; // Add this line to import SearchIcon
-
 import Checkbox from "@mui/material/Checkbox"; // Add this line to import Checkbox
-import { Link } from "react-router-dom"; // Ensure only one 'Link' import is here
+import { Link, useNavigate } from "react-router-dom"; // Ensure only one 'Link' import is here
 import InputBase from "@mui/material/InputBase"; // Add this line to import InputBase
 import useMediaQuery from "@mui/material/useMediaQuery";
 import homepp from "../assets/homepp.jpg";
@@ -33,7 +32,7 @@ import johnImg from '../assets/john.jpg';
 const Home = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   
- //const navigate = useNavigate();
+ const navigate =useNavigate();
 //  const handleRequestClick = () => {
 //    navigate("/delivery");
 //  };
@@ -44,7 +43,9 @@ const Home = () => {
     navigate("/login"); // Navigate back to the login page
   };
   const isMobile = useMediaQuery("(max-width:600px)"); // Adjust the breakpoint as needed
-
+const handleRequest = () => {
+  navigate("/request")
+}
  
   return (
     <Box sx={{ display: "flex" }}>
@@ -90,8 +91,7 @@ const Home = () => {
               textDecoration: "none",
               color: "inherit",
             }}
-         
-            
+            onClick={handleRequest}
           >
             <AddIcon sx={{ color: "#F66F1E", fontSize: "30px" }} />
             <Typography
@@ -434,7 +434,6 @@ const Home = () => {
         </Box>
       </Box>
     </Box>
-    
   );
   
 };
