@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import test from "../assets/test.jpg"; // Ensure the correct path to your logo image
 import active from "../assets/active.jpg";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CloseIcon from "@mui/icons-material/Close"; // Importing Close icon
+import { padding } from "@mui/system";
+
 const Request = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
@@ -27,7 +31,7 @@ const Request = () => {
       <div style={styles.header}>
         {/* Back arrow */}
         <div style={styles.backArrow} onClick={handleBackClick}>
-          ←
+          <ArrowBackIcon />
         </div>
         <h1 style={styles.title}>Request Delivery</h1>
       </div>
@@ -52,11 +56,6 @@ const Request = () => {
 
         {/* Second set of input fields */}
         <div style={styles.inputBlock}>
-          <label style={styles.label}>
-            Name of each item(s) (e.g., HP Laptop, iPhone XR...)
-          </label>
-          <input type="text" style={styles.inputField} />
-
           <label style={styles.label}>Address delivering to</label>
           <input type="text" style={styles.inputField} />
 
@@ -74,25 +73,23 @@ const Request = () => {
             <div style={styles.fileInputText}>
               Drag and drop files here <br /> or{" "}
               <span style={styles.chooseFileButton} onClick={togglePopup}>
-                <br />
                 Choose file
               </span>
             </div>
             <input type="file" style={styles.fileInput} />
           </div>
-          <div style={styles.fileFormatText}>
-            XLS TXT, PNG, JPEG, GIF
-            <button style={styles.connectButton} onClick={togglePopup}>
-              Connect with a Traveler
-            </button>
-          </div>
+          <div style={styles.fileFormatText}>XLS, TXT, PNG, JPEG, GIF</div>
         </div>
       </div>
-
+      <button style={styles.connectButton} onClick={togglePopup}>
+        Connect with a Traveler
+      </button>
       {/* Popup */}
       {showPopup && (
         <div style={styles.popupOverlay}>
           <div style={styles.popupContent}>
+            <CloseIcon style={styles.closeIcon} onClick={togglePopup} />{" "}
+            {/* Close icon */}
             <img
               src={active}
               alt="Two animations"
@@ -100,7 +97,7 @@ const Request = () => {
             />
             <h2 style={styles.popupTitle}>Successful!</h2>
             <h4 style={styles.popupTitle}>
-              You will get notification when you have <br />
+              You will get a notification when you have <br />
               been matched with a Traveler.
             </h4>
             <button
@@ -121,6 +118,10 @@ const styles = {
     backgroundColor: "#FFFFFF",
     height: "100vh",
     padding: "20px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    overflowY: "auto", // Allows scrolling if content exceeds viewport height
   },
   logo: {
     width: "150px",
@@ -130,6 +131,8 @@ const styles = {
     display: "flex",
     alignItems: "center",
     marginBottom: "30px",
+    width: "100%",
+    justifyContent: "flex-start", // Aligns items to the left
   },
   backArrow: {
     width: "50px",
@@ -153,14 +156,15 @@ const styles = {
     flexWrap: "wrap", // Makes the form wrap on smaller screens
     gap: "20px",
     marginTop: "40px",
+    width: "100%",
   },
   inputBlock: {
     display: "flex",
     flexDirection: "column",
     gap: "10px",
-    flex: "1",
-    maxWidth: "300px",
+    flex: "1 1 calc(50% - 20px)", // Adjust width based on available space
     minWidth: "250px", // Ensures the input blocks adjust on small screens
+    maxWidth: "300px", // Prevents blocks from becoming too wide
   },
   label: {
     fontSize: "16px",
@@ -178,16 +182,18 @@ const styles = {
   },
   fileUploadSection: {
     order: 0, // Default order for larger screens
+    width: "100%",
   },
   fileInputContainer: {
     backgroundColor: "#F9FBFE",
     border: "2px dashed #2E61B4",
+    width:"300px",
     padding: "10px",
     borderRadius: "10px",
     textAlign: "center",
   },
   fileInputText: {
-    marginBottom: "40px",
+    marginBottom: "20px", // Reduced bottom margin for compactness
   },
   chooseFileButton: {
     color: "white",
@@ -202,15 +208,24 @@ const styles = {
   fileFormatText: {
     marginTop: "5px",
     fontSize: "14px",
+    display: "flex",
+    justifyContent: "flex-start",
+    flexWrap: "wrap",
+    gap: "10px", // Added gap for margin between formats
+  },
+  fileFormatMargin: {
+    marginLeft: "10px", // Adds margin between formats
   },
   connectButton: {
     backgroundColor: "#210947",
     color: "#FFFFFF",
     border: "none",
     borderRadius: "20px",
-    height: "40px",
+    padding:"20px",
+    height: "60px",
     marginTop: "20px",
     cursor: "pointer",
+    width: "fit-content", // Ensure button width is based on content
   },
   popupOverlay: {
     position: "fixed",
@@ -231,24 +246,25 @@ const styles = {
     textAlign: "center",
     width: "80%",
     maxWidth: "500px", // Limits popup width on larger screens
+    position: "relative", // Allows positioning of the close icon
   },
   popupTitle: {
     marginBottom: "20px",
   },
-  closePopupButton: {
-    backgroundColor: "#210947",
-    color: "#FFFFFF",
-    border: "none",
-    borderRadius: "10px",
-    padding: "15px 60px",
+  closeIcon: {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
     cursor: "pointer",
   },
-  // Media query for small screens
-  "@media (max-width: 768px)": {
-    fileUploadSection: {
-      order: 1, // Move to the last position on small screens
-      width: "100%", // Ensure full width for small screens
-    },
+  closePopupButton: {
+    backgroundColor: "#F66F1E",
+    color: "#FFFFFF",
+    border: "none",
+    borderRadius: "20px",
+    height: "40px",
+    cursor: "pointer",
+    marginTop: "20px",
   },
 };
 
