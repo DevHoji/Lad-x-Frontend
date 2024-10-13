@@ -18,9 +18,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useNavigate } from "react-router-dom";
 
-import test from "../assets/test.jpg";
+import test from "../assets/homepp.jpg";
 
-const Profile = () => {
+const Profile = ({setContent}) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -36,9 +36,7 @@ const Profile = () => {
     setOpen(false);
   };
 
-  const handleAccountSettingsClick = () => {
-    navigate("/accountsettings");
-  };
+ 
 
   const handleUpdateProfile = () => {
     // Logic to update the profile with new information
@@ -61,6 +59,13 @@ const Profile = () => {
   const countries = ["USA", "Canada", "UK", "Australia"];
   const states = ["California", "Texas", "Florida", "New York"];
 
+  
+
+ 
+  const handleAccountSettingsClick = () => {
+    setContent("AccountSettings"); // Set content to AccountSettings on click
+    
+  };
   return (
     <Box
       sx={{
@@ -125,7 +130,7 @@ const Profile = () => {
             padding: "15px",
             paddingX: 2,
             "&:hover": {
-              backgroundColor: "#370D70", // Darker shade for hover
+              // backgroundColor: "#370D70", // Darker shade for hover
             },
           }}
         >
@@ -150,7 +155,7 @@ const Profile = () => {
           marginTop: 4,
           marginBottom: 4,
         }}
-        onClick={handleAccountSettingsClick}
+        onClick={handleAccountSettingsClick} // Set the click handler here
       >
         <PersonOutlineIcon
           sx={{
@@ -222,15 +227,19 @@ const Profile = () => {
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
         <Box
           sx={{
-            borderRadius: "16px",
-            width: { xs: "90%", sm: "700px" }, // Adjusted for responsiveness
-            padding: 2,
+            borderRadius: "20px", // Smoother border radius
+            width: { xs: "90%", sm: "800px", md: "700px" }, // Increased size and responsive
+            padding: 3, // Increased padding for a more spacious feel
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: "white",
             position: "relative",
+            boxShadow: "0 8px 30px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
+            margin: { xs: "10px", sm: "auto", md: "20px auto" }, // Centered with margins on larger screens
+            maxWidth: "90vw", // Prevent it from going 100% of the screen
+            right: { md: "10%", lg: "15%" }, // Shift popup slightly to the right on larger screens
           }}
         >
           {/* Profile Image with Delete Icon */}
@@ -239,28 +248,29 @@ const Profile = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              marginBottom: 2,
+              marginBottom: 3, // Increased spacing
             }}
           >
             <Avatar
               src={test}
               alt="Profile Picture"
               sx={{
-                width: 50,
-                height: 50,
+                width: 80, // Slightly larger
+                height: 80, // Slightly larger
                 borderRadius: "50%",
+                border: "2px solid #F66F1E", // Optional border for emphasis
               }}
             />
             <IconButton
               onClick={() => console.log("Delete Profile Photo")}
               sx={{
                 position: "absolute",
-                top: 5,
-                right: 5,
+                top: 10,
+                right: 10,
                 backgroundColor: "#F5F5F5",
                 borderRadius: "50%",
-                width: 30,
-                height: 30,
+                width: 35,
+                height: 35,
               }}
             >
               <DeleteIcon sx={{ color: "black" }} />
@@ -289,8 +299,8 @@ const Profile = () => {
               right: 10,
               backgroundColor: "#F5F5F5",
               borderRadius: "50%",
-              width: 30,
-              height: 30,
+              width: 35,
+              height: 35,
             }}
           >
             <CancelIcon sx={{ color: "black" }} />
@@ -306,10 +316,13 @@ const Profile = () => {
             onChange={(e) => setFullName(e.target.value)}
             placeholder="Full Name"
             sx={{
-              width: "384px", // Specified width
-              height: "41px", // Specified height
+              width: "100%", // Full width with margin
+              maxWidth: "384px", // Ensure max width
               borderRadius: "20px", // Smoothly curved shape
               marginBottom: 2,
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "20px", // Ensure rounded corners on input
+              },
             }}
           />
 
@@ -318,9 +331,9 @@ const Profile = () => {
             sx={{
               display: "flex",
               justifyContent: "space-between",
-              gap: 1, // Small gap between fields
-              width: "100%", // Take full width for alignment
-              marginBottom: 1,
+              gap: 2,
+              width: "100%",
+              marginBottom: 2,
             }}
           >
             {/* Country Input Field */}
@@ -332,9 +345,12 @@ const Profile = () => {
                 onChange={(e) => setCountry(e.target.value)}
                 variant="outlined"
                 sx={{
-                  width: "173px", // Specified width
-                  height: "41px", // Specified height
+                  width: "100%",
+                  maxWidth: "173px",
                   borderRadius: "20px", // Smoothly curved shape
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "20px", // Ensure rounded corners on input
+                  },
                 }}
               >
                 {countries.map((country) => (
@@ -354,9 +370,12 @@ const Profile = () => {
                 onChange={(e) => setState(e.target.value)}
                 variant="outlined"
                 sx={{
-                  width: "173px", // Specified width
-                  height: "41px", // Specified height
+                  width: "100%",
+                  maxWidth: "173px",
                   borderRadius: "20px", // Smoothly curved shape
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "20px", // Ensure rounded corners on input
+                  },
                 }}
               >
                 {states.map((state) => (
@@ -374,10 +393,11 @@ const Profile = () => {
             onClick={handleUpdateProfile}
             sx={{
               marginTop: 3,
-              width: "220px", // Specified width
-              height: "59px", // Specified height
-              borderRadius: "20px", // Smoothly curved shape
-              backgroundColor: "#210947", // Updated background color
+              width: "100%",
+              maxWidth: "220px",
+              height: "59px",
+              borderRadius: "20px",
+              backgroundColor: "#210947",
               "&:hover": {
                 backgroundColor: "#0c0e0e",
               },
