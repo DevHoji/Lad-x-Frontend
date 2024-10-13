@@ -48,8 +48,6 @@ const handleStatusClick = (status) => {
 
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
-      
-
       {/* Right Section (Content) */}
       <Box
         sx={{
@@ -61,7 +59,6 @@ const handleStatusClick = (status) => {
           position: "relative",
         }}
       >
-        
         {/* Main Content Section */}
         <Box
           sx={{
@@ -165,16 +162,20 @@ const handleStatusClick = (status) => {
                   <Box
                     key={index}
                     sx={{
-                      width: "100%", // Full width for better responsiveness
-                      height: { xs: "180px", sm: "200px" }, // Adjust height for small screens
+                      width: "100%",
+                      height: "200px",
                       backgroundColor: "#FFF",
                       boxShadow: "0 0 5px rgba(0,0,0,0.2)",
                       borderRadius: "10px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      padding: { xs: "8px", sm: "10px" }, // Responsive padding
-                      flexDirection: { xs: "column", sm: "row" }, // Stack vertically on small screens
+                      padding: "10px",
+                      flexDirection: "row",
+                      "@media (max-width: 600px)": {
+                        flexDirection: "column",
+                        height: "auto", // Adjust height for small screens
+                      },
                     }}
                   >
                     {/* Profile Image */}
@@ -186,7 +187,7 @@ const handleStatusClick = (status) => {
                         width: "60px",
                         height: "60px",
                         borderRadius: "50%",
-                        marginBottom: { xs: "10px", sm: "0" }, // Space on small screens
+                        marginBottom: { xs: "10px", sm: "0" },
                       }}
                     />
 
@@ -195,25 +196,42 @@ const handleStatusClick = (status) => {
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "100%",
+                        width: "100%",marginLeft:"25px",
+                        "@media (max-width: 600px)": {
+                          textAlign: "center", // Center text on small screens
+                        },
                       }}
                     >
                       <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                         Gadgets
                       </Typography>
-                      <Typography variant="body2">iPhone XR</Typography>
-                      <Typography variant="body2" sx={{ display: "inline" }}>
-                        <span style={{ color: "#28A745", marginRight: "5px" }}>
-                          •
-                        </span>{" "}
-                        HP Laptop
-                      </Typography>
-                      <Typography variant="body2" sx={{ display: "inline" }}>
-                        <span style={{ color: "#28A745", marginRight: "5px" }}>
-                          •
-                        </span>{" "}
-                        Hand Fan
-                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                        }}
+                      >
+                        <Typography variant="body2">iPhone XR</Typography>
+
+                        <Typography variant="body2" sx={{ display: "inline" }}>
+                          <span
+                            style={{ color: "#28A745", marginRight: "5px" }}
+                          >
+                            •
+                          </span>
+                          HP Laptop
+                        </Typography>
+
+                        <Typography variant="body2" sx={{ display: "inline" }}>
+                          <span
+                            style={{ color: "#28A745", marginRight: "5px" }}
+                          >
+                            •
+                          </span>
+                          Hand Fan
+                        </Typography>
+                      </Box>
 
                       {/* Small Profile Image and Details */}
                       <Box
@@ -221,6 +239,9 @@ const handleStatusClick = (status) => {
                           display: "flex",
                           alignItems: "center",
                           marginTop: "5px",
+                          "@media (max-width: 600px)": {
+                            justifyContent: "center", // Center profile details on small screens
+                          },
                         }}
                       >
                         <Box
@@ -263,8 +284,12 @@ const handleStatusClick = (status) => {
                         backgroundColor: "#210947",
                         color: "#FFF",
                         borderRadius: "5px",
-                        padding: { xs: "8px 10px", sm: "10px 20px" }, // Responsive padding
-                        flexShrink: 0, // Prevent button from shrinking
+                        padding: { xs: "8px 10px", sm: "10px 20px" },
+                        flexShrink: 0,
+                        "@media (max-width: 600px)": {
+                          width: "100%", // Make the button take full width on small screens
+                          marginTop: "10px",
+                        },
                         "&:hover": {
                           backgroundColor: "#3E2B69",
                         },
@@ -286,16 +311,20 @@ const handleStatusClick = (status) => {
                   <Box
                     key={index}
                     sx={{
-                      width: "100%", // Full width for better responsiveness
-                      height: { xs: "150px", sm: "180px" }, // Adjust height for small screens
+                      width: "100%",
+                      height: "180px",
                       backgroundColor: "#FFF",
                       boxShadow: "0 0 5px rgba(0,0,0,0.2)",
                       borderRadius: "10px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      padding: { xs: "8px", sm: "10px" }, // Responsive padding
-                      flexDirection: { xs: "column", sm: "row" }, // Stack vertically on small screens
+                      padding: "10px",
+                      flexDirection: "row",
+                      "@media (max-width: 600px)": {
+                        flexDirection: "column",
+                        height: "auto",
+                      },
                     }}
                   >
                     {/* Profile Image */}
@@ -307,7 +336,7 @@ const handleStatusClick = (status) => {
                         width: "60px",
                         height: "60px",
                         borderRadius: "50%",
-                        marginBottom: { xs: "10px", sm: "0" }, // Space on small screens
+                        marginBottom: { xs: "10px", sm: "0" },
                       }}
                     />
 
@@ -317,24 +346,38 @@ const handleStatusClick = (status) => {
                         display: "flex",
                         flexDirection: "column",
                         width: "100%",
+                        marginLeft: "25px",
+                        "@media (max-width: 600px)": {
+                          textAlign: "center", // Center text on small screens
+                        },
                       }}
                     >
                       <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                         Gadgets
                       </Typography>
-                      <Typography variant="body2">iPhone XR</Typography>
-                      <Typography variant="body2" sx={{ display: "inline" }}>
-                        <span style={{ color: "#28A745", marginRight: "5px" }}>
-                          •
-                        </span>{" "}
-                        HP Laptop
-                      </Typography>
-                      <Typography variant="body2" sx={{ display: "inline" }}>
-                        <span style={{ color: "#28A745", marginRight: "5px" }}>
-                          •
-                        </span>{" "}
-                        Hand Fan
-                      </Typography>
+                      <Box
+                        sx={{ display: "flex", gap: "10px", marginTop: "5px" }}
+                      >
+                        <Typography variant="body2">
+                          Samsung Galaxy S20
+                        </Typography>
+                        <Typography variant="body2" sx={{ display: "inline" }}>
+                          <span
+                            style={{ color: "#28A745", marginRight: "5px" }}
+                          >
+                            •
+                          </span>
+                          MacBook Pro
+                        </Typography>
+                        <Typography variant="body2" sx={{ display: "inline" }}>
+                          <span
+                            style={{ color: "#28A745", marginRight: "5px" }}
+                          >
+                            •
+                          </span>
+                          Portable Charger
+                        </Typography>
+                      </Box>
 
                       {/* Small Profile Image and Details */}
                       <Box
@@ -342,6 +385,9 @@ const handleStatusClick = (status) => {
                           display: "flex",
                           alignItems: "center",
                           marginTop: "5px",
+                          "@media (max-width: 600px)": {
+                            justifyContent: "center", // Center profile details on small screens
+                          },
                         }}
                       >
                         <Box
@@ -356,7 +402,7 @@ const handleStatusClick = (status) => {
                           }}
                         />
                         <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                          John Kth
+                          Jane Doe
                         </Typography>
                         <Box
                           component="img"
@@ -368,13 +414,33 @@ const handleStatusClick = (status) => {
                             margin: "0 5px",
                           }}
                         />
-                        <Typography variant="body2" sx={{ color: "#007BFF" }}>
+                        <Typography variant="body2">
+                          To Nairobi, Kenya
+                        </Typography>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          marginTop: "5px",
+                        }}
+                      >
+                        <Typography variant="body2">
+                          Delivery ID: 456YH7890
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "blue",
+                            marginLeft: "10px",
+                            marginRight: "10px",
+                          }}
+                        >
                           Delivered
                         </Typography>
-                        <Typography variant="body2">ID: 345YH3456</Typography>
-                        <Typography variant="body2">
-                          Delivered on 25/09/2024
-                        </Typography>
+
+                        <Typography variant="body2">on 25/09/2024</Typography>
                       </Box>
                     </Box>
 
@@ -385,8 +451,12 @@ const handleStatusClick = (status) => {
                         backgroundColor: "#210947",
                         color: "#FFF",
                         borderRadius: "5px",
-                        padding: { xs: "8px 10px", sm: "10px 20px" }, // Responsive padding
+                        padding: { xs: "8px 10px", sm: "10px 20px" },
                         flexShrink: 0,
+                        "@media (max-width: 600px)": {
+                          width: "100%", // Make the button take full width on small screens
+                          marginTop: "10px",
+                        },
                         "&:hover": {
                           backgroundColor: "#3E2B69",
                         },
@@ -408,16 +478,20 @@ const handleStatusClick = (status) => {
                   <Box
                     key={index}
                     sx={{
-                      width: "100%", // Full width for better responsiveness
-                      height: { xs: "100px", sm: "120px" }, // Adjust height for small screens
+                      width: "100%",
+                      height: "120px",
                       backgroundColor: "#FFF",
                       boxShadow: "0 0 5px rgba(0,0,0,0.2)",
                       borderRadius: "10px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      padding: { xs: "8px", sm: "10px" }, // Responsive padding
-                      flexDirection: { xs: "column", sm: "row" }, // Stack vertically on small screens
+                      padding: "10px",
+                      flexDirection: "row",
+                      "@media (max-width: 600px)": {
+                        flexDirection: "column",
+                        height: "auto",
+                      },
                     }}
                   >
                     {/* Profile Image */}
@@ -429,7 +503,7 @@ const handleStatusClick = (status) => {
                         width: "60px",
                         height: "60px",
                         borderRadius: "50%",
-                        marginBottom: { xs: "10px", sm: "0" }, // Space on small screens
+                        marginBottom: { xs: "10px", sm: "0" },
                       }}
                     />
 
@@ -439,31 +513,45 @@ const handleStatusClick = (status) => {
                         display: "flex",
                         flexDirection: "column",
                         width: "100%",
+                        marginLeft: "25px",
+                        "@media (max-width: 600px)": {
+                          textAlign: "center", // Center text on small screens
+                        },
                       }}
                     >
                       <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                         Gadgets
                       </Typography>
-                      <Typography variant="body2">iPhone XR</Typography>
-                      <Typography variant="body2" sx={{ display: "inline" }}>
-                        <span style={{ color: "#28A745", marginRight: "5px" }}>
-                          •
-                        </span>{" "}
-                        HP Laptop
-                      </Typography>
-                      <Typography variant="body2" sx={{ display: "inline" }}>
-                        <span style={{ color: "#28A745", marginRight: "5px" }}>
-                          •
-                        </span>{" "}
-                        Hand Fan
-                      </Typography>
-
+                      <Box
+                        sx={{ display: "flex", gap: "15px", marginTop: "5px" }}
+                      >
+                        <Typography variant="body2">Google Pixel 5</Typography>
+                        <Typography variant="body2" sx={{ display: "inline" }}>
+                          <span
+                            style={{ color: "#DC3545", marginRight: "5px" }}
+                          >
+                            •
+                          </span>
+                          Dell XPS 13
+                        </Typography>
+                        <Typography variant="body2" sx={{ display: "inline" }}>
+                          <span
+                            style={{ color: "#DC3545", marginRight: "5px" }}
+                          >
+                            •
+                          </span>
+                          AirPods Pro
+                        </Typography>
+                      </Box>
                       {/* Small Profile Image and Details */}
                       <Box
                         sx={{
                           display: "flex",
                           alignItems: "center",
                           marginTop: "5px",
+                          "@media (max-width: 600px)": {
+                            justifyContent: "center", // Center profile details on small screens
+                          },
                         }}
                       >
                         <Box
@@ -478,11 +566,40 @@ const handleStatusClick = (status) => {
                           }}
                         />
                         <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                          John Kth
+                          Tom Jones
                         </Typography>
+                        <Box
+                          component="img"
+                          src={van} // Replace with the actual path
+                          alt="Delivery Car"
+                          sx={{
+                            width: "15px",
+                            height: "15px",
+                            margin: "0 5px",
+                          }}
+                        />
+                        <Typography variant="body2">To Accra, Ghana</Typography>
+                      </Box>
+                      {/* Delivery ID Section */}
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          marginTop: "5px",
+                          gap: "10px", // Small gap between elements
+                        }}
+                      >
+                        <Typography variant="body2">
+                          Delivery ID: 789YH1234
+                        </Typography>
+
                         <Typography variant="body2" sx={{ color: "#DC3545" }}>
+                          {" "}
+                          {/* Red color for Cancelled */}
                           Cancelled
                         </Typography>
+
+                        <Typography variant="body2">on 25/09/2024</Typography>
                       </Box>
                     </Box>
 
@@ -493,8 +610,12 @@ const handleStatusClick = (status) => {
                         backgroundColor: "#210947",
                         color: "#FFF",
                         borderRadius: "5px",
-                        padding: { xs: "8px 10px", sm: "10px 20px" }, // Responsive padding
+                        padding: { xs: "8px 10px", sm: "10px 20px" },
                         flexShrink: 0,
+                        "@media (max-width: 600px)": {
+                          width: "100%", // Make the button take full width on small screens
+                          marginTop: "10px",
+                        },
                         "&:hover": {
                           backgroundColor: "#3E2B69",
                         },
