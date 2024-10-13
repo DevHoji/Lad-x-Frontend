@@ -17,7 +17,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutIcon from "@mui/icons-material/Logout";
 import test from "../assets/test.jpg"; // Adjust path if necessary
-import homepp from "../assets/homepp.jpg"; 
+import homepp from "../assets/homepp.jpg";
 
 const AccountSettings = () => {
   const navigate = useNavigate();
@@ -96,9 +96,12 @@ const AccountSettings = () => {
             flexShrink: 0,
             paddingTop: "10px", // Add padding for the top spacing
             boxShadow: "2px 0 5px rgba(0,0,0,0.2)", // Shadow on the sidebar
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start", // Align items to the left
           }}
         >
-          <List sx={{ padding: 0 }}>
+          <List sx={{ padding: 0, width: "100%" }}>
             {["Home", "Delivery", "Message", "Profile"].map((text, index) => (
               <ListItem
                 button
@@ -179,10 +182,6 @@ const AccountSettings = () => {
           </List>
         </Box>
 
-
-
-        
-
         {/* Main Content */}
         <Box
           sx={{
@@ -208,6 +207,9 @@ const AccountSettings = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 cursor: "pointer",
+                "&:hover": {
+                  backgroundColor: "#E5E5E5",
+                },
               }}
             >
               <ArrowBackIcon />
