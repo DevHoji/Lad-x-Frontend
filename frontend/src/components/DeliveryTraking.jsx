@@ -210,7 +210,7 @@ const DeliveryTracking = () => {
               <ArrowBackIcon />
             </Box>
             <Typography variant="h6" sx={{ marginLeft: "10px" }}>
-              Delivery Tracking
+              Delivery
             </Typography>
           </Box>
           {/* Message Traveler Button */}
@@ -244,7 +244,7 @@ const DeliveryTracking = () => {
               <Typography variant="body2">Message Traveler</Typography>
             </Box>
           </Box>
-         
+
           {/* Delivery Tracking Information */}
           <Box
             sx={{
@@ -259,11 +259,11 @@ const DeliveryTracking = () => {
             <Box
               sx={{
                 display: "flex",
+                
                 alignItems: "center",
                 marginBottom: "30px", // Increased margin below each dot
               }}
             >
-                
               {/* Third Dot */}
               <Box
                 sx={{
@@ -274,10 +274,12 @@ const DeliveryTracking = () => {
                   marginBottom: "30px", // Increased margin
                 }}
               />
-              <Typography variant="body2" sx={{ marginRight: "10px" }}>
+              <Typography variant="body2" sx={{ marginRight: "5px" }}>
                 Delivery Order placed
               </Typography>
-              <Typography variant="body2">07:15 PM, 5 SEPT 2024</Typography>
+              <Typography variant="body2" sx={{ marginRight: "5px" }}>
+                07:15 PM, 5 SEPT 2024
+              </Typography>
             </Box>
             <Typography variant="body2" sx={{ marginBottom: "30px" }}>
               Your Delivery order has been accepted
@@ -300,13 +302,23 @@ const DeliveryTracking = () => {
                   marginRight: "10px",
                 }}
               />
-              <Typography variant="body2" sx={{ marginRight: "10px" }}>
+              <Typography variant="body2" sx={{ marginRight: "5px" }}>
                 Shipping
               </Typography>
-              <Typography variant="body2">02:15 PM, SEPT 2024</Typography>
+              <Typography variant="body2" sx={{ marginRight: "5px" }}>
+                02:15 PM, SEPT 2024
+              </Typography>
             </Box>
             <Typography variant="body2" sx={{ marginBottom: "30px" }}>
               Your item is on its way
+            </Typography>
+
+            {/* Courier Information */}
+            <Typography
+              variant="body2"
+              sx={{ color: "red", marginBottom: "20px" }}
+            >
+              Courier: John Kith
             </Typography>
 
             {/* Third Dot with Information */}
@@ -326,7 +338,7 @@ const DeliveryTracking = () => {
                   marginRight: "10px",
                 }}
               />
-              <Typography variant="body2" sx={{ marginRight: "10px" }}>
+              <Typography variant="body2" sx={{ marginRight: "5px" }}>
                 Estimated Delivery
               </Typography>
               <Typography variant="body2">In 5 Hours</Typography>
@@ -335,24 +347,31 @@ const DeliveryTracking = () => {
               Your item will be delivered
             </Typography>
 
-            {/* Courier Information */}
-            <Typography
-              variant="body2"
-              sx={{ color: "red", marginBottom: "20px" }}
-            >
-              Courier: John Kith
-            </Typography>
-
             {/* Connecting Broken Lines */}
             <Box
               sx={{
-                position: "absolute",
-                top: "80px", // Adjust this value to position the line correctly
-                left: "14px", // Adjust based on dot positioning
-                height: "90px", // Total height between the dots
-                borderLeft: "2px dashed #5272F2",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "-10px", // Adjust to position the line
               }}
-            />
+            >
+              <Typography
+                variant="body2"
+                sx={{ color: "#5272F2", marginRight: "5px" }}
+              >
+                •
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "#5272F2", marginRight: "5px" }}
+              >
+                •
+              </Typography>
+              <Typography variant="body2" sx={{ color: "#5272F2" }}>
+                •
+              </Typography>
+            </Box>
 
             {/* Shipping Address Section */}
             <Box
