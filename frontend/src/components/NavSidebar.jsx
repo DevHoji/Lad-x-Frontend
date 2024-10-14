@@ -21,7 +21,7 @@ import {
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LADXLogo from "../images/TLOGO.jpeg";
 import profilePic from "../images/Profilebox2.jpeg";
-
+import test from "../assets/test.jpg"; 
 // Import your components here
 import Home from './Home'; // adjust the path based on your file structure
 import Delivery from './Delivery'; // adjust the path based on your file structure
@@ -93,7 +93,7 @@ const NavSidebar = () => {
         }}
       >
         <img
-          src={LADXLogo}
+          src={test}
           alt="Logo"
           style={{ width: "50px", marginRight: "10px" }}
         />
@@ -276,7 +276,7 @@ const NavSidebar = () => {
             {content === "TravlerProfile" && <TravelerProfile />}
             {content === "Profile" && <Profile setContent={setContent} />}
             {content === "AccountSettings" && <AccountSettings />}
-           
+
             {/* Add any additional components if necessary */}
           </Box>
         </Box>
