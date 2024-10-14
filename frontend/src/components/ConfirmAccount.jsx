@@ -1,9 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Button, TextField, Typography, Container } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Container,
+  Grid,
+} from "@mui/material";
 import LADXLogo from "../assets/ladxLogo.png";
 import ProfileImage from "../assets/profileImage.png";
-import SmallImage from "../assets/smallImage.png";
 import { useNavigate } from "react-router-dom";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining"; // Import a white delivery car icon
+import test from "../assets/test.jpg";
+import forget from "../assets/forget.jpg";
+//import { useNavigate } from "react-router-dom";
 
 const ConfirmAccount = () => {
   const [code, setCode] = useState(Array(6).fill(""));
@@ -36,7 +46,6 @@ const ConfirmAccount = () => {
   const handleConfirm = () => {
     navigate("/new-password");
   };
-
   return (
     <Container
       sx={{
@@ -52,116 +61,164 @@ const ConfirmAccount = () => {
       {/* Left Side: Images */}
       <Box
         sx={{
-          display: { xs: "none", md: "flex" },
+          display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           height: "90vh",
+          position: "absolute",
+          top: 20,
+          left: 20,
+          marginBottom: 2, // Add bottom margin
         }}
       >
-        <img src={LADXLogo} alt="LADX Logo" style={{ width: "150px" }} />
-        <Box sx={{ mt: 5 }}>
-          <img
-            src={ProfileImage}
-            alt="Profile"
-            style={{ width: "100px", height: "100px" }}
-          />
-        </Box>
-        <Box>
-          <img
-            src={SmallImage}
-            alt="Small Icon"
-            style={{ width: "64px", height: "64px" }}
-          />
-        </Box>
-      </Box>
-
-      {/* Confirm Account Section */}
-      <Box
-        sx={{
-          width: { xs: "100%", sm: "90%", md: "400px" },
-          p: { xs: 2, sm: 3, md: 4 },
-          mx: "auto",
-        }}
-      >
-        <Typography variant="h4" align="center" sx={{ mb: 4 }}>
-          Confirm Account
-        </Typography>
-        <Typography align="center" sx={{ mb: 4 }}>
-          Enter the verification code sent to you
-        </Typography>
-
+        <img src={test} alt="LADX Logo" style={{ width: "150px" }} />
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            mb: 2,
-            px: { xs: 1, sm: 2 },
+            width: { xs: "90%", md: "400px" }, // Adjust width for small screens
+            p: 4,
+            position: "relative", // Allow positioning of text below the confirm button
           }}
         >
-          {code.map((digit, index) => (
-            <TextField
-              key={index}
-              variant="outlined"
-              inputProps={{ maxLength: 1 }}
+          <img
+            src={forget}
+            alt="Profile"
+            style={{
+              width: "60px",
+              height: "60px",
+              borderRadius: "50%",
+              marginBottom: "16px",
+              marginLeft: "-50px",
+              marginTop: "50px",
+            }} // Reduced size
+          />
+        </Box>
+        {/* Confirm Account Section */}
+        <Container
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
+            background: "white",
+            position: "relative",
+            p: 2,
+          }}
+        >
+          <Box
+            sx={{
+              width: { xs: "90%", sm: "80%", md: "400px" }, // Adjust width for responsiveness
+              p: { xs: 2, sm: 3, md: 4 },
+              mx: "auto",
+              boxShadow: 3, // Adding some shadow for depth
+              // Removed background color
+            }}
+          >
+            <Typography variant="h4" align="center" sx={{ mb: 4 }}>
+              Confirm Account
+            </Typography>
+            <Typography align="center" sx={{ mb: 4 }}>
+              Enter the verification code sent to you
+            </Typography>
+
+            <Box
               sx={{
-                width: { xs: "45px", sm: "55px", md: "65px" }, // Wider width
-                height: { xs: "65px", sm: "75px", md: "85px" }, // Taller height for egg shape
-                borderRadius: "50px", // Smoothly curved shape for egg-like oval
-                backgroundColor: "white",
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#210947",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#1A0735",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#1A0735",
-                  },
+                display: "flex",
+                justifyContent: "space-between",
+                mb: 2,
+                px: { xs: 1, sm: 2 },
+              }}
+            >
+              {code.map((digit, index) => (
+                <TextField
+                  key={index}
+                  variant="outlined"
+                  inputProps={{ maxLength: 1 }}
+                  sx={{
+                    flex: 1, // Make inputs take equal space
+                    mx: 0.5, // Small horizontal margin to create spacing
+                    height: { xs: "65px", sm: "75px", md: "85px" }, // Taller height for egg shape
+                    borderRadius: "50px", // Smoothly curved shape for egg-like oval
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#210947",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#1A0735",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#1A0735",
+                      },
+                    },
+                  }}
+                  value={digit}
+                  onChange={(e) => handleCodeChange(index, e.target.value)}
+                  inputRef={(ref) => (inputRefs.current[index] = ref)}
+                />
+              ))}
+            </Box>
+
+            {isTimeUp && (
+              <Typography color="red" sx={{ mb: 2 }}>
+                Wrong code.
+              </Typography>
+            )}
+
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{
+                mt: 2,
+                backgroundColor: "#210947",
+                color: "white",
+                borderRadius: "30px",
+                "&:hover": {
+                  backgroundColor: "#1A0735",
                 },
               }}
-              value={digit}
-              onChange={(e) => handleCodeChange(index, e.target.value)}
-              inputRef={(ref) => (inputRefs.current[index] = ref)}
-            />
-          ))}
+              onClick={handleConfirm}
+            >
+              Confirm
+            </Button>
+
+            {/* Countdown Timer */}
+            <Typography align="center" sx={{ mt: 2 }}>
+              {isTimeUp
+                ? "Code is timed out."
+                : `You can generate a new code in 00:${
+                    timeLeft < 10 ? `0${timeLeft}` : timeLeft
+                  }`}
+              {isTimeUp && <span style={{ color: "blue" }}> Resend OTP</span>}
+            </Typography>
+          </Box>
+        </Container>
+        <Box sx={{ mt: 2 }}>
+          <DeliveryDiningIcon
+            sx={{
+              width: "64px",
+              height: "64px",
+              color: "white", // Set icon color to white
+              backgroundColor: "#F66F1E", // Background color
+              borderRadius: "50%",
+              padding: "16px", // Add padding for circular background
+            }}
+          />
         </Box>
-
-        {isTimeUp && (
-          <Typography color="red" sx={{ mb: 2 }}>
-            Wrong code.
-          </Typography>
-        )}
-
-        <Button
-          fullWidth
-          variant="contained"
-          sx={{
-            mt: 2,
-            backgroundColor: "#210947",
-            color: "white",
-            borderRadius: "30px",
-            "&:hover": {
-              backgroundColor: "#1A0735",
-            },
-          }}
-          onClick={handleConfirm}
-        >
-          Confirm
-        </Button>
-
-        {/* Countdown Timer */}
-        <Typography align="center" sx={{ mt: 2 }}>
-          {isTimeUp
-            ? "Code is timed out. "
-            : `You can generate a new code in 00:${
-                timeLeft < 10 ? `0${timeLeft}` : timeLeft
-              }`}
-          {isTimeUp && <span style={{ color: "blue" }}> Resend OTP</span>}
-        </Typography>
       </Box>
+
+      <Container
+        sx={{
+          height: "100vh",
+          width: "100vw",
+          position: "relative",
+          p: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: { xs: "center", md: "center" }, // Center the form section
+          marginLeft: { xs: 0, md: "100px" }, // Add left margin on medium screens
+        }}
+      ></Container>
     </Container>
   );
 };
-
 export default ConfirmAccount;

@@ -9,8 +9,10 @@ import {
 } from "@mui/material";
 import LADXLogo from "../assets/ladxLogo.png";
 import ProfileImage from "../assets/profileImage.png";
-import SmallImage from "../assets/smallImage.png";
 import { useNavigate } from "react-router-dom";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining"; // Import a white delivery car icon
+import test from "../assets/test.jpg";
+import forget from "../assets/forget.jpg";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -35,108 +37,157 @@ const ForgotPassword = () => {
     }
   };
 
+  const handleBackToLogin = () => {
+    navigate("/login"); // Redirect to Login page
+  };
+
   return (
     <Container
       sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
         height: "100vh",
         width: "100vw",
         position: "relative",
-        p: 0,
+        flexDirection: { xs: "column", md: "row" }, // Stack items on small screens
+        p: 2, // Padding for margin around the content
       }}
     >
-      <Grid container>
-        {/* Left Side: Images */}
-        <Grid item xs={12} md={6} sx={{ position: "relative" }}>
-          <Box
+      {/* Left Side: Images */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: "90vh",
+          position: "absolute",
+          top: 20,
+          left: 20,
+          marginBottom: 2, // Add bottom margin
+        }}
+      >
+        <img src={test} alt="LADX Logo" style={{ width: "150px" }} />
+        <Box sx={{ mt: 2 }}>
+          <DeliveryDiningIcon
+            sx={{
+              width: "64px",
+              height: "64px",
+              color: "white", // Set icon color to white
+              backgroundColor: "#F66F1E", // Background color
+              borderRadius: "50%",
+              padding: "16px", // Add padding for circular background
+            }}
+          />
+        </Box>
+      </Box>
+
+      <Container
+        sx={{
+          height: "100vh",
+          width: "100vw",
+          position: "relative",
+          p: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: { xs: "center", md: "center" }, // Center the form section
+          marginLeft: { xs: 0, md: "100px" }, // Add left margin on medium screens
+        }}
+      >
+        <Grid container>
+          {/* Form Section */}
+          <Grid
+            item
+            xs={12}
+            md={6}
             sx={{
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              height: "90vh",
-              position: "absolute",
-              top: 20,
-              left: 20,
+              alignItems: "center",
+              justifyContent: "center", // Center the form section
+              marginLeft: { xs: 0, md: "0" }, // Reset margin on small screens
             }}
           >
-            <img src={LADXLogo} alt="LADX Logo" style={{ width: "150px" }} />
-            <Box sx={{ mt: 5 }}>
+            <Box
+              sx={{
+                width: { xs: "90%", md: "400px" }, // Adjust width for small screens
+                p: 4,
+                position: "relative", // Allow positioning of text below the confirm button
+              }}
+            >
               <img
-                src={ProfileImage}
+                src={forget}
                 alt="Profile"
-                style={{ width: "100px", height: "100px" }}
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  borderRadius: "50%",
+                  marginBottom: "16px",
+                  marginLeft: "-50px",
+                }} // Reduced size
               />
-            </Box>
-            <Box>
-              <img
-                src={SmallImage}
-                alt="Small Icon"
-                style={{ width: "64px", height: "64px" }}
-              />
-            </Box>
-          </Box>
-        </Grid>
+              <Typography variant="h4" align="center" sx={{ mb: 1 }}>
+                Forgot Password
+              </Typography>
+              <Typography variant="body1" align="center" sx={{ mb: 4 }}>
+                Enter the email used to register your account
+              </Typography>
 
-        {/* Form Section */}
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{ display: "flex", alignItems: "center" }}
-        >
-          <Box
-            sx={{
-              width: { xs: "100%", md: "400px" },
-              p: 4,
-              mx: "auto",
-            }}
-          >
-            <Typography variant="h4" align="left" sx={{ ml: 2, mb: 4 }}>
-              Forgot Password
-            </Typography>
-
-            <Box mb={3}>
-              <Typography>Email *</Typography>
-              <TextField
-                fullWidth
-                value={email}
-                onChange={handleEmailChange}
-                variant="outlined"
-                sx={{
-                  borderRadius: "30px",
-                  "& .MuiOutlinedInput-root": {
+              <Box mb={3}>
+                <TextField
+                  fullWidth
+                  value={email}
+                  onChange={handleEmailChange}
+                  variant="outlined"
+                  sx={{
                     borderRadius: "30px",
-                    "& fieldset": {
-                      borderColor: error ? "red" : undefined,
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "30px",
+                      "& fieldset": {
+                        borderColor: error ? "red" : undefined,
+                      },
                     },
+                  }}
+                />
+                {error && (
+                  <Typography variant="caption" sx={{ color: "red", mb: 1 }}>
+                    Wrong email
+                  </Typography>
+                )}
+              </Box>
+
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 2,
+                  backgroundColor: "#210947",
+                  color: "white",
+                  borderRadius: "30px",
+                  "&:hover": {
+                    backgroundColor: "#1A0735",
                   },
                 }}
-              />
-              {error && (
-                <Typography variant="caption" sx={{ color: "red", mb: 1 }}>
-                  Wrong email
-                </Typography>
-              )}
-            </Box>
+                onClick={handleConfirm}
+              >
+                Confirm
+              </Button>
 
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{
-                mt: 2,
-                backgroundColor: "#210947",
-                color: "white",
-                borderRadius: "30px",
-                "&:hover": {
-                  backgroundColor: "#1A0735",
-                },
-              }}
-              onClick={handleConfirm}
-            >
-              Confirm
-            </Button>
-          </Box>
+              <Typography
+                align="center"
+                sx={{
+                  mt: 2,
+                  cursor: "pointer",
+                  color: "#000", // Normal text color
+                }}
+                onClick={handleBackToLogin} // Navigate back to login page
+              >
+                Back to Login
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
+        ;
+      </Container>
     </Container>
   );
 };

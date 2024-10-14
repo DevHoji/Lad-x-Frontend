@@ -11,8 +11,10 @@ import LandingPage from "./components/LandingPage";
 import Request from "./components/Request";
 import Delivery from "./components/Delivery";
 import PaymentSuccessful from "./components/PaymentSuccessful";
-import TravelerProfile from "./components/TravelerProfile";
+//import TravelerProfile from "./components/TravelerProfile";
 import DeliveryTraking from "./components/DeliveryTraking";
+import DeliveryCancelled from './components/DeliveryCancelled'; // Adjust the path if needed
+
 import NavSidebar from "./components/NavSidebar";
 import './App.css';
 
@@ -23,8 +25,7 @@ const App = () => {
         <Route path="/request" element={<Request />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/main" element={<Delivery />} />
-        <Route path="/travelerprofile" element={<TravelerProfile />} />
-       
+        <Route path="/deliverycancelled" element={<DeliveryCancelled />} />
         <Route
           path="/payment-successful"
           element={<PaymentSuccessful />}

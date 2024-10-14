@@ -36,13 +36,17 @@ const Delivery = () => {
     
     navigate("/delivery-tracking");
   }
+  
   const handleLogout = () => {
     navigate("/login"); // Navigate back to the login page
   };
 const handleStatusClick = (status) => {
   setSelectedStatus(status);
 };
-
+const handleDeliveryCClick = () => {
+  navigate("/deliverycancelled");
+};
+  
 
   const [selectedStatus, setSelectedStatus] = React.useState("Processing"); // Default selection
 
@@ -55,7 +59,7 @@ const handleStatusClick = (status) => {
           backgroundColor: "#F5F5F5",
           display: "flex",
           flexDirection: "column",
-          marginLeft: { xs: "0", sm: "250px" }, // Adjust for sidebar width on larger screens
+          marginLeft: { xs: "0", sm: "" }, // Adjust for sidebar width on larger screens
           position: "relative",
         }}
       >
@@ -620,7 +624,7 @@ const handleStatusClick = (status) => {
                           backgroundColor: "#3E2B69",
                         },
                       }}
-                      onClick={handleDeliveryClick}
+                      onClick={handleDeliveryCClick}
                     >
                       View
                     </Button>

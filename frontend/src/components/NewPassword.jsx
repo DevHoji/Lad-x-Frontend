@@ -1,5 +1,3 @@
-// src/components/NewPassword.js
-
 import React, { useState } from "react";
 import {
   Box,
@@ -9,26 +7,26 @@ import {
   Container,
   InputAdornment,
 } from "@mui/material";
-import LADXLogo from "../assets/ladxLogo.png"; // Ensure the correct path to your logo
-import ProfileImage from "../assets/profileImage.png"; // Replace with your profile image path
-import SmallImage from "../assets/smallImage.png"; // Replace with your small image path
-import { Visibility, VisibilityOff } from "@mui/icons-material"; // Import icons for visibility toggle
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
+import { useNavigate } from "react-router-dom";
+
+import test from "../assets/test.jpg"; // Logo image
+import forget from "../assets/forget.jpg"; // Profile image
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-    // Navigate to the Login Confirmation page after successful password submission
-    navigate("/login-confirmation"); // Change this to your actual next page route
+    navigate("/login-confirmation");
   };
 
   return (
@@ -42,7 +40,7 @@ const NewPassword = () => {
         position: "relative",
       }}
     >
-      {/* Left Side: Images */}
+      {/* Left Side: Logo, Profile Image, and Icon */}
       <Box
         sx={{
           display: "flex",
@@ -52,21 +50,43 @@ const NewPassword = () => {
           position: "absolute",
           top: 20,
           left: 20,
+          paddingLeft: { xs: "10px", md: "20px" }, // Adjust padding for mobile and larger screens
         }}
       >
-        <img src={LADXLogo} alt="LADX Logo" style={{ width: "150px" }} />
+        <img
+          src={test}
+          alt="LADX Logo"
+          style={{ width: "150px", marginBottom: "20px" }}
+        />
+
+        {/* Profile Image */}
         <Box sx={{ mt: 5 }}>
           <img
-            src={ProfileImage}
+            src={forget}
             alt="Profile"
-            style={{ width: "100px", height: "100px" }}
+            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
           />
         </Box>
-        <Box>
-          <img
-            src={SmallImage}
-            alt="Small Icon"
-            style={{ width: "64px", height: "64px" }}
+
+        {/* Car Icon */}
+        <Box
+          sx={{
+            width: "64px",
+            height: "64px",
+            backgroundColor: "#F66F1E",
+            borderRadius: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            mt: 5,
+          }}
+        >
+          <DeliveryDiningIcon
+            sx={{
+              width: "32px",
+              height: "32px",
+              color: "white",
+            }}
           />
         </Box>
       </Box>
@@ -74,38 +94,39 @@ const NewPassword = () => {
       {/* New Password Section */}
       <Box
         sx={{
-          width: "400px",
+          width: { xs: "90%", sm: "400px" },
           p: 4,
           mx: "auto",
+          backgroundColor: "white",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+          borderRadius: "10px",
+          textAlign: "center",
         }}
       >
-        <Typography variant="h4" align="center" sx={{ mb: 4 }}>
+        <Typography variant="h4" sx={{ mb: 2 }}>
           New Password
         </Typography>
-        <Typography align="center" sx={{ mb: 4 }}>
+        <Typography variant="body2" sx={{ mb: 4 }}>
           Try not to misplace it this time
         </Typography>
 
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          Password*
-        </Typography>
         <TextField
           fullWidth
+          label="Password"
           variant="outlined"
           type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{
             mb: 2,
-            borderRadius: "30px", // Smoothly curved input
             "& .MuiOutlinedInput-root": {
-              borderRadius: "30px", // Smoothly curved input
+              borderRadius: "30px",
             },
           }}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <Button onClick={() => setShowPassword((prev) => !prev)}>
+                <Button onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <Visibility /> : <VisibilityOff />}
                 </Button>
               </InputAdornment>
@@ -113,26 +134,23 @@ const NewPassword = () => {
           }}
         />
 
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          Confirm Password*
-        </Typography>
         <TextField
           fullWidth
+          label="Confirm Password"
           variant="outlined"
           type={showPassword ? "text" : "password"}
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           sx={{
             mb: 2,
-            borderRadius: "30px", // Smoothly curved input
             "& .MuiOutlinedInput-root": {
-              borderRadius: "30px", // Smoothly curved input
+              borderRadius: "30px",
             },
           }}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <Button onClick={() => setShowPassword((prev) => !prev)}>
+                <Button onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <Visibility /> : <VisibilityOff />}
                 </Button>
               </InputAdornment>
@@ -164,15 +182,3 @@ const NewPassword = () => {
 };
 
 export default NewPassword;
-
-
-
-
-
-
-
-
-
-
-
-

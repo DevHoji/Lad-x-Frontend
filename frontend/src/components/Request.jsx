@@ -23,7 +23,7 @@ const Request = () => {
   };
 
   const handleProceedClick = () => {
-    navigate("/payment-successful"); // Navigate to PaymentSuccessful page
+    navigate(""); // Navigate to PaymentSuccessful page
   };
 
   const togglePopup = () => {
@@ -87,16 +87,24 @@ const Request = () => {
           <TextField
             fullWidth
             variant="outlined"
-            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+            sx={{
+              marginBottom: "20px",
+              backgroundColor: "#F4F4F4",
+              borderRadius: "8px", // Smoothly curved corners
+            }}
           />
-          {/* Name of each item(s) */}
+          {/* Address sending from */}
           <Typography variant="body1" sx={{ marginBottom: "5px" }}>
-            Name of each item(s) (e.g., HP Laptop, iPhone XR...)
+            Address sending from
           </Typography>
           <TextField
             fullWidth
             variant="outlined"
-            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+            sx={{
+              marginBottom: "20px",
+              backgroundColor: "#F4F4F4",
+              borderRadius: "8px", // Smoothly curved corners
+            }}
           />
           {/* Name of Receiver */}
           <Typography variant="body1" sx={{ marginBottom: "5px" }}>
@@ -105,11 +113,28 @@ const Request = () => {
           <TextField
             fullWidth
             variant="outlined"
-            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+            sx={{
+              marginBottom: "20px",
+              backgroundColor: "#F4F4F4",
+              borderRadius: "8px", // Smoothly curved corners
+            }}
           />
         </Grid>
 
         <Grid item xs={12} sm={6}>
+          {/* Name of each item(s) */}
+          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+            Name of each item(s) (e.g., HP Laptop, iPhone XR...)
+          </Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            sx={{
+              marginBottom: "20px",
+              backgroundColor: "#F4F4F4",
+              borderRadius: "8px", // Smoothly curved corners
+            }}
+          />
           {/* Address delivering to */}
           <Typography variant="body1" sx={{ marginBottom: "5px" }}>
             Address delivering to
@@ -117,7 +142,11 @@ const Request = () => {
           <TextField
             fullWidth
             variant="outlined"
-            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+            sx={{
+              marginBottom: "20px",
+              backgroundColor: "#F4F4F4",
+              borderRadius: "10px", // Smoothly curved corners
+            }}
           />
           {/* Phone Number of Receiver */}
           <Typography variant="body1" sx={{ marginBottom: "5px" }}>
@@ -126,53 +155,100 @@ const Request = () => {
           <TextField
             fullWidth
             variant="outlined"
-            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
-          />
-          {/* Weight of Item(s) */}
-          <Typography variant="body1" sx={{ marginBottom: "5px" }}>
-            Weight of Item(s)
-          </Typography>
-          <TextField
-            fullWidth
-            variant="outlined"
-            sx={{ marginBottom: "20px", backgroundColor: "#F4F4F4" }}
+            sx={{
+              marginBottom: "20px",
+              backgroundColor: "#F4F4F4",
+              borderRadius: "8px", // Smoothly curved corners
+            }}
           />
         </Grid>
       </Grid>
 
-      {/* Image Upload and "Connect with Traveler" section */}
-      <Box sx={{ width: "100%", marginBottom: "20px" }}>
-        <Typography variant="body1" sx={{ marginBottom: "10px" }}>
-          Image(s) of item(s)
-        </Typography>
-        <Paper
+      {/* Image Upload, Weight, and Price section */}
+      <Box
+        sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+      >
+        <Box sx={{ flex: 1, marginRight: "20px" }}>
+          <Typography variant="body1" sx={{ marginBottom: "10px" }}>
+            Image(s) of item(s)
+          </Typography>
+          <Paper
+            sx={{
+              backgroundColor: "#F9FBFE",
+              border: "2px dashed #2E61B4",
+              padding: "10px",
+              borderRadius: "10px",
+              textAlign: "center",
+              height: "150px", // Adjust height to make it smaller
+            }}
+          >
+            <Typography>
+              Drag and drop files here <br /> or{" "}
+              <Button
+                //onClick={togglePopup}
+                sx={{
+                  textTransform: "none",
+                  color: "white",
+                  backgroundColor: "black",
+                  padding: "5px 10px",
+                  borderRadius: "10px",
+                }}
+              >
+                Choose file
+              </Button>
+            </Typography>
+          </Paper>
+          <Typography sx={{ marginTop: "5px", fontSize: "14px" }}>
+            Supported file types: XLS, TXT, PNG, JPEG, GIF
+          </Typography>
+        </Box>
+
+        {/* Flexbox for Weight and Price */}
+        <Box
           sx={{
-            backgroundColor: "#F9FBFE",
-            border: "2px dashed #2E61B4",
-            padding: "20px",
-            borderRadius: "10px",
-            textAlign: "center",
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
           }}
         >
-          <Typography>
-            Drag and drop files here <br /> or{" "}
-            <Button
-              onClick={togglePopup}
-              sx={{
-                textTransform: "none",
-                color: "white",
-                backgroundColor: "black",
-                padding: "5px 10px",
-                borderRadius: "10px",
-              }}
-            >
-              Choose file
-            </Button>
-          </Typography>
-        </Paper>
-        <Typography sx={{ marginTop: "5px", fontSize: "14px" }}>
-          Supported file types: XLS, TXT, PNG, JPEG, GIF
-        </Typography>
+          {/* Weight of Item(s) */}
+          <Grid container spacing={2} sx={{ flex: 1 }}>
+            {/* Weight of Item(s) */}
+            <Grid item xs={12} sm={6}>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+                  Weight of the Item(s)
+                </Typography>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  sx={{
+                    backgroundColor: "#F4F4F4",
+                    height: "60px",
+                  }}
+                />
+              </Box>
+            </Grid>
+
+            {/* Price */}
+            <Grid item xs={12} sm={6}>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+                  Price
+                </Typography>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  sx={{
+                    backgroundColor: "#F4F4F4",
+                    height: "60px",
+                  }}
+                />
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
 
       <Button
@@ -184,6 +260,7 @@ const Request = () => {
           padding: "20px",
           height: "60px",
           width: "fit-content",
+          marginTop: "30px",
         }}
       >
         Connect with a Traveler

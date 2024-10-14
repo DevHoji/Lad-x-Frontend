@@ -77,7 +77,7 @@ const TravelerProfile = () => {
                   left: 0,
                   top: "50%",
                   transform: "translateY(-50%)",
-                  width: selectedIndex === index ? "4px" : "0px",
+                 
                   height: "100%",
                   backgroundColor: "#F66F1E",
                   transition: "width 0.3s",
@@ -124,7 +124,7 @@ const TravelerProfile = () => {
                 left: 0,
                 top: "50%",
                 transform: "translateY(-50%)",
-                width: selectedIndex === 4 ? "4px" : "0px",
+                
                 height: "100%",
                 backgroundColor: "#F66F1E",
                 transition: "width 0.3s",

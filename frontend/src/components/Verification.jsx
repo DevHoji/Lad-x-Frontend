@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import ladxLogo from "../assets/ladxLogo.png"; // Assuming images exist
-
+import test from "../assets/test.jpg"; 
 const Verification = () => {
   return (
     <Box
@@ -60,7 +60,7 @@ const Verification = () => {
       >
         {/* Logo */}
         <img
-          src={ladxLogo}
+          src={test}
           alt="LADX Logo"
           style={{ width: "150px", marginBottom: "5px" }} // Adjust as needed
         />
