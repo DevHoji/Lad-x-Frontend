@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import { Box, Typography, Avatar } from "@mui/material";
+import samImg from "../assets/sam.jpg";
+import johnImg from "../assets/john.jpg";
 
 const Message = () => {
   const [isChatVisible, setIsChatVisible] = useState(false);
-  const [unreadMessages, setUnreadMessages] = useState(2);
+  const [unreadMessages, setUnreadMessages] = useState(1);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -85,7 +87,7 @@ const Message = () => {
           >
             <Avatar
               alt="Admin"
-              src="/path/to/profile.jpg"
+              src={samImg}
               sx={{
                 width: { xs: "50px", md: "60px" },
                 height: { xs: "50px", md: "60px" },
@@ -203,7 +205,7 @@ const Message = () => {
               >
                 <Avatar
                   alt="Admin"
-                  src="/path/to/profile.jpg" // Update with the correct image path
+                  src={johnImg} // Update with the correct image path
                   sx={{
                     width: { xs: "50px", md: "60px" },
                     height: { xs: "50px", md: "60px" },
@@ -306,7 +308,7 @@ const Message = () => {
               {/* Profile Image for User */}
               <Avatar
                 alt="User"
-                src="/path/to/user.jpg" // Update with the correct image path
+                src={johnImg} // Update with the correct image path
                 sx={{
                   width: { xs: "40px", md: "50px" },
                   height: { xs: "40px", md: "50px" },
@@ -335,6 +337,7 @@ const Message = () => {
                 marginBottom: "16px",
               }}
             >
+              {/* Text message box */}
               <Box
                 sx={{
                   backgroundColor: "#F66F1E", // Admin message background
@@ -347,6 +350,19 @@ const Message = () => {
                   I'm here to help with your delivery.
                 </Typography>
               </Box>
+
+              {/* Profile image box */}
+              <Avatar
+                alt="Admin"
+                src="/path/to/profile.jpg" // Update with the correct image path
+                sx={{
+                  width: { xs: "40px", md: "50px" },
+                  height: { xs: "40px", md: "50px" },
+                  backgroundColor: "#FFFFFF", // White background for the avatar
+                  borderRadius: "50%", // Ensure the avatar remains circular
+                  marginLeft: "8px", // Space between the text box and the avatar
+                }}
+              />
             </Box>
 
             {/* Additional Messages as needed */}
