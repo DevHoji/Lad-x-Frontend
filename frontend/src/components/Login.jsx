@@ -19,6 +19,8 @@ import ladxLogo from "../assets/ladxLogo.png"; // Assuming images exist
 import profileImage from "../assets/profileImage.png"; // Assuming images exist
 import smallIcon from "../assets/smallIcon.png"; // Assuming images exist
 import { useNavigate } from "react-router-dom";
+import test from "../assets/test.jpg";
+import forget from "../assets/forget.jpg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -106,12 +108,12 @@ const Login = () => {
         }}
       >
         {/* Logo */}
-        <img src={ladxLogo} alt="LADX Logo" style={{ width: "150px" }} />
+        <img src={test} alt="LADX Logo" style={{ width: "150px" }} />
 
         {/* Profile Image */}
         <Box sx={{ mt: 5 }}>
           <img
-            src={profileImage}
+            src={forget}
             alt="Profile"
             style={{ width: "100px", height: "100px", marginLeft: "20px" }}
           />

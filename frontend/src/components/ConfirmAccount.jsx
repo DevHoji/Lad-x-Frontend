@@ -1,19 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  Container,
-  Grid,
-} from "@mui/material";
-import LADXLogo from "../assets/ladxLogo.png";
-import ProfileImage from "../assets/profileImage.png";
+import { Box, Button, TextField, Typography, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining"; // Import a white delivery car icon
 import test from "../assets/test.jpg";
 import forget from "../assets/forget.jpg";
-//import { useNavigate } from "react-router-dom";
 
 const ConfirmAccount = () => {
   const [code, setCode] = useState(Array(6).fill(""));
@@ -46,6 +36,7 @@ const ConfirmAccount = () => {
   const handleConfirm = () => {
     navigate("/new-password");
   };
+
   return (
     <Container
       sx={{
@@ -68,15 +59,15 @@ const ConfirmAccount = () => {
           position: "absolute",
           top: 20,
           left: 20,
-          marginBottom: 2, // Add bottom margin
+          marginBottom: 2,
         }}
       >
         <img src={test} alt="LADX Logo" style={{ width: "150px" }} />
         <Box
           sx={{
-            width: { xs: "90%", md: "400px" }, // Adjust width for small screens
+            width: { xs: "90%", md: "400px" },
             p: 4,
-            position: "relative", // Allow positioning of text below the confirm button
+            position: "relative",
           }}
         >
           <img
@@ -89,9 +80,10 @@ const ConfirmAccount = () => {
               marginBottom: "16px",
               marginLeft: "-50px",
               marginTop: "50px",
-            }} // Reduced size
+            }}
           />
         </Box>
+
         {/* Confirm Account Section */}
         <Container
           sx={{
@@ -100,18 +92,16 @@ const ConfirmAccount = () => {
             alignItems: "center",
             height: "100vh",
             width: "100vw",
-            background: "white",
             position: "relative",
             p: 2,
           }}
         >
           <Box
             sx={{
-              width: { xs: "90%", sm: "80%", md: "400px" }, // Adjust width for responsiveness
+              width: { xs: "90%", sm: "80%", md: "400px" },
               p: { xs: 2, sm: 3, md: 4 },
               mx: "auto",
-              boxShadow: 3, // Adding some shadow for depth
-              // Removed background color
+              boxShadow: 0, // Adding shadow for depth
             }}
           >
             <Typography variant="h4" align="center" sx={{ mb: 4 }}>
@@ -135,10 +125,11 @@ const ConfirmAccount = () => {
                   variant="outlined"
                   inputProps={{ maxLength: 1 }}
                   sx={{
-                    flex: 1, // Make inputs take equal space
-                    mx: 0.5, // Small horizontal margin to create spacing
-                    height: { xs: "65px", sm: "75px", md: "85px" }, // Taller height for egg shape
-                    borderRadius: "50px", // Smoothly curved shape for egg-like oval
+                    flex: 1,
+                    mx: 0.5,
+                    width: "87px", // Set the width to 87px
+                    height: "61px", // Set the height to 61px
+                    borderRadius: "50px", // Keep the border radius for oval shape
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": {
                         borderColor: "#210947",
@@ -205,20 +196,8 @@ const ConfirmAccount = () => {
           />
         </Box>
       </Box>
-
-      <Container
-        sx={{
-          height: "100vh",
-          width: "100vw",
-          position: "relative",
-          p: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: { xs: "center", md: "center" }, // Center the form section
-          marginLeft: { xs: 0, md: "100px" }, // Add left margin on medium screens
-        }}
-      ></Container>
     </Container>
   );
 };
+
 export default ConfirmAccount;

@@ -122,38 +122,7 @@ const [countryError, setCountryError] = useState("");
       }}
     >
       {/* Left Side Background */}
-      <Box
-        sx={{
-          width: "572px", // Fixed width for background
-          backgroundColor: "#210947",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start", // Align items to the left
-          paddingTop: "20px", // Space from the top
-        }}
-      >
-        {/* Placeholder for small image (201x201) */}
-        <Box
-          sx={{
-            width: "201px",
-            height: "201px",
-            backgroundColor: "gray", // Placeholder color
-            marginLeft: "20px", // Space from the left side
-            marginTop: "20px", // Space from the top
-          }}
-        ></Box>
-
-        {/* Placeholder for larger image (797x874) */}
-        <Box
-          sx={{
-            width: "797px",
-            height: "874px",
-            backgroundColor: "lightgray", // Placeholder color
-            marginLeft: "-100px", // Move it left to enter the white area
-            marginTop: "20px", // Space between images
-          }}
-        ></Box>
-      </Box>
+     
 
       {/* Right Side White Area */}
       <Box

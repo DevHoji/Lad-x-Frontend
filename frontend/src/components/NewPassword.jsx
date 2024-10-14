@@ -36,23 +36,24 @@ const NewPassword = () => {
         justifyContent: "space-between",
         alignItems: "center",
         height: "100vh",
-        width: "100vw",
+        maxWidth: "1200px", // Limit width on larger screens
+        margin: "20px auto", // Add margin to prevent disappearance of content
+        padding: "20px", // Ensure padding on all sides
         position: "relative",
       }}
     >
-      {/* Left Side: Logo, Profile Image, and Icon */}
+      {/* Left Side: Logo, Profile Image */}
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          height: "90vh",
           position: "absolute",
           top: 20,
           left: 20,
-          paddingLeft: { xs: "10px", md: "20px" }, // Adjust padding for mobile and larger screens
         }}
       >
+        {/* Logo */}
         <img
           src={test}
           alt="LADX Logo"
@@ -60,33 +61,11 @@ const NewPassword = () => {
         />
 
         {/* Profile Image */}
-        <Box sx={{ mt: 5 }}>
+        <Box sx={{ mt: 7 }}>
           <img
             src={forget}
             alt="Profile"
-            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-          />
-        </Box>
-
-        {/* Car Icon */}
-        <Box
-          sx={{
-            width: "64px",
-            height: "64px",
-            backgroundColor: "#F66F1E",
-            borderRadius: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            mt: 5,
-          }}
-        >
-          <DeliveryDiningIcon
-            sx={{
-              width: "32px",
-              height: "32px",
-              color: "white",
-            }}
+            style={{ width: "60px", height: "60px", borderRadius: "50%" }} // Decreased size further
           />
         </Box>
       </Box>
@@ -98,9 +77,9 @@ const NewPassword = () => {
           p: 4,
           mx: "auto",
           backgroundColor: "white",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           borderRadius: "10px",
           textAlign: "center",
+          margin: "20px auto", // Margin for all sides
         }}
       >
         <Typography variant="h4" sx={{ mb: 2 }}>
@@ -110,15 +89,18 @@ const NewPassword = () => {
           Try not to misplace it this time
         </Typography>
 
+        {/* Password Input */}
+        <Typography variant="body1" sx={{ mb: 1, textAlign: "left" }}>
+          Password*
+        </Typography>
         <TextField
           fullWidth
-          label="Password"
           variant="outlined"
           type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{
-            mb: 2,
+            mb: 1,
             "& .MuiOutlinedInput-root": {
               borderRadius: "30px",
             },
@@ -133,10 +115,19 @@ const NewPassword = () => {
             ),
           }}
         />
+        <Typography
+          variant="body2"
+          sx={{ mb: 2, color: "gray", textAlign: "left" }}
+        >
+          Use 6 or more letters with a mixture of numbers and letters
+        </Typography>
 
+        {/* Confirm Password Input */}
+        <Typography variant="body1" sx={{ mb: 1, textAlign: "left" }}>
+          Confirm Password*
+        </Typography>
         <TextField
           fullWidth
-          label="Confirm Password"
           variant="outlined"
           type={showPassword ? "text" : "password"}
           value={confirmPassword}
@@ -176,6 +167,30 @@ const NewPassword = () => {
         >
           Submit
         </Button>
+      </Box>
+
+      {/* Delivery Car Icon at Bottom Left */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: 60,
+          left: 20,
+          width: "48px", // Adjusted size to be smaller
+          height: "48px", // Adjusted size to be smaller
+          backgroundColor: "#F66F1E",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <DeliveryDiningIcon
+          sx={{
+            width: "24px", // Adjusted size for the icon
+            height: "24px", // Adjusted size for the icon
+            color: "white",
+          }}
+        />
       </Box>
     </Container>
   );

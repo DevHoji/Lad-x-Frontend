@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining"; // Import a white delivery car icon
 import test from "../assets/test.jpg";
 import forget from "../assets/forget.jpg";
-
+//import vector1 from "../assets/vector 1.jpg";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
@@ -81,7 +81,7 @@ const ForgotPassword = () => {
           />
         </Box>
       </Box>
-
+     
       <Container
         sx={{
           height: "100vh",

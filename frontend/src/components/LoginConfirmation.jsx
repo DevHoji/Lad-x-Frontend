@@ -11,6 +11,7 @@ import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining"; // Import t
 
 import test from "../assets/test.jpg";
 import forget from "../assets/forget.jpg";
+
 const LoginConfirmation = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -39,32 +40,40 @@ const LoginConfirmation = () => {
           position: "absolute",
           top: 20,
           left: 20,
+          marginBottom: 2,
         }}
       >
         <img src={test} alt="LADX Logo" style={{ width: "150px" }} />
-        <Box sx={{ mt: 5 }}>
+        <Box
+          sx={{
+            width: { xs: "90%", md: "400px" },
+            p: 4,
+            position: "relative",
+          }}
+        >
           <img
             src={forget}
             alt="Profile"
-            style={{ width: "100px", height: "100px" }}
+            style={{
+              width: "60px",
+              height: "60px",
+              borderRadius: "50%",
+              marginBottom: "16px",
+              marginLeft: "-50px",
+              marginTop: "-100px",
+            }}
           />
         </Box>
-        <Box
-          sx={{
-            width: "64px",
-            height: "64px",
-            backgroundColor: "#F66F1E", // Background color
-            borderRadius: "50%", // Circular shape
-            display: "flex", // Center the icon inside the box
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+
+        <Box sx={{ mt: 2 }}>
           <DeliveryDiningIcon
             sx={{
-              width: "32px",
-              height: "32px",
-              color: "white", // Icon color set to white
+              width: "64px",
+              height: "64px",
+              color: "white", // Set icon color to white
+              backgroundColor: "#F66F1E", // Background color
+              borderRadius: "50%",
+              padding: "16px", // Add padding for circular background
             }}
           />
         </Box>

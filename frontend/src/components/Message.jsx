@@ -1,171 +1,398 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Box, Button, TextField, Typography, Container } from "@mui/material";
-import LADXLogo from "../assets/ladxLogo.png";
-import ProfileImage from "../assets/profileImage.png";
-import SmallImage from "../assets/smallImage.png";
-import { useNavigate } from "react-router-dom";
+// src/components/Message.js
 
-const ConfirmAccount = () => {
-  const [code, setCode] = useState(Array(6).fill(""));
-  const [timeLeft, setTimeLeft] = useState(60);
-  const [isTimeUp, setIsTimeUp] = useState(false);
-  const inputRefs = useRef([]);
-  const navigate = useNavigate();
+import React, { useState } from "react";
+import { Box, Typography, Avatar } from "@mui/material";
 
-  useEffect(() => {
-    if (timeLeft > 0) {
-      const timerId = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
-      return () => clearInterval(timerId);
-    } else {
-      setIsTimeUp(true);
-    }
-  }, [timeLeft]);
+const Message = () => {
+  const [isChatVisible, setIsChatVisible] = useState(false);
+  const [unreadMessages, setUnreadMessages] = useState(2);
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-  const handleCodeChange = (index, value) => {
-    const newCode = [...code];
-    newCode[index] = value.slice(0, 1);
-    setCode(newCode);
-
-    if (value && index < inputRefs.current.length - 1) {
-      inputRefs.current[index + 1].focus();
+  const handleUserClick = () => {
+    setIsChatVisible(!isChatVisible);
+    if (!isChatVisible) {
+      setUnreadMessages(0);
     }
   };
 
-  const handleConfirm = () => {
-    navigate("/new-password");
+  const handleSendMessage = () => {
+    if (inputValue.trim()) {
+      setMessages([...messages, { text: inputValue, sender: "User" }]);
+      setInputValue("");
+    }
   };
 
   return (
-    <Container
+    <Box
       sx={{
         display: "flex",
-        justifyContent: { xs: "center", md: "space-between" },
-        alignItems: "center",
-        flexDirection: { xs: "column", md: "row" },
         height: "100vh",
-        width: "100vw",
-        px: { xs: 2, sm: 4, md: 8 },
+        paddingTop: { xs: "60px", md: "80px" },
+        paddingLeft: { xs: "20px", md: "80px" },
+        width: "100%",
+        boxSizing: "border-box",
       }}
     >
-      {/* Left Side: Images */}
+      {/* Left Side */}
       <Box
         sx={{
-          display: { xs: "none", md: "flex" },
+          display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
-          height: "90vh",
+          width: { xs: "100%", md: "50%" },
+          paddingRight: { xs: "10px", md: "20px" },
         }}
       >
-        <img src={LADXLogo} alt="LADX Logo" style={{ width: "150px" }} />
-        <Box sx={{ mt: 5 }}>
-          <img
-            src={ProfileImage}
-            alt="Profile"
-            style={{ width: "100px", height: "100px" }}
-          />
-        </Box>
-        <Box>
-          <img
-            src={SmallImage}
-            alt="Small Icon"
-            style={{ width: "64px", height: "64px" }}
-          />
-        </Box>
-      </Box>
-
-      {/* Confirm Account Section */}
-      <Box
-        sx={{
-          width: { xs: "100%", sm: "90%", md: "400px" },
-          p: { xs: 2, sm: 3, md: 4 },
-          mx: "auto",
-        }}
-      >
-        <Typography variant="h4" align="center" sx={{ mb: 4 }}>
-          Confirm Account
-        </Typography>
-        <Typography align="center" sx={{ mb: 4 }}>
-          Enter the verification code sent to you
-        </Typography>
-
+        {/* Message Text Section */}
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            mb: 2,
-            px: { xs: 1, sm: 2 },
+            alignItems: "center",
+            justifyContent: "flex-start",
+            padding: { xs: "10px", md: "20px" },
           }}
         >
-          {code.map((digit, index) => (
-            <TextField
-              key={index}
-              variant="outlined"
-              inputProps={{ maxLength: 1 }}
-              sx={{
-                width: { xs: "45px", sm: "55px", md: "65px" }, // Wider width
-                height: { xs: "65px", sm: "75px", md: "85px" }, // Taller height for egg shape
-                borderRadius: "50px", // Smoothly curved shape for egg-like oval
-                backgroundColor: "white",
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#210947",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#1A0735",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#1A0735",
-                  },
-                },
-              }}
-              value={digit}
-              onChange={(e) => handleCodeChange(index, e.target.value)}
-              inputRef={(ref) => (inputRefs.current[index] = ref)}
-            />
-          ))}
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              textAlign: "left",
+              fontSize: { xs: "24px", md: "32px" },
+            }}
+          >
+            Message
+          </Typography>
         </Box>
 
-        {isTimeUp && (
-          <Typography color="red" sx={{ mb: 2 }}>
-            Wrong code.
-          </Typography>
-        )}
-
-        <Button
-          fullWidth
-          variant="contained"
+        {/* Profile and Message Details Section */}
+        <Box
           sx={{
-            mt: 2,
-            backgroundColor: "#210947",
-            color: "white",
-            borderRadius: "30px",
-            "&:hover": {
-              backgroundColor: "#1A0735",
-            },
+            display: "flex",
+            flexDirection: "column",
+            padding: { xs: "10px 0", md: "20px 0" },
+            alignItems: "flex-start",
           }}
-          onClick={handleConfirm}
         >
-          Confirm
-        </Button>
+          {/* Profile Image, Name, and Time */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "16px",
+              cursor: "pointer",
+            }}
+            onClick={handleUserClick}
+          >
+            <Avatar
+              alt="Admin"
+              src="/path/to/profile.jpg"
+              sx={{
+                width: { xs: "50px", md: "60px" },
+                height: { xs: "50px", md: "60px" },
+                marginRight: "16px",
+              }}
+            />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  marginRight: "16px",
+                  fontSize: { xs: "18px", md: "20px" },
+                }}
+              >
+                Admin
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                sx={{ fontSize: { xs: "14px", md: "16px" } }}
+              >
+                4:12 PM
+              </Typography>
+            </Box>
+          </Box>
 
-        {/* Countdown Timer */}
-        <Typography align="center" sx={{ mt: 2 }}>
-          {isTimeUp
-            ? "Code is timed out. "
-            : `You can generate a new code in 00:${
-                timeLeft < 10 ? `0${timeLeft}` : timeLeft
-              }`}
-          {isTimeUp && <span style={{ color: "blue" }}> Resend OTP</span>}
-        </Typography>
+          {/* Subtext and Notification Badge */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              width: "100%",
+            }}
+          >
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: "14px", md: "16px" },
+                marginRight: "8px",
+              }}
+            >
+              The traveler is close to...
+            </Typography>
+            {unreadMessages > 0 && (
+              <Box
+                sx={{
+                  backgroundColor: "green",
+                  color: "white",
+                  borderRadius: "50%",
+                  width: { xs: "20px", md: "24px" },
+                  height: { xs: "20px", md: "24px" },
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontSize: { xs: "12px", md: "14px" },
+                }}
+              >
+                {unreadMessages}
+              </Box>
+            )}
+          </Box>
+        </Box>
       </Box>
 
+      {/* Right Side (Chat Box) */}
+      {isChatVisible && (
+        <Box
+          sx={{
+            width: { xs: "100%", md: "50%" },
+            height: "100%",
+            padding: "20px",
+            display: "flex",
+            flexDirection: "column",
+            boxSizing: "border-box",
+            marginTop: "50px",
+            backgroundColor: "#FAFAFA",
+          }}
+        >
+          {/* Header for Chat */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "16px",
+              position: "relative",
+            }}
+          >
+            {/* Profile Image, Name, and Time */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: "-60px",
+                left: "20px",
+                display: "flex",
+                alignItems: "flex-start",
+                flexDirection: "column",
+                width: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "8px",
+                }}
+              >
+                <Avatar
+                  alt="Admin"
+                  src="/path/to/profile.jpg" // Update with the correct image path
+                  sx={{
+                    width: { xs: "50px", md: "60px" },
+                    height: { xs: "50px", md: "60px" },
+                    marginRight: "8px",
+                  }}
+                />
+                <Box>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: { xs: "18px", md: "20px" },
+                    }}
+                  >
+                    Admin
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="blue"
+                    sx={{
+                      fontSize: { xs: "14px", md: "16px" },
+                    }}
+                  >
+                    Online
+                  </Typography>
+                </Box>
+              </Box>
 
+              {/* Long Horizontal Line Below Admin Profile */}
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "2px",
+                  backgroundColor: "#2E2E2E",
+                  marginTop: "8px",
+                }}
+              />
+            </Box>
 
-      
-    </Container>
+            {/* Left Horizontal Line */}
+            <Box
+              sx={{
+                flex: 1,
+                height: "2px",
+                backgroundColor: "#2E2E2E",
+                marginRight: "8px",
+                marginTop: "200px", // Adjust margin to reduce separation
+              }}
+            />
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                textAlign: "center",
+                marginTop: "200px",
+                fontSize: { xs: "18px", md: "20px" },
+              }}
+            >
+              Today
+            </Typography>
+            {/* Right Horizontal Line */}
+            <Box
+              sx={{
+                flex: 1,
+                height: "2px",
+                backgroundColor: "#2E2E2E",
+                marginLeft: "8px",
+                marginTop: "200px", // Adjust margin to reduce separation
+              }}
+            />
+          </Box>
+
+          {/* Chat Messages Section */}
+          <Box
+            sx={{
+              flex: 1,
+              overflowY: "auto",
+              paddingBottom: "20px",
+              marginTop: "40px",
+              "&::-webkit-scrollbar": {
+                width: "8px",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                background: "#888",
+                borderRadius: "4px",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                background: "#555",
+              },
+            }}
+          >
+            {/* Sample Messages */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                marginBottom: "16px",
+              }}
+            >
+              {/* Profile Image for User */}
+              <Avatar
+                alt="User"
+                src="/path/to/user.jpg" // Update with the correct image path
+                sx={{
+                  width: { xs: "40px", md: "50px" },
+                  height: { xs: "40px", md: "50px" },
+                  marginRight: "8px",
+                }}
+              />
+              <Box
+                sx={{
+                  backgroundColor: "#FFFFFF", // User message background
+                  borderRadius: "8px",
+                  padding: "8px",
+                  maxWidth: "60%",
+                }}
+              >
+                <Typography variant="body2">
+                  Hello, how can I assist you?
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Admin's Response (Right Side) */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                marginBottom: "16px",
+              }}
+            >
+              <Box
+                sx={{
+                  backgroundColor: "#F66F1E", // Admin message background
+                  borderRadius: "8px",
+                  padding: "8px",
+                  maxWidth: "60%",
+                }}
+              >
+                <Typography variant="body2" color="#FFFFFF">
+                  I'm here to help with your delivery.
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Additional Messages as needed */}
+          </Box>
+
+          {/* Input Field for Message Sending */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              padding: "10px",
+              borderTop: "1px solid #E0E0E0",
+              marginTop: "auto",
+            }}
+          >
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Type a message..."
+              style={{
+                flex: 1,
+                padding: "10px",
+                borderRadius: "4px",
+                border: "1px solid #E0E0E0",
+                marginRight: "10px",
+              }}
+            />
+            <button
+              onClick={handleSendMessage}
+              style={{
+                padding: "10px 15px",
+                backgroundColor: "#F66F1E",
+                border: "none",
+                color: "white",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              Send
+            </button>
+          </Box>
+        </Box>
+      )}
+    </Box>
   );
 };
 
-export default ConfirmAccount;
+export default Message;
