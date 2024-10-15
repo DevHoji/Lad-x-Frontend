@@ -12,9 +12,7 @@ import Request from "./components/Request";
 import Delivery from "./components/Delivery";
 import PaymentSuccessful from "./components/PaymentSuccessful";
 //import TravelerProfile from "./components/TravelerProfile";
-import DeliveryTraking from "./components/DeliveryTraking";
 import DeliveryCancelled from './components/DeliveryCancelled'; // Adjust the path if needed
-import Profile from "./components/Profile";
 import NavSidebar from "./components/NavSidebar";
 import './App.css';
 
@@ -34,13 +32,13 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<NavSidebar />} />
-        <Route path="/profile" element={<Profile />} />
+       
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/confirm-account" element={<ConfirmAccount />} />
         <Route path="/new-password" element={<NewPassword />} />
         <Route path="/login-confirmation" element={<LoginConfirmation />} />
         <Route path="/sign-up" element={<SignUp />} />{" "}
-        <Route path="/delivery-tracking" element={<DeliveryTraking />} />
+       
       </Routes>
     </Router>
   );

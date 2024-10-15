@@ -29,7 +29,7 @@ import Message from './Message'; // adjust the path based on your file structure
 import Profile from "./Profile";
 import AccountSettings from "./AccountSettings";
 import TravelerProfile from "./TravelerProfile";
-
+import DeliveryTracking from "./DeliveryTraking";
 // Sample notification data
 const notifications = [
   {
@@ -271,12 +271,14 @@ const NavSidebar = () => {
           >
             {/* Render components based on the selected content */}
             {content === "Home" && <Home />}
-            {content === "Delivery" && <Delivery />}
+            {content === "Delivery" && <Delivery setContent={setContent} />}
             {content === "Message" && <Message />}
             {content === "TravlerProfile" && <TravelerProfile />}
             {content === "Profile" && <Profile setContent={setContent} />}
             {content === "AccountSettings" && <AccountSettings />}
-
+            {content === "DeliveryTracking" && (
+              <DeliveryTracking setContent={setContent} />
+            )}
             {/* Add any additional components if necessary */}
           </Box>
         </Box>

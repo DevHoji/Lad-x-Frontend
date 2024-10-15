@@ -20,66 +20,19 @@ import test from "../assets/test.jpg";  // Adjust path if necessary
 import homepp from "../assets/homepp.jpg"; 
 //import MessageIcon from "@mui/icons-material/Message";
 
-const DeliveryTracking = () => {
+const DeliveryTracking = ({setContent}) => {
   const navigate = useNavigate();
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
   };
-
+ const handlemessageclick = () =>{
+console.log("abebe")
+setContent("Message")
+ }
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      {/* Navbar */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          backgroundColor: "white",
-          padding: "10px",
-          boxShadow: "0 1px 5px rgba(0,0,0,0.2)",
-          zIndex: 1000,
-        }}
-      >
-        <img
-          src={test}
-          alt="Logo"
-          style={{ width: "50px", marginRight: "10px" }}
-        />
-        <Typography
-          variant="body1"
-          sx={{
-            marginLeft: "20px",
-            marginRight: "auto",
-            fontWeight: "normal",
-            fontSize: { xs: "16px", md: "inherit" }, // Responsive font size
-          }}
-        >
-          Hi Joshua 👋
-        </Typography>
-        <IconButton sx={{ position: "relative", marginLeft: "10px" }}>
-          <NotificationsIcon />
-          <Box
-            sx={{
-              position: "absolute",
-              top: "0",
-              right: "0",
-              width: "8px",
-              height: "8px",
-              borderRadius: "50%",
-              backgroundColor: "green",
-            }}
-          />
-        </IconButton>
-        <IconButton sx={{ borderRadius: "50%", marginLeft: "10px" }}>
-          <img
-            src={homepp}
-            alt="Profile"
-            style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-          />
-        </IconButton>
-      </Box>
-
       {/* Left Sidebar and Main Content */}
       <Box
         sx={{
@@ -89,97 +42,6 @@ const DeliveryTracking = () => {
           backgroundColor: "white", // Set main content background to white
         }}
       >
-        {/* Left Sidebar */}
-        <Box
-          sx={{
-            width: { xs: "100%", md: "250px" },
-            backgroundColor: "#FFF",
-            flexShrink: 0,
-            paddingTop: "10px", // Add padding for the top spacing
-            boxShadow: "2px 0 5px rgba(0,0,0,0.2)", // Shadow on the sidebar
-          }}
-        >
-          <List sx={{ padding: 0 }}>
-            {["Home", "Delivery", "Message", "Profile"].map((text, index) => (
-              <ListItem
-                button
-                key={text}
-                component={Link}
-                to={
-                  index === 0
-                    ? "/home"
-                    : index === 1
-                    ? "/delivery"
-                    : index === 2
-                    ? "/message"
-                    : "/profile"
-                }
-                onClick={() => handleListItemClick(index)}
-                sx={{
-                  position: "relative",
-                  marginBottom: "15px",
-                  borderRadius: "20px",
-                  "&:hover": {
-                    backgroundColor: "#F6F6F6",
-                  },
-                }}
-              >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    left: 0,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    width: selectedIndex === index ? "4px" : "0px",
-                    height: "100%",
-                    backgroundColor: "#F66F1E",
-                    transition: "width 0.3s",
-                  }}
-                />
-                <ListItemIcon sx={{ minWidth: "40px" }}>
-                  {index === 0 && <HomeIcon />}
-                  {index === 1 && <DeliveryDiningIcon />}
-                  {index === 2 && <MessageIcon />}
-                  {index === 3 && <PersonIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-            <ListItem
-              button
-              key="Logout"
-              component={Link}
-              to="/logout"
-              onClick={() => handleListItemClick(4)}
-              sx={{
-                position: "relative",
-                marginBottom: "15px",
-                borderRadius: "20px",
-                "&:hover": {
-                  backgroundColor: "#F6F6F6",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  position: "absolute",
-                  left: 0,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: selectedIndex === 4 ? "4px" : "0px",
-                  height: "100%",
-                  backgroundColor: "#F66F1E",
-                  transition: "width 0.3s",
-                }}
-              />
-              <ListItemIcon sx={{ minWidth: "40px" }}>
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText primary="Logout" sx={{ color: "red" }} />
-            </ListItem>
-          </List>
-        </Box>
-
         {/* Main Content */}
         <Box
           sx={{
@@ -223,8 +85,7 @@ const DeliveryTracking = () => {
             }}
           >
             <Box
-              component={Link}
-              to="/message"
+            
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -239,6 +100,7 @@ const DeliveryTracking = () => {
                   backgroundColor: "#2c0e6d", // Change color on hover for better UX
                 },
               }}
+              onClick={handlemessageclick}
             >
               <MessageIcon sx={{ marginRight: "10px" }} />
               <Typography variant="body2">Message Traveler</Typography>
@@ -259,7 +121,7 @@ const DeliveryTracking = () => {
             <Box
               sx={{
                 display: "flex",
-                
+
                 alignItems: "center",
                 marginBottom: "30px", // Increased margin below each dot
               }}

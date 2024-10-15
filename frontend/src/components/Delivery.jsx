@@ -25,7 +25,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link, useNavigate } from "react-router-dom"; // Add this import for navigation
 import LogoutIcon from "@mui/icons-material/Logout";
 
-const Delivery = () => {
+const Delivery = ({setContent}) => {
   const [selectedIndex, setSelectedIndex] = React.useState(1); // Set default to "Delivery"
 
   const handleListItemClick = (index) => {
@@ -46,10 +46,12 @@ const handleStatusClick = (status) => {
 const handleDeliveryCClick = () => {
   navigate("/deliverycancelled");
 };
-  
 
   const [selectedStatus, setSelectedStatus] = React.useState("Processing"); // Default selection
-
+const handleviewclick = () =>{
+ setContent("DeliveryTracking")
+}
+ 
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       {/* Right Section (Content) */}
@@ -200,7 +202,8 @@ const handleDeliveryCClick = () => {
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "100%",marginLeft:"25px",
+                        width: "100%",
+                        marginLeft: "25px",
                         "@media (max-width: 600px)": {
                           textAlign: "center", // Center text on small screens
                         },
@@ -298,7 +301,7 @@ const handleDeliveryCClick = () => {
                           backgroundColor: "#3E2B69",
                         },
                       }}
-                      onClick={handleDeliveryClick}
+                      onClick={handleviewclick}
                     >
                       View
                     </Button>
@@ -465,7 +468,7 @@ const handleDeliveryCClick = () => {
                           backgroundColor: "#3E2B69",
                         },
                       }}
-                      onClick={handleDeliveryClick}
+                      onClick={handleviewclick}
                     >
                       View
                     </Button>
@@ -624,7 +627,7 @@ const handleDeliveryCClick = () => {
                           backgroundColor: "#3E2B69",
                         },
                       }}
-                      onClick={handleDeliveryCClick}
+                      onClick={handleviewclick}
                     >
                       View
                     </Button>
