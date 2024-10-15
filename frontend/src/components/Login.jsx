@@ -21,7 +21,7 @@ import smallIcon from "../assets/smallIcon.png"; // Assuming images exist
 import { useNavigate } from "react-router-dom";
 import test from "../assets/test.jpg";
 import forget from "../assets/forget.jpg";
-
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining"; // 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -111,20 +111,25 @@ const Login = () => {
         <img src={test} alt="LADX Logo" style={{ width: "150px" }} />
 
         {/* Profile Image */}
-        <Box sx={{ mt: 5 }}>
+        {/* <Box sx={{ mt: 5 }}>
           <img
-            src={forget}
+            src=
             alt="Profile"
             style={{ width: "100px", height: "100px", marginLeft: "20px" }}
           />
-        </Box>
+        </Box> */}
 
         {/* Bottom Image */}
-        <Box>
-          <img
-            src={smallIcon}
-            alt="Small Icon"
-            style={{ width: "64px", height: "64px", marginLeft: "20px" }}
+        <Box sx={{ mt: 2 }}>
+          <DeliveryDiningIcon
+            sx={{
+              width: "64px",
+              height: "64px",
+              color: "white", // Set icon color to white
+              backgroundColor: "#F66F1E", // Background color
+              borderRadius: "50%",
+              padding: "16px", // Add padding for circular background
+            }}
           />
         </Box>
       </Box>
@@ -231,21 +236,21 @@ const Login = () => {
 
         {/* Confirm Button */}
         <Button
-        fullWidth
-        variant="contained"
-        sx={{
-          mt: 2,
-          backgroundColor: "#210947",
-          color: "white",
-          borderRadius: "30px",
-          "&:hover": {
-            backgroundColor: "#1A0735",
-          },
-        }}
-        onClick={handleConfirmClick} // Attach the click handler
-      >
-        Confirm
-      </Button>
+          fullWidth
+          variant="contained"
+          sx={{
+            mt: 2,
+            backgroundColor: "#210947",
+            color: "white",
+            borderRadius: "30px",
+            "&:hover": {
+              backgroundColor: "#1A0735",
+            },
+          }}
+          onClick={handleConfirmClick} // Attach the click handler
+        >
+          Confirm
+        </Button>
 
         {/* Horizontal Lines with Text "Or login with" */}
         <Box
