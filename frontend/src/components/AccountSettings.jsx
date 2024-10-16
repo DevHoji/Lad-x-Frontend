@@ -19,18 +19,19 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import test from "../assets/test.jpg"; // Adjust path if necessary
 import homepp from "../assets/homepp.jpg";
 
-const AccountSettings = () => {
+const AccountSettings = ({ setContent }) => {
   const navigate = useNavigate();
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
   };
-
+  const handleprofileclick = () => {
+ setContent("profile")
+  }
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       {/* Navbar */}
-    
 
       {/* Left Sidebar and Main Content */}
       <Box
@@ -55,10 +56,16 @@ const AccountSettings = () => {
         >
           {/* Back Arrow and Title */}
           <Box
-            sx={{ display: "flex", alignItems: "center", marginBottom: "20px",marginTop:"100px", }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "20px",
+              marginTop: "100px",
+            }}
+            onClick={handleprofileclick}
           >
             <Box
-              onClick={() => navigate("/profile")}
+              // onClick={() => navigate("/profile")}
               sx={{
                 width: "40px",
                 height: "40px",

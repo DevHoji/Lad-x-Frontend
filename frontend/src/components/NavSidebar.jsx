@@ -30,6 +30,7 @@ import Profile from "./Profile";
 import AccountSettings from "./AccountSettings";
 import TravelerProfile from "./TravelerProfile";
 import DeliveryTracking from "./DeliveryTraking";
+
 // Sample notification data
 const notifications = [
   {
@@ -275,7 +276,10 @@ const NavSidebar = () => {
             {content === "Message" && <Message />}
             {content === "TravlerProfile" && <TravelerProfile />}
             {content === "Profile" && <Profile setContent={setContent} />}
-            {content === "AccountSettings" && <AccountSettings />}
+            {content === "AccountSettings" && (
+              <AccountSettings setContent={setContent} />
+            )}
+
             {content === "DeliveryTracking" && (
               <DeliveryTracking setContent={setContent} />
             )}

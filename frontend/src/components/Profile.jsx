@@ -66,6 +66,7 @@ const Profile = ({setContent}) => {
     setContent("AccountSettings"); // Set content to AccountSettings on click
     
   };
+
   return (
     <Box
       sx={{
