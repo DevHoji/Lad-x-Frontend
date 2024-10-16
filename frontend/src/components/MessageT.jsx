@@ -38,7 +38,7 @@ const MessageT = () => {
           paddingRight: { xs: "20px", md: "80px" },
           backgroundColor: "#FFFFFF", // Set background color to white
           boxSizing: "border-box",
-          paddingTop: { xs: "60px", md: "80px" }, // Keep this for navbar height
+          paddingTop: { xs: "20px", md: "20px" }, // Adjusted padding to reduce gap
         }}
       >
         {/* Left Side */}
@@ -295,7 +295,7 @@ const MessageT = () => {
               ))}
             </Box>
 
-            {/* Input Field for Messages */}
+            {/* Input Section for Sending Messages */}
             <Box
               sx={{
                 display: "flex",
@@ -304,19 +304,26 @@ const MessageT = () => {
               }}
             >
               <InputBase
-                placeholder="Type your message..."
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Type a message..."
                 sx={{
                   flex: 1,
-                  padding: { xs: "10px", md: "12px" },
-                  border: "1px solid #E0E0E0",
+                  padding: "8px",
                   borderRadius: "20px",
+                  backgroundColor: "#F5F5F5",
                   marginRight: "8px",
                 }}
               />
-              <IconButton onClick={handleSendMessage}>
-                <SendIcon sx={{ color: "#007BFF" }} />
+              <IconButton
+                onClick={handleSendMessage}
+                sx={{
+                  backgroundColor: "#F66F1E",
+                  color: "white",
+                  borderRadius: "50%",
+                }}
+              >
+                <SendIcon />
               </IconButton>
             </Box>
           </Box>
