@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -12,20 +12,58 @@ import {
   Avatar,
   Divider,
   Box,
+  Button,
+  Popover,
 } from "@mui/material";
-import { NavLink } from "react-router-dom"; // Import NavLink for navigation
+import { NavLink, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import MessageIcon from "@mui/icons-material/Message";
 import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import test from "../assets/ola.jpg";
+import profilePic from "../images/Profilebox2.jpeg";
+import Home from "./Home";
+
+// Sample notification data
+const notificationsData = [
+  {
+    id: 1,
+    name: "John Doe",
+    deliveryStatus: "Order Shipped",
+    time: "2 hours ago",
+    profileImg: profilePic,
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    deliveryStatus: "Order Delivered",
+    time: "1 hour ago",
+    profileImg: test,
+  },
+];
 
 const TravelerLayout = ({ children }) => {
-  const notifications = [
-    { id: 1, name: "John Doe", deliveryStatus: "Order Shipped" },
-    { id: 2, name: "Jane Smith", deliveryStatus: "Order Delivered" },
-  ];
+  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+
+  // Handle button click
+  const handleHomeButtonClick = () => {
+    navigate("/home");
+  };
+
+  // Handle notification icon click
+  const handleNotificationClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  // Handle popover close
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
 
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
@@ -135,23 +173,68 @@ const TravelerLayout = ({ children }) => {
             <Box sx={{ flexGrow: 1, fontWeight: "bold", color: "#000" }}>
               Welcome OLA!
             </Box>
+            {/* Descriptive button to navigate to home view */}
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleHomeButtonClick}
+              sx={{
+                marginLeft: 2,
+                backgroundColor: "#F66F1E", // Amazing background color
+                borderRadius: "20px", // Rounded shape
+                "&:hover": {
+                  backgroundColor: "#FF5722", // Darker color on hover
+                },
+              }}
+            >
+              Go to Sender View
+            </Button>
             <IconButton
               size="large"
               aria-label="show notifications"
               color="inherit"
-              onClick={() => {
-                alert(JSON.stringify(notifications, null, 2)); // Placeholder for real notification popup
-              }}
+              onClick={handleNotificationClick}
             >
-              <Badge badgeContent={notifications.length} color="error">
-                <NotificationsIcon />
+              <Badge badgeContent={notificationsData.length} color="error">
+                <NotificationsIcon sx={{ color: "black" }} />
               </Badge>
             </IconButton>
             <IconButton sx={{ ml: 2 }}>
-              <Avatar alt="Profile Image" src="/profile.jpg" />
+              <Avatar alt="Profile Image" src={test} />
             </IconButton>
           </Toolbar>
         </AppBar>
+
+        {/* Notification Popover */}
+        <Popover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handlePopoverClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <Box sx={{ p: 2, maxWidth: 300 }}>
+            <List>
+              {notificationsData.map((notification) => (
+                <ListItem key={notification.id}>
+                  <ListItemIcon>
+                    <Avatar src={notification.profileImg} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={notification.name}
+                    secondary={`${notification.deliveryStatus} - ${notification.time}`}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Popover>
 
         {/* Content Goes Here */}
         <Box sx={{ p: 2 }}>{children}</Box>
