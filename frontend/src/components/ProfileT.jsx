@@ -16,7 +16,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SwitchAccountIcon from "@mui/icons-material/SwitchAccount";
-import test from "../assets/Ola.jpg";
+import test from "../assets/NN.jpg";
 import TravelerLayout from "./TravelerLayOut";
 import { useNavigate } from "react-router-dom"; // Use useNavigate
 import DeleteIcon from "@mui/icons-material/Delete";

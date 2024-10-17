@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import plane from "../assets/Plane.jpg";
+import plane from "../assets/las.jpg";
 const FormLayOut = ({ children }) => {
   return (
     <Box
