@@ -65,6 +65,10 @@ const TravelerLayout = ({ children }) => {
 
   const open = Boolean(anchorEl);
 
+  const handleproClick = () => {
+    navigate("/sender-p"); // Navigates to the Traveler Home page
+  };
+
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       {/* Sidebar */}
@@ -199,9 +203,11 @@ const TravelerLayout = ({ children }) => {
                 <NotificationsIcon sx={{ color: "black" }} />
               </Badge>
             </IconButton>
-            <IconButton sx={{ ml: 2 }}>
-              <Avatar alt="Profile Image" src={test} />
-            </IconButton>
+         
+              <IconButton sx={{ ml: 2 }}>
+                <Avatar alt="Profile Image" src={test} />
+              </IconButton>
+        
           </Toolbar>
         </AppBar>
 

@@ -22,6 +22,14 @@ import NavSidebar from "./components/NavSidebar";
 import AccountSettingT from "./components/AccountSettingsT";
 import DeliveryCancelledT from "./components/DeliveryCancelledT";
 import DeliveryTrackingT from "./components/DeliveryTrakingT";
+import Wallet from "./components/Wallet";
+import SenderProfile from "./components/SenderProfile";
+import SignUpT from "./components/SignUpT";
+import PassT from "./components/PassT";
+import UserOption from "./components/UserOption";
+import UserV from "./components/UserV";
+import Result from "./components/Result"
+import FormLayOut from "./components/FormLayOut";
 import './App.css';
 
 const App = () => {
@@ -31,9 +39,17 @@ const App = () => {
         <Route path="/request" element={<Request />} />
         <Route path="/traveler-request" element={<TravelerRequest />} />
         <Route path="/account-settings" element={<AccountSettingT />} />
-        <Route path="/delivery-tracking" element={<DeliveryTrackingT/>} />
-        <Route path="/delivery-cancelled" element={<DeliveryCancelledT/>} />
+        <Route path="/delivery-tracking" element={<DeliveryTrackingT />} />
+        <Route path="/delivery-cancelled" element={<DeliveryCancelledT />} />
         <Route path="/delivery" element={<Delivery />} />
+        <Route path="/wallet" element={<Wallet />} />
+        <Route path="/sender-p" element={<SenderProfile />} />
+        <Route path="/signup-t" element={<SignUpT />} />
+        <Route path="/user-o" element={<UserOption />} />
+        <Route path="/pass-t" element={<PassT />} />
+        <Route path="/user-v" element={<UserV />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="/formlayout" element={<FormLayOut />} />
         <Route path="/main" element={<Delivery />} />
         <Route path="/deliverycancelled" element={<DeliveryCancelled />} />
         <Route
