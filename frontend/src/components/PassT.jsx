@@ -1,9 +1,9 @@
-// PassT.jsx
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Button, Divider, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import FormLayOut from "./FormLayOut"; // Import the FormLayOut component
 import LADXLogo from "../images/TLOGO.jpeg";
+
 const PassT = () => {
   const navigate = useNavigate();
   const [code, setCode] = useState(Array(6).fill("")); // Array for 6 input fields
@@ -42,11 +42,13 @@ const PassT = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          padding: "40px 20px",
+          justifyContent: "flex-start", // Align content to the top
+          padding: "20px 20px", // Adjust the padding to move content up
           height: "100vh", // Full viewport height
           backgroundColor: "white",
         }}
       >
+        {/* LADX Logo */}
         <Box
           component="img"
           src={LADXLogo}
@@ -56,6 +58,7 @@ const PassT = () => {
             marginBottom: "20px", // Add some space between logo and arrow
           }}
         />
+
         {/* Back Arrow */}
         <Box
           sx={{
@@ -89,7 +92,7 @@ const PassT = () => {
         <Divider sx={{ width: "100%", margin: "20px 0" }} />
 
         {/* Email Check Text */}
-        <Typography variant="h6" sx={{ marginBottom: "20px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "10px" }}>
           Please check your email
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: "20px" }}>
@@ -142,7 +145,6 @@ const PassT = () => {
               )}`}
         </Typography>
 
-        {/* Submit Button */}
         {/* Submit Button */}
         <Button
           variant="contained"

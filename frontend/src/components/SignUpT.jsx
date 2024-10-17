@@ -187,7 +187,7 @@ const SignUpT = () => {
                   variant="outlined"
                   sx={{
                     marginBottom: 4,
-                    marginTop: 4,
+                    marginTop: 2,
 
                     borderRadius: "20px", // Smooth shape background:"F5F5F5",
                     maxWidth: "400px", // Limit the width
@@ -205,7 +205,7 @@ const SignUpT = () => {
                   variant="outlined"
                   sx={{
                     marginBottom: 4,
-                    marginTop: 4,
+                    marginTop: 2,
 
                     borderRadius: "20px", // Smooth shape background:"F5F5F5",
                     maxWidth: "400px", // Limit the width

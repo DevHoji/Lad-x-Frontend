@@ -11,7 +11,7 @@ import {
   Drawer,
   Avatar,
   Divider,
-  Box,
+  Box,Typography,
   Button,
   Popover,
 } from "@mui/material";
@@ -22,7 +22,7 @@ import MessageIcon from "@mui/icons-material/Message";
 import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import test from "../assets/ola.jpg";
+import test from "../assets/olapp.jpg";
 import profilePic from "../images/Profilebox2.jpeg";
 import Home from "./Home";
 
@@ -68,7 +68,9 @@ const TravelerLayout = ({ children }) => {
   const handleproClick = () => {
     navigate("/sender-p"); // Navigates to the Traveler Home page
   };
-
+const handleGoToSenderView = () => {
+  window.location.href = "/home"; // Navigate to traveler-home
+};
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       {/* Sidebar */}
@@ -156,6 +158,38 @@ const TravelerLayout = ({ children }) => {
             </ListItemIcon>
             <ListItemText primary="Logout" sx={{ color: "red" }} />
           </ListItem>
+          {/* New Button for Sender View */}
+          <ListItem
+            button
+            onClick={handleGoToSenderView}
+            sx={{
+              marginBottom: "15px",
+              borderRadius: "20px",
+              cursor: "pointer",
+             
+            }}
+          >
+            <Box
+              sx={{
+                position: "absolute",
+                left: 0,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "4px",
+                height: "100%",
+                backgroundColor: "#F66F1E",
+                transition: "width 0.3s",
+              }}
+            />
+            <ListItemIcon sx={{ minWidth: "40px" }}>
+              <PersonIcon /> {/* Use a relevant icon for sender view */}
+            </ListItemIcon>
+            
+              <Typography sx={{ fontWeight: "normal" }}>
+                GO TO SENDER VIEW
+              </Typography>
+          
+          </ListItem>
         </List>
       </Drawer>
 
@@ -203,11 +237,10 @@ const TravelerLayout = ({ children }) => {
                 <NotificationsIcon sx={{ color: "black" }} />
               </Badge>
             </IconButton>
-         
-              <IconButton sx={{ ml: 2 }}>
-                <Avatar alt="Profile Image" src={test} />
-              </IconButton>
-        
+
+            <IconButton sx={{ ml: 2 }}>
+              <Avatar alt="Profile Image" src={test} />
+            </IconButton>
           </Toolbar>
         </AppBar>
 

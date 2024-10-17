@@ -311,7 +311,7 @@ const NavSidebar = () => {
                 </ListItemIcon>
                 {!isMobile && (
                   <Typography sx={{ fontWeight: "normal" }}>
-                    GO TO SENDER VIEW
+                    GO TO TRAVELER VIEW
                   </Typography>
                 )}
               </ListItem>
