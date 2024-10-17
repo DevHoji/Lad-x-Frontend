@@ -3,7 +3,7 @@ import { Box, Typography, IconButton, Avatar } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import TravelerLayout from "./TravelerLayOut";
 import { useNavigate } from "react-router-dom";
-import test from "../assets/ola.jpg"; // Ensure the image path is correct
+import test from "../assets/Ola.jpg"; // Ensure the image path is correct
 
 const SenderProfile = () => {
   const navigate = useNavigate();
