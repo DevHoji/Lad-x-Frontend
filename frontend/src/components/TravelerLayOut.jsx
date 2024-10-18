@@ -49,9 +49,9 @@ const TravelerLayout = ({ children }) => {
   const navigate = useNavigate();
 
   // Handle button click
-  const handleHomeButtonClick = () => {
-    navigate("/home");
-  };
+  // const handleHomeButtonClick = () => {
+  //   navigate("/home");
+  // };
 
   // Handle notification icon click
   const handleNotificationClick = (event) => {
@@ -214,7 +214,7 @@ const handleGoToSenderView = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleHomeButtonClick}
+              onClick={handleGoToSenderView}
               sx={{
                 marginLeft: 2,
                 backgroundColor: "#F66F1E", // Amazing background color
