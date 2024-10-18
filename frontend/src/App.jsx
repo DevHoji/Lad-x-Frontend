@@ -31,6 +31,7 @@ import UserV from "./components/UserV";
 import Result from "./components/Result"
 import FormLayOut from "./components/FormLayOut";
 import Admin from "./components/Admin";
+
 import TravelerProfile from "./components/TravelerProfile";
 import './App.css';
 
@@ -64,6 +65,7 @@ const App = () => {
         <Route path="/land" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<NavSidebar />} />
+        <Route path="/home" element={<NavSidebar />} />
         <Route path="/traveler-home" element={<TravelerHome />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/confirm-account" element={<ConfirmAccount />} />
