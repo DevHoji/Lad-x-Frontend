@@ -34,7 +34,7 @@ const Delivery = ({setContent}) => {
  const navigate = useNavigate();
   const handleDeliveryClick = () => {
     
-    navigate("/delivery-tracking");
+  setContent("/delivery-tracking");
   }
   
   const handleLogout = () => {
@@ -44,7 +44,7 @@ const handleStatusClick = (status) => {
   setSelectedStatus(status);
 };
 const handleDeliveryCClick = () => {
-  navigate("/deliverycancelled");
+ setContent("DeliveryCancelled");
 };
 
   const [selectedStatus, setSelectedStatus] = React.useState("Processing"); // Default selection
@@ -627,7 +627,7 @@ const handleviewclick = () =>{
                           backgroundColor: "#3E2B69",
                         },
                       }}
-                      onClick={handleviewclick}
+                      onClick={handleDeliveryCClick}
                     >
                       View
                     </Button>
@@ -636,13 +636,6 @@ const handleviewclick = () =>{
               </Box>
             )}
           </Box>
-
-
-
-
-
-
-          
         </Box>
       </Box>
     </Box>

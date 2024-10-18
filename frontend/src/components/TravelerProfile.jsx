@@ -23,189 +23,11 @@ const TravelerProfile = () => {
   navigate("/login"); // Navigate back to the login page
 };
   return (
+
     <Box sx={{ display: "flex" }}>
-      {/* Left Sidebar */}
-      <Box
-        sx={{
-          width: { xs: "100%", sm: "250px" }, // Full width on small screens, fixed width on larger screens
-          backgroundColor: "#FFF",
-          height: "100vh", // Full height of the screen
-          position: "relative", // Change to relative to avoid covering other content
-          top: 0, // Align at the top
-          left: 0, // Align to the left
-          overflowY: "auto", // Allow vertical scrolling if content overflows
-          boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)", // Optional shadow for aesthetics
-          zIndex: 2, // Ensure sidebar stays above the main content
-          display: { xs: "block", sm: "block" }, // Ensure it displays in mobile view
-          padding: { xs: "10px", sm: "0" }, // Adjust padding for smaller screens
-          height: { xs: "auto", sm: "100vh" }, // Allow auto height on smaller screens
-          margin: { xs: "10px", sm: "0" }, // Add margin for smaller screens
-        }}
-      >
-        {/* List Section */}
-        <List sx={{ padding: 2 }}>
-          {["Home", "Delivery", "Message", "Profile"].map((text, index) => (
-            <ListItem
-              button
-              key={text}
-              component={Link}
-              to={
-                index === 0
-                  ? "/home" // Home page
-                  : index === 1
-                  ? "/delivery" // Delivery page
-                  : index === 2
-                  ? "/message" // Message page
-                  : index === 3
-                  ? "/profile" // Profile page
-                  : "#"
-              }
-              onClick={() => handleListItemClick(index)}
-              sx={{
-                position: "relative",
-                marginBottom: "15px",
-                borderRadius: "20px",
-                "&:hover": {
-                  backgroundColor: "#F6F6F6",
-                },
-              }}
-            >
-              {/* Vertical Line Indicator */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  left: 0,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                 
-                  height: "100%",
-                  backgroundColor: "#F66F1E",
-                  transition: "width 0.3s",
-                }}
-              />
-
-              <ListItemIcon sx={{ minWidth: "40px" }}>
-                {index === 0 && <HomeIcon />} {/* Home icon */}
-                {index === 1 && <DeliveryDiningIcon />} {/* Delivery icon */}
-                {index === 2 && <MessageIcon />} {/* Message icon */}
-                {index === 3 && <PersonIcon />} {/* Profile icon */}
-              </ListItemIcon>
-
-              <ListItemText
-                primary={text}
-                sx={{
-                  color: index === 3 ? "inherit" : "inherit",
-                  fontWeight: "normal",
-                }}
-              />
-            </ListItem>
-          ))}
-
-          {/* Logout List Item */}
-          <ListItem
-            button
-            key="Logout"
-            component={Link}
-            to="/logout" // Adjust if logout logic is different
-            onClick={() => handleListItemClick(4)}
-            sx={{
-              position: "relative",
-              marginBottom: "15px",
-              borderRadius: "20px",
-              "&:hover": {
-                backgroundColor: "#F6F6F6",
-              },
-            }}
-          >
-            {/* Vertical Line Indicator for Logout */}
-            <Box
-              sx={{
-                position: "absolute",
-                left: 0,
-                top: "50%",
-                transform: "translateY(-50%)",
-                
-                height: "100%",
-                backgroundColor: "#F66F1E",
-                transition: "width 0.3s",
-              }}
-            />
-
-            <ListItemIcon sx={{ minWidth: "40px" }}>
-              <LogoutIcon /> {/* Logout icon */}
-            </ListItemIcon>
-
-            <ListItemText
-              primary="Logout"
-              sx={{
-                color: "red", // Red text for Logout
-                fontWeight: "normal",
-              }}
-            />
-          </ListItem>
-        </List>
-      </Box>
-
+      <NavSidebar/>
       {/* Right Section */}
       <Box sx={{ flex: 1, backgroundColor: "#F5F5F5", padding: "20px" }}>
-      {/* Navbar */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "white",
-            padding: { xs: "8px", sm: "10px" }, // Adjust padding for mobile
-            boxShadow: "0 1px 5px rgba(0,0,0,0.2)",
-            zIndex: 1000,
-            position: "fixed", // Fixed navbar
-            top: 0, // Align at the top
-            left: { xs: "0", sm: "250px" }, // Adjust based on sidebar width
-            right: 0,
-            width: "100%",
-            boxSizing: "border-box",
-            flexWrap: { xs: "wrap", sm: "nowrap" }, // Wrap items on small screens
-          }}
-        >
-          <img
-            src={test}
-            alt="Logo"
-            style={{ width: "50px", marginRight: "10px" }}
-          />
-          <Typography
-            variant="body1"
-            sx={{
-              marginLeft: "20px",
-              marginRight: "auto",
-              fontWeight: "normal",
-              fontSize: { xs: "16px", md: "inherit" }, // Responsive font size
-              textAlign: { xs: "center", sm: "left" }, // Center text on mobile
-            }}
-          >
-            Hi Joshua 👋
-          </Typography>
-          <IconButton sx={{ position: "relative", marginLeft: "10px" }}>
-            <NotificationsIcon />
-            <Box
-              sx={{
-                position: "absolute",
-                top: "0",
-                right: "0",
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                backgroundColor: "green",
-              }}
-            />
-          </IconButton>
-          <IconButton sx={{ borderRadius: "50%", marginLeft: "10px" }}>
-            <img
-              src="../assets/profilePic.png"
-              alt="Profile"
-              style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-            />
-          </IconButton>
-        </Box>
-
         {/* Profile Information Section */}
         <Box sx={{ display: "flex", alignItems: "center", padding: "20px" }}>
           <img
@@ -409,6 +231,7 @@ const TravelerProfile = () => {
         </Box>
       </Box>
     </Box>
+    
   );
 };
 

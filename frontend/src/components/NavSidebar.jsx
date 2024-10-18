@@ -32,6 +32,7 @@ import TravelerProfile from "./TravelerProfile";
 import DeliveryTracking from "./DeliveryTraking";
 //import TravelerProfile from "./TravelerProfile";
 import SwitchRightIcon from "@mui/icons-material/SwitchRight"; 
+import DeliveryCancelled from "./DeliveryCancelled";
 import { useNavigate } from "react-router-dom";
 const notifications = [
   // Sample notification data
@@ -330,12 +331,20 @@ const NavSidebar = () => {
           >
             <Box sx={{ padding: "20px" }}>
               {content === "Home" && <Home />}
-              {content === "Delivery" && <Delivery />}
+              {content === "Delivery" && <Delivery setContent={setContent} />}
               {content === "Message" && <Message />}
-              {content === "Profile" && <Profile />}
-              {content === "AccountSettings" && <AccountSettings />}
+              {content === "Profile" && <Profile setContent={setContent} />}
+             
+              {content === "AccountSettings" && (
+                <AccountSettings setContent={setContent} />
+              )}
               {content === "TravelerProfile" && <TravelerProfile />}
-              {content === "DeliveryTracking" && <DeliveryTracking />}
+              {content === "DeliveryCancelled" && (
+                <DeliveryCancelled setContent={setContent} />
+              )}
+              {content === "DeliveryTracking" && (
+                <DeliveryTracking setContent={setContent} />
+              )}
             </Box>
           </Box>
         </Box>

@@ -30,7 +30,9 @@ const DeliveryTracking = ({ setContent }) => {
   const handlemessageclick = () => {
     setContent("Message");
   };
-
+const hadlebackarrow =()=>{
+  setContent("Delivery")
+}
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       {/* Left Sidebar and Main Content */}
@@ -63,7 +65,7 @@ const DeliveryTracking = ({ setContent }) => {
             }}
           >
             <Box
-              onClick={() => navigate("/delivery")}
+             onClick={hadlebackarrow}
               sx={{
                 width: "40px",
                 height: "40px",

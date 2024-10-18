@@ -27,7 +27,7 @@ const AccountSettings = ({ setContent }) => {
     setSelectedIndex(index);
   };
   const handleprofileclick = () => {
- setContent("profile")
+ setContent("Profile")
   }
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
