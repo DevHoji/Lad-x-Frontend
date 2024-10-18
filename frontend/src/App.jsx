@@ -61,9 +61,9 @@ const App = () => {
           element={<PaymentSuccessful />}
         />{" "}
         {/* Add this line */}
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/land" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<NavSidebar />} />
+        <Route path="/" element={<NavSidebar />} />
         <Route path="/traveler-home" element={<TravelerHome />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/confirm-account" element={<ConfirmAccount />} />

@@ -334,7 +334,7 @@ const NavSidebar = () => {
               {content === "Delivery" && <Delivery setContent={setContent} />}
               {content === "Message" && <Message />}
               {content === "Profile" && <Profile setContent={setContent} />}
-             
+              
               {content === "AccountSettings" && (
                 <AccountSettings setContent={setContent} />
               )}

@@ -49,9 +49,9 @@ const TravelerLayout = ({ children }) => {
   const navigate = useNavigate();
 
   // Handle button click
-  // const handleHomeButtonClick = () => {
-  //   navigate("/home");
-  // };
+  const handleHomeButtonClick = () => {
+    navigate("/home");
+  };
 
   // Handle notification icon click
   const handleNotificationClick = (event) => {
