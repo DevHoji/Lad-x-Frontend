@@ -68,8 +68,9 @@ const TravelerLayout = ({ children }) => {
   const handleproClick = () => {
     navigate("/sender-p"); // Navigates to the Traveler Home page
   };
+
 const handleGoToSenderView = () => {
-  window.location.href = "/home"; // Navigate to traveler-home
+  navigate("/home"); // Navigate to traveler-home
 };
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
