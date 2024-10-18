@@ -1,7 +1,5 @@
-// src/components/DeliveryTrackingT.jsx
-
 import React from "react";
-import TravelerLayout from "./TravelerLayOut"; 
+import TravelerLayout from "./TravelerLayOut";
 import { useNavigate, Link } from "react-router-dom";
 import {
   Box,
@@ -13,45 +11,42 @@ import {
   ListItemText,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeIcon from "@mui/icons-material/Home";
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import MessageIcon from "@mui/icons-material/Message";
-import PersonIcon from "@mui/icons-material/Person";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import LogoutIcon from "@mui/icons-material/Logout";
-import test from "../assets/test.jpg"; // Adjust path if necessary
-import homepp from "../assets/homepp.jpg";
-const DeliveryTrackingT = () => {
-     const navigate = useNavigate();
-     const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
-     const handleListItemClick = (index) => {
-       setSelectedIndex(index);
-     };
- const handleMessageClick = () => {
-   navigate("/message-t"); // Navigate to the message-t URL
- };
+const DeliveryTrackingT = () => {
+  const navigate = useNavigate();
+  const handleMessageClick = () => {
+    navigate("/message-t"); // Navigate to the message-t URL
+  };
+
   return (
     <TravelerLayout>
-      <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100vh",
+          margin: "0", // Add margin to the whole section
+          maxWidth: "1200px", // Optional: set a max width for larger screens
+          backgroundColor: "white", // Set background to white
+          borderRadius: "8px", // Optional: rounded corners for aesthetic
+          overflow: "hidden", // Prevent overflow
+        }}
+      >
         {/* Left Sidebar and Main Content */}
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             flexGrow: 1,
-            backgroundColor: "white", // Set main content background to white
-            marginTop: "80px", // Add top margin to avoid navbar overlap
           }}
         >
           {/* Main Content */}
           <Box
             sx={{
               flex: 1,
-              backgroundColor: "white",
               padding: { xs: "10px", md: "20px" }, // Responsive padding
               overflowY: "auto",
-              //   boxShadow: "inset 0 0 5px rgba(0,0,0,0.1)", // Inner shadow for main content
               marginTop: { xs: "20px", md: "0px" }, // Ensure margin for mobile devices
             }}
           >
@@ -101,7 +96,7 @@ const DeliveryTrackingT = () => {
                   borderRadius: "5px",
                   padding: "10px 15px",
                   height: "47px",
-                  width: { xs: "150px", md: "180px" }, // Responsive button width
+                  width: { xs: "150px", md: "200px" }, // Responsive button width
                   textDecoration: "none",
                   "&:hover": {
                     backgroundColor: "#2c0e6d", // Change color on hover for better UX

@@ -34,8 +34,8 @@ const MessageT = () => {
         sx={{
           display: "flex",
           height: "100vh",
-          paddingLeft: { xs: "20px", md: "80px" },
-          paddingRight: { xs: "20px", md: "80px" },
+          paddingLeft: { xs: "15px", md: "60px" }, // Adjusted padding for responsiveness
+          paddingRight: { xs: "15px", md: "60px" },
           backgroundColor: "#FFFFFF", // Set background color to white
           boxSizing: "border-box",
           paddingTop: { xs: "20px", md: "20px" }, // Adjusted padding to reduce gap
@@ -177,14 +177,14 @@ const MessageT = () => {
             sx={{
               width: { xs: "100%", md: "50%" },
               height: "100%",
-              padding: "20px",
+              padding: "10px",
               display: "flex",
               flexDirection: "column",
               boxSizing: "border-box",
               backgroundColor: "#FAFAFA",
               transition: "all 0.3s ease",
               borderRadius: "8px", // Rounded corners for chat box
-              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+             // boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
             }}
           >
             {/* Header for Chat */}
@@ -295,7 +295,7 @@ const MessageT = () => {
               ))}
             </Box>
 
-            {/* Input Section for Sending Messages */}
+            {/* Input Area */}
             <Box
               sx={{
                 display: "flex",
@@ -304,25 +304,18 @@ const MessageT = () => {
               }}
             >
               <InputBase
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Type a message..."
                 sx={{
                   flex: 1,
-                  padding: "8px",
+                  padding: "10px",
                   borderRadius: "20px",
                   backgroundColor: "#F5F5F5",
                   marginRight: "8px",
                 }}
+                placeholder="Type a message..."
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
               />
-              <IconButton
-                onClick={handleSendMessage}
-                sx={{
-                  backgroundColor: "#F66F1E",
-                  color: "white",
-                  borderRadius: "50%",
-                }}
-              >
+              <IconButton onClick={handleSendMessage}>
                 <SendIcon />
               </IconButton>
             </Box>

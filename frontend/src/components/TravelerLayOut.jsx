@@ -25,7 +25,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import test from "../assets/olapp.jpg";
 import profilePic from "../images/Profilebox2.jpeg";
 import Home from "./Home";
-
+import SwitchRightIcon from "@mui/icons-material/SwitchRight"; 
 // Sample notification data
 const notificationsData = [
   {
@@ -166,7 +166,6 @@ const handleGoToSenderView = () => {
               marginBottom: "15px",
               borderRadius: "20px",
               cursor: "pointer",
-             
             }}
           >
             <Box
@@ -177,18 +176,17 @@ const handleGoToSenderView = () => {
                 transform: "translateY(-50%)",
                 width: "4px",
                 height: "100%",
-                backgroundColor: "#F66F1E",
+                // backgroundColor: "#F66F1E",
                 transition: "width 0.3s",
               }}
             />
             <ListItemIcon sx={{ minWidth: "40px" }}>
-              <PersonIcon /> {/* Use a relevant icon for sender view */}
+              <SwitchRightIcon /> {/* Use the switch icon */}
             </ListItemIcon>
-            
-              <Typography sx={{ fontWeight: "normal" }}>
-                GO TO SENDER VIEW
-              </Typography>
-          
+
+            <Typography sx={{ fontWeight: "normal" }}>
+              GO TO SENDER VIEW
+            </Typography>
           </ListItem>
         </List>
       </Drawer>

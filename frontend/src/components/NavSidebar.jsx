@@ -30,7 +30,9 @@ import Profile from "./Profile";
 import AccountSettings from "./AccountSettings";
 import TravelerProfile from "./TravelerProfile";
 import DeliveryTracking from "./DeliveryTraking";
-
+//import TravelerProfile from "./TravelerProfile";
+import SwitchRightIcon from "@mui/icons-material/SwitchRight"; 
+import { useNavigate } from "react-router-dom";
 const notifications = [
   // Sample notification data
   {
@@ -75,9 +77,9 @@ const NavSidebar = () => {
   const handleNotificationsClose = () => {
     setAnchorEl(null);
   };
-
+  const navigate = useNavigate()
   const handleGoToSenderView = () => {
-    window.location.href = "/traveler-home"; // Navigate to traveler-home
+ navigate("/traveler-home"); // Navigate to traveler-home
   };
   const handleHomeButtonSClick = () => {
     navigate("/traveler-home");
@@ -198,7 +200,7 @@ const NavSidebar = () => {
               backgroundColor: "#FFF",
               paddingTop: "15px",
               position: "fixed",
-              top: "60px",
+              top: "80px",
               height: "calc(100vh - 60px)",
               marginTop: "10px",
             }}
@@ -285,12 +287,15 @@ const NavSidebar = () => {
               {/* New Button for Sender View */}
               <ListItem
                 button
+                key="GoToTravelerView"
                 onClick={handleGoToSenderView}
                 sx={{
+                  position: "relative",
                   marginBottom: "15px",
                   borderRadius: "20px",
                   cursor: "pointer",
-                  backgroundColor: "transparent",
+                  backgroundColor:
+                    selectedIndex === 4 ? "#F6F6F6" : "transparent",
                   "&:hover": { backgroundColor: "#F6F6F6" },
                 }}
               >
@@ -302,12 +307,11 @@ const NavSidebar = () => {
                     transform: "translateY(-50%)",
                     width: "4px",
                     height: "100%",
-                    backgroundColor: "#F66F1E",
                     transition: "width 0.3s",
                   }}
                 />
                 <ListItemIcon sx={{ minWidth: "40px" }}>
-                  <PersonIcon /> {/* Use a relevant icon for sender view */}
+                  <SwitchRightIcon /> {/* Use the switch icon */}
                 </ListItemIcon>
                 {!isMobile && (
                   <Typography sx={{ fontWeight: "normal" }}>

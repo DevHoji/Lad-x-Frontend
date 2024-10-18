@@ -30,12 +30,15 @@ import UserOption from "./components/UserOption";
 import UserV from "./components/UserV";
 import Result from "./components/Result"
 import FormLayOut from "./components/FormLayOut";
+import Admin from "./components/Admin";
+import TravelerProfile from "./components/TravelerProfile";
 import './App.css';
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/admin" element={<Admin />} />
         <Route path="/request" element={<Request />} />
         <Route path="/traveler-request" element={<TravelerRequest />} />
         <Route path="/account-settings" element={<AccountSettingT />} />
@@ -51,6 +54,7 @@ const App = () => {
         <Route path="/result" element={<Result />} />
         <Route path="/formlayout" element={<FormLayOut />} />
         <Route path="/main" element={<Delivery />} />
+        <Route path="/travler-p" element={<TravelerProfile />} />
         <Route path="/deliverycancelled" element={<DeliveryCancelled />} />
         <Route
           path="/payment-successful"

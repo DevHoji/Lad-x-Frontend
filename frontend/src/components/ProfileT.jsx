@@ -69,7 +69,7 @@ const ProfileT = () => {
       <Box
         sx={{
           padding: { xs: 2, md: 4 },
-          marginTop: { xs: 4, md: 6 }, // Reduce marginTop to bring content closer to the top
+          marginTop: { xs: 2, md: 4 }, // Reduce marginTop to bring content closer to the top
           width: "100%",
           backgroundColor: "white",
         }}
@@ -328,84 +328,197 @@ const ProfileT = () => {
           <Box
             sx={{
               borderRadius: "20px",
-              width: { xs: "90%", sm: "80%", md: "600px", lg: "600px" },
-              padding: { xs: 2, sm: 3, md: 4 },
+              width: { xs: "90%", sm: "80%", md: "600px", lg: "600px" }, // Ensures consistent width for larger screens
+              padding: { xs: 2, sm: 3, md: 4 }, // Different padding based on screen size
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: "white",
               boxShadow: "0 8px 30px rgba(0, 0, 0, 0.1)",
-              margin: "auto",
+              margin: {
+                xs: "10px",
+                sm: "auto",
+                md: "20px auto",
+                lg: "40px auto",
+              }, // Adjust margin for responsiveness
             }}
           >
-            <Box sx={{ position: "relative" }}>
+            {/* Header Section */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+                marginBottom: { xs: 1, sm: 2 }, // Responsive margin-bottom
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" }, // Responsive font size
+                }}
+              >
+                Update Profile
+              </Typography>
+              <IconButton
+                onClick={handleClose}
+                sx={{
+                  backgroundColor: "#F5F5F5",
+                  borderRadius: "50%",
+                  width: { xs: 25, sm: 30 }, // Responsive icon button size
+                  height: { xs: 25, sm: 30 },
+                }}
+              >
+                <CancelIcon
+                  sx={{
+                    fontSize: { xs: "0.8rem", sm: "1rem" },
+                    color: "black",
+                  }}
+                />
+              </IconButton>
+            </Box>
+
+            {/* Profile Image Section */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginBottom: { xs: 2, sm: 3 }, // Adjust bottom margin
+                position: "relative",
+              }}
+            >
               <Avatar
                 src={test}
                 alt="Profile Picture"
-                sx={{ width: 100, height: 100, marginBottom: 2 }}
+                sx={{
+                  width: { xs: 70, sm: 80 }, // Responsive avatar size
+                  height: { xs: 70, sm: 80 },
+                  borderRadius: "50%",
+                  border: "2px solid #F66F1E",
+                  position: "relative",
+                }}
               />
               <IconButton
+                onClick={() => console.log("Delete Profile Photo")}
                 sx={{
                   position: "absolute",
-                  top: -10,
-                  right: -10,
-                  backgroundColor: "white",
-                  border: "2px solid #F66F1E",
+                  top: "18%",
+                  right: "%", // Adjusted right position for better centering
+                  borderRadius: "50%",
+                  width: { xs: 25, sm: 30 },
+                  height: { xs: 25, sm: 30 },
+                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
                 }}
               >
-                <DeleteIcon sx={{ color: "#F66F1E" }} />
+                <DeleteIcon
+                  sx={{
+                    fontSize: { xs: "1rem", sm: "1.2rem" },
+                    color: "#F66F1E",
+                  }}
+                />
               </IconButton>
+              <Typography
+                variant="body2"
+                sx={{
+                  marginTop: 1,
+                  fontSize: { xs: "0.7rem", sm: "0.8rem" }, // Responsive font size
+                  textAlign: "center",
+                }}
+              >
+                Make sure the photo is below 2MB.
+              </Typography>
             </Box>
+
+            {/* Full Name Input Field */}
             <TextField
-              label="Full Name"
               variant="outlined"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              fullWidth
-              sx={{ marginBottom: 2 }}
-            />
-            <TextField
-              label="Country"
-              select
-              variant="outlined"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              fullWidth
-              sx={{ marginBottom: 2 }}
-            >
-              {countries.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              label="State"
-              select
-              variant="outlined"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              fullWidth
-              sx={{ marginBottom: 2 }}
-            >
-              {states.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
-                </MenuItem>
-              ))}
-            </TextField>
-            <Button
-              onClick={handleUpdateProfile}
-              variant="contained"
+              placeholder="Full Name"
               sx={{
-                backgroundColor: "#F66F1E",
-                color: "white",
-                borderRadius: "50px",
-                padding: "10px 40px",
+                width: "100%",
+                maxWidth: "350px",
+                borderRadius: "20px",
+                marginBottom: { xs: 1, sm: 2 }, // Responsive margin bottom
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "20px",
+                },
+              }}
+            />
+
+            {/* Country and State Input Fields */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 1,
+                width: "100%",
+                marginBottom: { xs: 1, sm: 2 }, // Responsive margin bottom
               }}
             >
-              Update Profile
+              {/* Country Input Field */}
+              <TextField
+                select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                variant="outlined"
+                sx={{
+                  flexGrow: 1,
+                  borderRadius: "20px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "20px",
+                  },
+                }}
+              >
+                {countries.map((country) => (
+                  <MenuItem key={country} value={country}>
+                    {country}
+                  </MenuItem>
+                ))}
+              </TextField>
+
+              {/* State Input Field */}
+              <TextField
+                select
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                variant="outlined"
+                sx={{
+                  flexGrow: 1,
+                  borderRadius: "20px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "20px",
+                  },
+                }}
+              >
+                {states.map((state) => (
+                  <MenuItem key={state} value={state}>
+                    {state}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+
+            {/* Update Button */}
+            <Button
+              variant="contained"
+              onClick={handleUpdateProfile}
+              sx={{
+                marginTop: 2,
+                width: "100%",
+                maxWidth: "180px",
+                height: "50px",
+                borderRadius: "20px",
+                backgroundColor: "#210947",
+                "&:hover": {
+                  backgroundColor: "#0c0e0e",
+                },
+              }}
+            >
+              Update
             </Button>
           </Box>
         </Dialog>

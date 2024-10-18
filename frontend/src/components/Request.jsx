@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CloseIcon from "@mui/icons-material/Close"; // Importing Close icon
-
+import { useDropzone } from "react-dropzone";
 const Request = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
@@ -29,7 +29,20 @@ const Request = () => {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
-
+ const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
+   useDropzone({
+     accept: {
+       "text/plain": [".txt"],
+       "application/vnd.ms-excel": [".xls"],
+       "image/png": [".png"],
+       "image/jpeg": [".jpeg", ".jpg"],
+       "image/gif": [".gif"],
+     },
+     onDrop: (files) => {
+       // Handle file uploads here
+       console.log(files);
+     },
+   });
   return (
     <Box
       sx={{
@@ -173,6 +186,7 @@ const Request = () => {
             Image(s) of item(s)
           </Typography>
           <Paper
+            {...getRootProps()} // Add dropzone props
             sx={{
               backgroundColor: "#F9FBFE",
               border: "2px dashed #2E61B4",
@@ -180,12 +194,19 @@ const Request = () => {
               borderRadius: "10px",
               textAlign: "center",
               height: "150px", // Adjust height to make it smaller
+              cursor: "pointer", // Show pointer cursor
+              // Change background color on drag
+              backgroundColor: isDragActive ? "#E0E7FF" : "#F9FBFE",
             }}
           >
+            <input {...getInputProps()} />{" "}
+            {/* Hidden input for file selection */}
             <Typography>
-              Drag and drop files here <br /> or{" "}
+              {isDragActive
+                ? "Drop the files here..."
+                : "Drag and drop files here or "}
               <Button
-                //onClick={togglePopup}
+                // onClick={togglePopup}
                 sx={{
                   textTransform: "none",
                   color: "white",

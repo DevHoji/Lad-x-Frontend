@@ -3,34 +3,17 @@
 import React from "react";
 import TravelerLayout from "./TravelerLayOut";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  Box,
-  Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Box, Typography, IconButton, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeIcon from "@mui/icons-material/Home";
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import MessageIcon from "@mui/icons-material/Message";
-import PersonIcon from "@mui/icons-material/Person";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import LogoutIcon from "@mui/icons-material/Logout";
-import test from "../assets/test.jpg"; // Adjust path if necessary
-import homepp from "../assets/homepp.jpg";
-const DeliveryCancelledT = () => {
-     const navigate = useNavigate();
-     const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
-     const handleListItemClick = (index) => {
-       setSelectedIndex(index);
-     };
+const DeliveryCancelledT = () => {
+  const navigate = useNavigate();
+
   const handleMessageClick = () => {
     navigate("/message-t"); // Navigate to the message-t URL
   };
+
   return (
     <TravelerLayout>
       <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
@@ -39,7 +22,8 @@ const DeliveryCancelledT = () => {
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             flexGrow: 1,
-            backgroundColor: "white", // Set main content background to white
+            backgroundColor: "white",
+            padding: { xs: "10px", md: "20px" }, // Responsive padding
           }}
         >
           {/* Main Content */}
@@ -47,9 +31,10 @@ const DeliveryCancelledT = () => {
             sx={{
               flex: 1,
               backgroundColor: "white",
-              padding: { xs: "10px", md: "20px" }, // Responsive padding
+              padding: { xs: "10px", md: "20px" },
               overflowY: "auto",
-              //   boxShadow: "inset 0 0 5px rgba(0,0,0,0.1)", // Inner shadow for main content
+              borderRadius: "8px",
+             // boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
             }}
           >
             {/* Back Arrow and Title */}
@@ -71,6 +56,7 @@ const DeliveryCancelledT = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   cursor: "pointer",
+                  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
                 }}
               >
                 <ArrowBackIcon />
@@ -88,26 +74,24 @@ const DeliveryCancelledT = () => {
                 alignItems: "center",
               }}
             >
-              <Box
+              <Button
+                variant="contained"
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
                   backgroundColor: "#210947",
                   color: "white",
                   borderRadius: "5px",
                   padding: "10px 15px",
                   height: "47px",
-                  width: { xs: "150px", md: "180px" }, // Responsive button width
-                  textDecoration: "none",
+                  width: { xs: "150px", md: "180px" },
                   "&:hover": {
-                    backgroundColor: "#2c0e6d", // Change color on hover for better UX
+                    backgroundColor: "#2c0e6d",
                   },
                 }}
-                onClick={handleMessageClick} // Attach the click event handler here
+                onClick={handleMessageClick}
               >
-                <MessageIcon sx={{ marginRight: "10px" }} />
+                <MessageIcon sx={{ marginRight: "5px" }} />
                 <Typography variant="body2">Message Traveler</Typography>
-              </Box>
+              </Button>
             </Box>
             {/* Delivery Tracking Information */}
             <Box
@@ -116,72 +100,49 @@ const DeliveryCancelledT = () => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 marginTop: "20px",
-                marginLeft: { xs: "10px", md: "20px" }, // Responsive margin
+                marginLeft: { xs: "10px", md: "20px" },
               }}
             >
-              {/* First Dot with Information */}
-              <Box
-                sx={{
-                  display: "flex",
-
-                  alignItems: "center",
-                  marginBottom: "30px", // Increased margin below each dot
-                }}
-              >
-                {/* Third Dot */}
+              {/* Dot Information */}
+              {[
+                {
+                  text: "Delivery Order placed",
+                  time: "07:15 PM, 5 SEPT 2024",
+                },
+                { text: "Shipping", time: "02:15 PM, SEPT 2024" },
+                { text: "Estimated Delivery", time: "In 5 Hours" },
+              ].map((item, index) => (
                 <Box
+                  key={index}
                   sx={{
-                    width: "12px",
-                    height: "12px", // Make it a circle
-                    borderRadius: "50%", // Ensure it's circular
-                    backgroundColor: "#5272F2",
-                    marginBottom: "30px", // Increased margin
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "30px",
                   }}
-                />
-                <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                  Delivery Order placed
-                </Typography>
-                <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                  07:15 PM, 5 SEPT 2024
-                </Typography>
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ marginBottom: "30px", color: "red" }}
-              >
-                Delivey Cancelled
-              </Typography>
-
-              {/* Second Dot with Information */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "30px", // Increased margin below each dot
-                }}
-              >
-                <Box
-                  sx={{
-                    width: "12px",
-                    height: "12px",
-                    borderRadius: "50%",
-                    backgroundColor: "#5272F2",
-                    marginRight: "10px",
-                  }}
-                />
-                <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                  Shipping
-                </Typography>
-                <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                  02:15 PM, SEPT 2024
-                </Typography>
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ marginBottom: "30px", color: "red" }}
-              >
-                Delivey Cancelled
-              </Typography>
+                >
+                  <Box
+                    sx={{
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "50%",
+                      backgroundColor: "#5272F2",
+                      marginRight: "10px",
+                    }}
+                  />
+                  <Typography variant="body2" sx={{ marginRight: "5px" }}>
+                    {item.text}
+                  </Typography>
+                  <Typography variant="body2" sx={{ marginRight: "5px" }}>
+                    {item.time}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ marginBottom: "5px", color: "red" }}
+                  >
+                    Delivery Cancelled
+                  </Typography>
+                </Box>
+              ))}
 
               {/* Courier Information */}
               <Typography
@@ -191,44 +152,13 @@ const DeliveryCancelledT = () => {
                 Courier: John Kith
               </Typography>
 
-              {/* Third Dot with Information */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "30px", // Increased margin below each dot
-                }}
-              >
-                <Box
-                  sx={{
-                    width: "12px",
-                    height: "12px",
-                    borderRadius: "50%",
-                    backgroundColor: "#5272F2",
-                    marginRight: "10px",
-                  }}
-                />
-                <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                  Estimated Delivery
-                </Typography>
-                <Typography variant="body2" sx={{ marginLeft: "15px" }}>
-                  In 5 Hours
-                </Typography>
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ marginBottom: "30px", color: "red" }}
-              >
-                Delivey Cancelled
-              </Typography>
-
               {/* Connecting Broken Lines */}
               <Box
                 sx={{
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  marginTop: "-10px", // Adjust to position the line
+                  marginTop: "-10px",
                 }}
               >
                 <Typography
@@ -276,15 +206,11 @@ const DeliveryCancelledT = () => {
               {/* Address Box */}
               <Box
                 sx={{
-                  width: "446px",
-                  height: "80px",
                   border: "1px solid #F66F1E",
                   backgroundColor: "#FBFBFB",
                   padding: "10px",
                   marginTop: "10px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
+                  borderRadius: "5px",
                 }}
               >
                 <Typography variant="body2">

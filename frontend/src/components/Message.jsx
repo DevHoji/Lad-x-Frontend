@@ -173,7 +173,7 @@ const Message = () => {
             display: "flex",
             flexDirection: "column",
             boxSizing: "border-box",
-            marginTop: "50px",
+            marginTop: "px",
             backgroundColor: "#FAFAFA",
             transition: "all 0.3s ease",
           }}

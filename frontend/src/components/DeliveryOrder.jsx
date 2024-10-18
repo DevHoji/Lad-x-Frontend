@@ -1,26 +1,21 @@
 
 // Import the layout component
-import { Link, useNavigate} from "react-router-dom"; 
+import {useNavigate} from "react-router-dom"; 
 import React from "react";
 import {
   Box,
   Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Button,
 } from "@mui/material";
-import test from "../assets/test.jpg"; // Adjust the path to your logo if necessary
-import homepp from "../assets/homepp.jpg";
+//import test from "../assets/test.jpg"; // Adjust the path to your logo if necessary
+//import homepp from "../assets/homepp.jpg";
 import gadgets from "../assets/gadgets.jpg";
 import sam from "../assets/sam.jpg";
-import john from "../assets/john.jpg";
-import shoepp from "../assets/shoepp.jpg";
-import handpp from "../assets/handpp.jpg";
+//import john from "../assets/john.jpg";
+//import shoepp from "../assets/shoepp.jpg";
+//import handpp from "../assets/handpp.jpg";
 import van from "../assets/Van.jpg";
-import HomeIcon from "@mui/icons-material/Home";
+//import HomeIcon from "@mui/icons-material/Home";
 
 //mport DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 //import MessageIcon from "@mui/icons-material/Message";
