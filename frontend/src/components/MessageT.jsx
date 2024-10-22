@@ -176,7 +176,7 @@ const MessageT = () => {
           <Box
             sx={{
               width: { xs: "100%", md: "50%" },
-              height: "100%",
+              height: "80%",
               padding: "10px",
               display: "flex",
               flexDirection: "column",

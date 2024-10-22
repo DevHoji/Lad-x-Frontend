@@ -17,38 +17,17 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 import test from "../assets/homepp.jpg";
 
-const Profile = ({setContent}) => {
+const Profile = ({ setContent }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const [country, setCountry] = useState("USA");
   const [state, setState] = useState("California");
   const [fullName, setFullName] = useState("Ken Bonolo");
-
-  const handleEditClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
- 
-
-  const handleUpdateProfile = () => {
-    // Logic to update the profile with new information
-    console.log("Updated Profile Info:", {
-      fullName,
-      country,
-      state,
-    });
-    // Update the displayed profile info
-    setProfileInfo({ fullName, country, state });
-    handleClose();
-  };
+  const [profilePhoto, setProfilePhoto] = useState(null); // for profile photo upload
 
   const [profileInfo, setProfileInfo] = useState({
     fullName: "Ken Bonolo",
@@ -59,12 +38,69 @@ const Profile = ({setContent}) => {
   const countries = ["USA", "Canada", "UK", "Australia"];
   const states = ["California", "Texas", "Florida", "New York"];
 
-  
+  const handleEditClick = () => {
+    setOpen(true);
+  };
 
- 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  // Function to update the profile with new information
+  const handleUpdateProfile = async () => {
+    try {
+      const updatedProfile = {
+        fullname: fullName,
+        country,
+        state,
+      };
+console.log(updatedProfile);
+      // Make API call to update the profile
+      const response = await axios.put(
+        "https://ladx-backend-h9fg.onrender.com/api/v1/users/6706531330437af5872e9c16/profile",
+        updatedProfile
+      );
+
+      console.log("Profile updated successfully:", response.data);
+
+      // Update the displayed profile info
+      setProfileInfo({ fullName, country, state });
+      handleClose();
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
+  };
+
+  // Function to update profile photo
+  const handleUpdateProfilePhoto = async () => {
+    if (!profilePhoto) return;
+
+    const formData = new FormData();
+    formData.append("profilePhoto", profilePhoto);
+
+    try {
+      const response = await axios.put(
+        "https://ladx-backend-h9fg.onrender.com/api/v1/users/6706531330437af5872e9c16/profilePhoto",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("Profile photo updated successfully:", response.data);
+    } catch (error) {
+      console.error("Error updating profile photo:", error);
+    }
+  };
+
+  // Handle profile photo file selection
+  const handlePhotoChange = (e) => {
+    setProfilePhoto(e.target.files[0]);
+  };
+
   const handleAccountSettingsClick = () => {
     setContent("AccountSettings"); // Set content to AccountSettings on click
-    
   };
 
   return (
@@ -96,7 +132,7 @@ const Profile = ({setContent}) => {
             />
 
             <IconButton
-              onClick={handleEditClick} // Open dialog on click
+              onClick={() => document.getElementById("fileInput").click()} // Trigger file input on click
               sx={{
                 position: "absolute",
                 bottom: 0,
@@ -111,6 +147,14 @@ const Profile = ({setContent}) => {
             >
               <EditIcon sx={{ color: "black", fontSize: 20 }} />
             </IconButton>
+
+            <input
+              type="file"
+              id="fileInput"
+              style={{ display: "none" }} // Hide the input field
+              accept="image/*"
+              onChange={handlePhotoChange} // Trigger photo change handler
+            />
           </Box>
 
           <Box sx={{ marginLeft: 3 }}>

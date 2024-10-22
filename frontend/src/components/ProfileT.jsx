@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom"; // Use useNavigate
 import DeleteIcon from "@mui/icons-material/Delete";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import johnImg from "../assets/new.jpg";
-
+import axios from "axios"; // Import Axios
 const ProfileT = () => {
   const [open, setOpen] = useState(false);
   const [country, setCountry] = useState("Rwanda");
@@ -31,8 +31,20 @@ const ProfileT = () => {
   const [rating, setRating] = useState(0);
   const [activeTab, setActiveTab] = useState("Reviews");
 
-  const navigate = useNavigate(); // Correctly set up useNavigate
+  const navigate = useNavigate();
 
+  const [profileInfo, setProfileInfo] = useState({
+    fullName: "Ola Araela",
+    country: "Rwanda",
+    state: "Kigali",
+  });
+
+  const [profilePhoto, setProfilePhoto] = useState(null); // State to hold the selected profile photo
+
+  const countries = ["USA", "Canada", "UK", "Australia", "Rwanda"];
+  const states = ["California", "Texas", "Florida", "New York", "Kigali"];
+
+  // Handle opening and closing of the edit profile dialog
   const handleEditClick = () => {
     setOpen(true);
   };
@@ -41,24 +53,59 @@ const ProfileT = () => {
     setOpen(false);
   };
 
-  const handleUpdateProfile = () => {
-    console.log("Updated Profile Info:", {
-      fullName,
-      country,
-      state,
-    });
-    setProfileInfo({ fullName, country, state });
-    handleClose();
+  // Handle updating the profile information
+  const handleUpdateProfile = async () => {
+    try {
+      // Send PUT request to update profile info
+      const response = await axios.put(
+        "https://ladx-backend-h9fg.onrender.com/api/v1/users/6706531330437af5872e9c16/profile",
+        {
+          fullname: fullName,
+          country,
+          state,
+        }
+      );
+      console.log("Profile updated:", response.data);
+
+      // Update profile info in state
+      setProfileInfo({ fullName, country, state });
+      handleClose();
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
-  const [profileInfo, setProfileInfo] = useState({
-    fullName: "Ola Araela",
-    country: "Kigali",
-    state: "Rwanda",
-  });
+  // Handle updating the profile photo
+  const handleUpdateProfilePhoto = async () => {
+    if (!profilePhoto) {
+      console.error("No profile photo selected");
+      return;
+    }
 
-  const countries = ["USA", "Canada", "UK", "Australia", "Rwanda"];
-  const states = ["California", "Texas", "Florida", "New York", "Kigali"];
+    const formData = new FormData();
+    formData.append("profilePhoto", profilePhoto);
+
+    try {
+      // Send PUT request to update profile photo
+      const response = await axios.put(
+        "https://ladx-backend-h9fg.onrender.com/api/v1/users/6706531330437af5872e9c16/profilePhoto",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("Profile photo updated:", response.data);
+    } catch (error) {
+      console.error("Error updating profile photo:", error);
+    }
+  };
+
+  // Handle selecting a profile photo
+  const handlePhotoChange = (event) => {
+    setProfilePhoto(event.target.files[0]);
+  };
 
   const handleAccoTClick = () => {
     navigate("/account-settings");
@@ -94,7 +141,7 @@ const ProfileT = () => {
               />
 
               <IconButton
-                onClick={handleEditClick}
+                onClick={() => document.getElementById("fileInput").click()} // Trigger file input on click
                 sx={{
                   position: "absolute",
                   bottom: 0,
@@ -109,6 +156,14 @@ const ProfileT = () => {
               >
                 <EditIcon sx={{ color: "black", fontSize: 20 }} />
               </IconButton>
+
+              <input
+                type="file"
+                id="fileInput"
+                style={{ display: "none" }} // Hide the input field
+                accept="image/*"
+                onChange={handlePhotoChange} // Trigger photo change handler
+              />
             </Box>
 
             <Box sx={{ marginLeft: 3 }}>

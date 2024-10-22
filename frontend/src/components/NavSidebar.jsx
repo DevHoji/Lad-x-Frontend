@@ -28,12 +28,13 @@ import Delivery from "./Delivery"; // adjust the path based on your file structu
 import Message from "./Message"; // adjust the path based on your file structure
 import Profile from "./Profile";
 import AccountSettings from "./AccountSettings";
-import TravelerProfile from "./TravelerProfile";
+//import TravelerProfile from "./TravelerProfile";
 import DeliveryTracking from "./DeliveryTraking";
 //import TravelerProfile from "./TravelerProfile";
 import SwitchRightIcon from "@mui/icons-material/SwitchRight"; 
 import DeliveryCancelled from "./DeliveryCancelled";
 import { useNavigate } from "react-router-dom";
+
 const notifications = [
   // Sample notification data
   {
@@ -338,7 +339,7 @@ const NavSidebar = () => {
               {content === "AccountSettings" && (
                 <AccountSettings setContent={setContent} />
               )}
-              {content === "TravelerProfile" && <TravelerProfile />}
+              {/* {content === "TravelerProfile" && <TravelerProfile />} */}
               {content === "DeliveryCancelled" && (
                 <DeliveryCancelled setContent={setContent} />
               )}

@@ -11,9 +11,11 @@ import {
   Drawer,
   Avatar,
   Divider,
-  Box,Typography,
+  Box,
+  Typography,
   Button,
   Popover,
+  useMediaQuery, // Import for responsive design
 } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
@@ -22,10 +24,10 @@ import MessageIcon from "@mui/icons-material/Message";
 import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import SwitchRightIcon from "@mui/icons-material/SwitchRight";
 import test from "../assets/olapp.jpg";
 import profilePic from "../images/Profilebox2.jpeg";
-import Home from "./Home";
-import SwitchRightIcon from "@mui/icons-material/SwitchRight"; 
+
 // Sample notification data
 const notificationsData = [
   {
@@ -47,11 +49,7 @@ const notificationsData = [
 const TravelerLayout = ({ children }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
-
-  // Handle button click
-  const handleHomeButtonClick = () => {
-    navigate("/home");
-  };
+  const isMobile = useMediaQuery("(max-width: 600px)"); // Mobile screen check
 
   // Handle notification icon click
   const handleNotificationClick = (event) => {
@@ -65,23 +63,20 @@ const TravelerLayout = ({ children }) => {
 
   const open = Boolean(anchorEl);
 
-  const handleproClick = () => {
-    navigate("/sender-p"); // Navigates to the Traveler Home page
+  const handleGoToSenderView = () => {
+    navigate("/home");
   };
 
-const handleGoToSenderView = () => {
-  navigate("/home"); // Navigate to traveler-home
-};
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       {/* Sidebar */}
       <Drawer
         variant="permanent"
         sx={{
-          width: 240,
+          width: isMobile ? 80 : 240, // Change width based on screen size
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 240,
+            width: isMobile ? 80 : 240, // Adjust drawer width
             boxSizing: "border-box",
             backgroundColor: "white",
             boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)",
@@ -89,7 +84,11 @@ const handleGoToSenderView = () => {
         }}
       >
         <Toolbar>
-          <Avatar sx={{ margin: "auto" }} src="/logo.png" alt="LADX Logo" />
+          <Avatar
+            sx={{ margin: "auto", display: isMobile ? "none" : "block" }}
+            src="/logo.png"
+            alt="LADX Logo"
+          />
         </Toolbar>
         <Divider />
         <List>
@@ -106,7 +105,7 @@ const handleGoToSenderView = () => {
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary="Overview" />
+            {!isMobile && <ListItemText primary="Overview" />}
           </ListItem>
           <ListItem
             button
@@ -121,7 +120,7 @@ const handleGoToSenderView = () => {
             <ListItemIcon>
               <LocalShippingIcon />
             </ListItemIcon>
-            <ListItemText primary="Delivery Order" />
+            {!isMobile && <ListItemText primary="Delivery Order" />}
           </ListItem>
           <ListItem
             button
@@ -136,7 +135,7 @@ const handleGoToSenderView = () => {
             <ListItemIcon>
               <MessageIcon />
             </ListItemIcon>
-            <ListItemText primary="Messages" />
+            {!isMobile && <ListItemText primary="Messages" />}
           </ListItem>
           <ListItem
             button
@@ -151,14 +150,17 @@ const handleGoToSenderView = () => {
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
-            <ListItemText primary="Profile" />
+            {!isMobile && <ListItemText primary="Profile" />}
           </ListItem>
           <ListItem button>
             <ListItemIcon>
               <ExitToAppIcon sx={{ color: "red" }} />
             </ListItemIcon>
-            <ListItemText primary="Logout" sx={{ color: "red" }} />
+            {!isMobile && (
+              <ListItemText primary="Logout" sx={{ color: "red" }} />
+            )}
           </ListItem>
+
           {/* New Button for Sender View */}
           <ListItem
             button
@@ -177,17 +179,17 @@ const handleGoToSenderView = () => {
                 transform: "translateY(-50%)",
                 width: "4px",
                 height: "100%",
-                // backgroundColor: "#F66F1E",
                 transition: "width 0.3s",
               }}
             />
             <ListItemIcon sx={{ minWidth: "40px" }}>
-              <SwitchRightIcon /> {/* Use the switch icon */}
+              <SwitchRightIcon />
             </ListItemIcon>
-
-            <Typography sx={{ fontWeight: "normal" }}>
-              GO TO SENDER VIEW
-            </Typography>
+            {!isMobile && (
+              <Typography sx={{ fontWeight: "normal" }}>
+                GO TO SENDER VIEW
+              </Typography>
+            )}
           </ListItem>
         </List>
       </Drawer>
@@ -217,10 +219,10 @@ const handleGoToSenderView = () => {
               onClick={handleGoToSenderView}
               sx={{
                 marginLeft: 2,
-                backgroundColor: "#F66F1E", // Amazing background color
-                borderRadius: "20px", // Rounded shape
+                backgroundColor: "#F66F1E",
+                borderRadius: "20px",
                 "&:hover": {
-                  backgroundColor: "#FF5722", // Darker color on hover
+                  backgroundColor: "#FF5722",
                 },
               }}
             >

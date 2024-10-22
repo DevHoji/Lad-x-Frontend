@@ -12,7 +12,7 @@ import Request from "./components/Request";
 import Delivery from "./components/Delivery";
 import PaymentSuccessful from "./components/PaymentSuccessful";
 import TravelerHome from "./components/TravlerHome";
-//import TravelerProfile from "./components/TravelerProfile";
+// import TravelerProfile from "./components/TravelerProfile";
 import DeliveryCancelled from './components/DeliveryCancelled'; // Adjust the path if needed
 import DeliveryOrder from "./components/DeliveryOrder";
 import ProfileT from "./components/ProfileT";
@@ -55,7 +55,8 @@ const App = () => {
         <Route path="/result" element={<Result />} />
         <Route path="/formlayout" element={<FormLayOut />} />
         <Route path="/main" element={<Delivery />} />
-        <Route path="/travler-p" element={<TravelerProfile />} />
+
+        <Route path="/traveler-p" element={<TravelerProfile />} />
         <Route path="/deliverycancelled" element={<DeliveryCancelled />} />
         <Route
           path="/payment-successful"

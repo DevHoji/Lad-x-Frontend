@@ -74,7 +74,7 @@ const DeliveryTrackingT = () => {
                 <ArrowBackIcon />
               </Box>
               <Typography variant="h6" sx={{ marginLeft: "10px" }}>
-                Delivery
+                Item Traking
               </Typography>
             </Box>
 
@@ -93,7 +93,7 @@ const DeliveryTrackingT = () => {
                   alignItems: "center",
                   backgroundColor: "#210947",
                   color: "white",
-                  borderRadius: "5px",
+                  borderRadius: "10px",
                   padding: "10px 15px",
                   height: "47px",
                   width: { xs: "150px", md: "200px" }, // Responsive button width
@@ -138,14 +138,14 @@ const DeliveryTrackingT = () => {
                   }}
                 />
                 <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                  Delivery Order placed
+                  Delivery Order Matched
                 </Typography>
                 <Typography variant="body2" sx={{ marginRight: "5px" }}>
                   07:15 PM, 5 SEPT 2024
                 </Typography>
               </Box>
               <Typography variant="body2" sx={{ marginBottom: "30px" }}>
-                Your Delivery order has been accepted
+                You've been matched with a sender -Item
               </Typography>
 
               {/* Second Dot with Information */}
@@ -173,7 +173,7 @@ const DeliveryTrackingT = () => {
                 </Typography>
               </Box>
               <Typography variant="body2" sx={{ marginBottom: "30px" }}>
-                Your item is on its way
+                The item is on the way
               </Typography>
 
               {/* Courier Information */}
@@ -181,7 +181,7 @@ const DeliveryTrackingT = () => {
                 variant="body2"
                 sx={{ color: "red", marginBottom: "20px" }}
               >
-                Courier: John Kith
+                Sender: John Kith
               </Typography>
 
               {/* Third Dot with Information */}
@@ -202,12 +202,12 @@ const DeliveryTrackingT = () => {
                   }}
                 />
                 <Typography variant="body2" sx={{ marginRight: "5px" }}>
-                  Estimated Delivery
+                  Estimated Arraival
                 </Typography>
                 <Typography variant="body2">In 5 Hours</Typography>
               </Box>
               <Typography variant="body2" sx={{ marginBottom: "30px" }}>
-                Your item will be delivered
+                The time be delivered
               </Typography>
 
               {/* Connecting Broken Lines */}
@@ -247,17 +247,17 @@ const DeliveryTrackingT = () => {
                 }}
               >
                 <Typography variant="h6" sx={{ marginBottom: "10px" }}>
-                  Shipping Address
+                  Traveler Details
                 </Typography>
                 <Link
-                  to="/change-address"
+                  // to="/change-address"
                   style={{
                     color: "#5272F2",
                     marginLeft: "5px",
                     textDecoration: "none",
                   }}
                 >
-                  Change Address
+                  Edit
                 </Link>
               </Box>
 
@@ -265,20 +265,83 @@ const DeliveryTrackingT = () => {
               <Box
                 sx={{
                   width: { xs: "100%", md: "446px" }, // Responsive width
-                  height: "80px",
+                  height: "auto", // Adjust height based on content
                   border: "1px solid #F66F1E",
-                  backgroundColor: "#FBFBFB",
+                  borderRadius: "10px",
+                  backgroundColor: "#F5F5F5",
                   padding: "10px",
                   marginTop: "10px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
+                  gap: "8px", // Adds space between text lines
                 }}
               >
-                <Typography variant="body2">
-                  4517 Washington Ave. Manchester, Kentucky 39495
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Flight Number:{" "}
+                  <span style={{ color: "#999999" }}>- A bag of Clothes</span>
                 </Typography>
-                <Typography variant="body2">Contact: +92 248 6798</Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Departure City: <span style={{ color: "#999999" }}>- </span>
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Destination City:{" "}
+                  <span style={{ color: "#999999" }}>
+                    - Shirts, Trousers and Leggings{" "}
+                  </span>
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Departure Date:{" "}
+                  <span style={{ color: "#999999" }}>- $30</span>
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Departure Date:{" "}
+                  <span style={{ color: "#999999" }}>- 20kg</span>
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Arrival Time: <span style={{ color: "#999999" }}>- </span>
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Boarding Time: <span style={{ color: "#999999" }}>- </span>
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Aline Name: <span style={{ color: "#999999" }}>-</span>
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#210947", fontWeight: "bold" }}
+                >
+                  Weight available for item:{" "}
+                  <span style={{ color: "#999999" }}>- </span>
+                </Typography>
               </Box>
             </Box>
           </Box>
