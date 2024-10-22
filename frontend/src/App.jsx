@@ -31,9 +31,17 @@ import UserV from "./components/UserV";
 import Result from "./components/Result"
 import FormLayOut from "./components/FormLayOut";
 import Admin from "./components/Admin";
-
+import User from "./components/User";
+import Settings from "./components/Settings"
 import TravelerProfile from "./components/TravelerProfile";
+import SenderMatch from "./components/SenderMatch";
+import TravelerMatched from "./components/TravelerMatched";
+import TravelerDelDetail from "./components/TravelerDelDetail";
+import DelDetail from "./components/DelDetail";
+import AdminDel from "./components/AdminDel";
+import AdminMessage from "./components/AdminMessage";
 import './App.css';
+
 
 const App = () => {
   return (
@@ -45,6 +53,14 @@ const App = () => {
         <Route path="/account-settings" element={<AccountSettingT />} />
         <Route path="/delivery-tracking" element={<DeliveryTrackingT />} />
         <Route path="/delivery-cancelled" element={<DeliveryCancelledT />} />
+        <Route path="/User" element={<User />} />
+        <Route path="/Settings" element={<Settings />} />
+        <Route path="/Admin-m" element={<AdminMessage />} />
+        <Route path="/Admin-l" element={<AdminDel />} />
+        <Route path="/dev-d" element={<DelDetail />} />
+        <Route path="/Tdev-d" element={<TravelerDelDetail />} />
+        <Route path="/Sender-M" element={<SenderMatch />} />
+        <Route path="/Traveler-M" element={<TravelerMatched />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/wallet" element={<Wallet />} />
         <Route path="/sender-p" element={<SenderProfile />} />
@@ -55,7 +71,6 @@ const App = () => {
         <Route path="/result" element={<Result />} />
         <Route path="/formlayout" element={<FormLayOut />} />
         <Route path="/main" element={<Delivery />} />
-
         <Route path="/traveler-p" element={<TravelerProfile />} />
         <Route path="/deliverycancelled" element={<DeliveryCancelled />} />
         <Route

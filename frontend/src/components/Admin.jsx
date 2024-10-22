@@ -23,15 +23,21 @@ import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications"; // Import the bell icon
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import homepp from "../assets/homepp.jpg";
+import joanna from "../assets/joanna.jpg"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import MessageIcon from "@mui/icons-material/Message";
+import test from "../assets/test.jpg";
 import leilaImg from "../assets/leila.jpg";
 import samImg from "../assets/sam.jpg";
 import johnImg from "../assets/john.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
-  // Placeholder click handlers (for navigation later)
-  const handleNavigation = (page) => {
-    console.log(`Navigating to ${page}...`);
+  const navigate = useNavigate(); // Initialize navigation hook
+
+  // Navigation handler
+  const handleNavigation = (path) => {
+    navigate(path); // Use path for navigation
   };
 
   return (
@@ -43,7 +49,7 @@ const Admin = () => {
         {/* Logo at the top */}
         <Box
           component="img"
-          src="/path-to-logo.png" // Update with your logo path
+          src={test} // Update with your logo path
           alt="Ladx Logo"
           sx={{
             width: "150px",
@@ -57,7 +63,7 @@ const Admin = () => {
         <Box
           sx={{
             backgroundColor: "#210947",
-            width: "226px",
+            width: { xs: "80px", sm: "226px" }, // Width changes based on screen size
             height: "100%",
             borderTopRightRadius: "80px",
             display: "flex",
@@ -71,61 +77,107 @@ const Admin = () => {
             {/* Home */}
             <ListItem
               button
-              onClick={() => handleNavigation("Home")}
+              onClick={() => handleNavigation("/admin")} // Navigate to admin
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
-              <ListItemIcon>
-                <HomeIcon sx={{ color: "#D3D3D3" }} />
+              <ListItemIcon
+                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+              >
+                <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText
+                primary="Home"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+              />
             </ListItem>
 
             {/* Orders */}
             <ListItem
               button
-              onClick={() => handleNavigation("Orders")}
+              onClick={() => handleNavigation("/admin-l")} // Navigate to admin-l
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
-              <ListItemIcon>
-                <LocalShippingIcon sx={{ color: "#D3D3D3" }} />
+              <ListItemIcon
+                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+              >
+                <LocalShippingIcon />
               </ListItemIcon>
-              <ListItemText primary="Orders" />
+              <ListItemText
+                primary="Orders"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+              />
             </ListItem>
 
             {/* Users */}
             <ListItem
               button
-              onClick={() => handleNavigation("Users")}
+              onClick={() => handleNavigation("/user")} // Navigate to user
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
-              <ListItemIcon>
-                <PersonIcon sx={{ color: "#D3D3D3" }} />
+              <ListItemIcon
+                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+              >
+                <PersonIcon />
               </ListItemIcon>
-              <ListItemText primary="Users" />
+              <ListItemText
+                primary="Users"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+              />
+            </ListItem>
+
+            {/* Message */}
+            <ListItem
+              button
+              onClick={() => handleNavigation("/admin-m")} // Navigate to admin-m
+              sx={{
+                "&:hover": { color: "#FFF" },
+                "&:active": { color: "#F66F1E" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
+              }}
+            >
+              <ListItemIcon
+                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+              >
+                <MessageIcon />{" "}
+                {/* Change this icon to your preferred text message icon */}
+              </ListItemIcon>
+              <ListItemText
+                primary="Messages"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+              />
             </ListItem>
 
             {/* Settings */}
             <ListItem
               button
-              onClick={() => handleNavigation("Settings")}
+              onClick={() => handleNavigation("/settings")} // Navigate to settings
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
-              <ListItemIcon>
-                <SettingsIcon sx={{ color: "#D3D3D3" }} />
+              <ListItemIcon
+                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+              >
+                <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary="Settings" />
+              <ListItemText
+                primary="Settings"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+              />
             </ListItem>
           </List>
 
@@ -133,16 +185,22 @@ const Admin = () => {
           <List sx={{ color: "#D3D3D3" }}>
             <ListItem
               button
-              onClick={() => handleNavigation("Logout")}
+              onClick={() => handleNavigation("/admin")} // Logout to admin page
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
-              <ListItemIcon>
-                <ExitToAppIcon sx={{ color: "#D3D3D3" }} />
+              <ListItemIcon
+                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+              >
+                <ExitToAppIcon />
               </ListItemIcon>
-              <ListItemText primary="Logout" />
+              <ListItemText
+                primary="Logout"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+              />
             </ListItem>
           </List>
         </Box>
@@ -752,10 +810,7 @@ const Admin = () => {
               }}
             >
               {/* Profile Image */}
-              <Avatar
-                src="/path/to/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
+              <Avatar src={samImg} sx={{ width: 40, height: 40 }} />
               <Typography
                 variant="body2"
                 sx={{ color: "#FF0000", marginTop: "5px" }}
@@ -837,10 +892,7 @@ const Admin = () => {
                 alignItems: "center",
               }}
             >
-              <Avatar
-                src="/path/to/other/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
+              <Avatar src={joanna} sx={{ width: 40, height: 40 }} />
               <Typography
                 variant="body2"
                 sx={{ color: "#FF0000", marginTop: "5px" }}
@@ -913,10 +965,7 @@ const Admin = () => {
               }}
             >
               {/* Profile Image */}
-              <Avatar
-                src="/path/to/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
+              <Avatar src={samImg} sx={{ width: 40, height: 40 }} />
               <Typography
                 variant="body2"
                 sx={{ color: "#FF0000", marginTop: "5px" }}
@@ -998,10 +1047,7 @@ const Admin = () => {
                 alignItems: "center",
               }}
             >
-              <Avatar
-                src="/path/to/other/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
+              <Avatar src={joanna} sx={{ width: 40, height: 40 }} />
               <Typography
                 variant="body2"
                 sx={{ color: "#FF0000", marginTop: "5px" }}
@@ -1074,10 +1120,7 @@ const Admin = () => {
               }}
             >
               {/* Profile Image */}
-              <Avatar
-                src="/path/to/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
+              <Avatar src={samImg} sx={{ width: 40, height: 40 }} />
               <Typography
                 variant="body2"
                 sx={{ color: "#FF0000", marginTop: "5px" }}
@@ -1159,10 +1202,7 @@ const Admin = () => {
                 alignItems: "center",
               }}
             >
-              <Avatar
-                src="/path/to/other/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
+              <Avatar src={joanna} sx={{ width: 40, height: 40 }} />
               <Typography
                 variant="body2"
                 sx={{ color: "#FF0000", marginTop: "5px" }}
@@ -1194,7 +1234,8 @@ const Admin = () => {
             Item(s): iPhone 12, Hand Fan, Dell Laptop
           </Typography>
         </Box>
-        {/* New Box Below the Heading */}
+
+        {/* New Box Below the Heading
         <Box
           sx={{
             backgroundColor: "white",
@@ -1209,7 +1250,7 @@ const Admin = () => {
           }}
         >
           {/* Top Section with Time Left */}
-          <Typography
+        {/* <Typography
             variant="body1"
             sx={{ textAlign: "center", marginBottom: "10px" }}
           >
@@ -1217,7 +1258,7 @@ const Admin = () => {
           </Typography>
 
           {/* From and To Section */}
-          <Box
+        {/* <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -1225,17 +1266,17 @@ const Admin = () => {
               width: "100%",
               position: "relative",
             }}
-          >
-            {/* Left Side */}
-            <Box
+          >  */}
+        {/* Left Side */}
+        {/* <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
               }}
-            >
-              {/* Profile Image */}
-              <Avatar
+            > */}
+        {/* Profile Image */}
+        {/* <Avatar
                 src="/path/to/profile/image.jpg"
                 sx={{ width: 40, height: 40 }}
               />
@@ -1244,10 +1285,10 @@ const Admin = () => {
                 sx={{ color: "#FF0000", marginTop: "5px" }}
               >
                 Sender
-              </Typography>
+              </Typography> */}
 
-              {/* From Section */}
-              <Typography
+        {/* From Section */}
+        {/* <Typography
                 variant="body2"
                 sx={{ color: "black", textAlign: "center" }}
               >
@@ -1259,10 +1300,10 @@ const Admin = () => {
               >
                 Canada
               </Typography>
-            </Box>
+            </Box> */}
 
-            {/* Center Circle and Horizontal Lines */}
-            <Box
+        {/* Center Circle and Horizontal Lines */}
+        {/* <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -1310,10 +1351,10 @@ const Admin = () => {
               >
                 &gt;
               </Typography>
-            </Box>
+            </Box> */}
 
-            {/* Right Side */}
-            <Box
+        {/* Right Side */}
+        {/* <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -1332,7 +1373,7 @@ const Admin = () => {
               </Typography>
 
               {/* To Section */}
-              <Typography
+        {/* <Typography
                 variant="body2"
                 sx={{ color: "black", textAlign: "center" }}
               >
@@ -1345,18 +1386,18 @@ const Admin = () => {
                 Kenya
               </Typography>
             </Box>
-          </Box>
+          </Box> */}
 
-          {/* Item(s) Section */}
-          <Typography
+        {/* Item(s) Section */}
+        {/* <Typography
             variant="body2"
             sx={{ textAlign: "center", marginTop: "10px" }}
           >
             Item(s): iPhone 12, Hand Fan, Dell Laptop
           </Typography>
-        </Box>
+        </Box> */}
         {/* New Box Below the Heading */}
-        <Box
+        {/* <Box
           sx={{
             backgroundColor: "white",
             width: "100%", // Keep it within the container
@@ -1370,7 +1411,7 @@ const Admin = () => {
           }}
         >
           {/* Top Section with Time Left */}
-          <Typography
+        {/* <Typography
             variant="body1"
             sx={{ textAlign: "center", marginBottom: "10px" }}
           >
@@ -1378,7 +1419,7 @@ const Admin = () => {
           </Typography>
 
           {/* From and To Section */}
-          <Box
+        {/* <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -1386,17 +1427,17 @@ const Admin = () => {
               width: "100%",
               position: "relative",
             }}
-          >
-            {/* Left Side */}
-            <Box
+          >  */}
+        {/* Left Side */}
+        {/* <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
               }}
-            >
-              {/* Profile Image */}
-              <Avatar
+            > */}
+        {/* Profile Image */}
+        {/* <Avatar
                 src="/path/to/profile/image.jpg"
                 sx={{ width: 40, height: 40 }}
               />
@@ -1405,10 +1446,10 @@ const Admin = () => {
                 sx={{ color: "#FF0000", marginTop: "5px" }}
               >
                 Sender
-              </Typography>
+              </Typography> */}
 
-              {/* From Section */}
-              <Typography
+        {/* From Section */}
+        {/* <Typography
                 variant="body2"
                 sx={{ color: "black", textAlign: "center" }}
               >
@@ -1420,10 +1461,10 @@ const Admin = () => {
               >
                 Canada
               </Typography>
-            </Box>
+            </Box> */}
 
-            {/* Center Circle and Horizontal Lines */}
-            <Box
+        {/* Center Circle and Horizontal Lines */}
+        {/* <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -1471,10 +1512,10 @@ const Admin = () => {
               >
                 &gt;
               </Typography>
-            </Box>
+            </Box> */}
 
-            {/* Right Side */}
-            <Box
+        {/* Right Side */}
+        {/* <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -1490,10 +1531,10 @@ const Admin = () => {
                 sx={{ color: "#FF0000", marginTop: "5px" }}
               >
                 Traveler
-              </Typography>
+              </Typography> */}
 
-              {/* To Section */}
-              <Typography
+        {/* To Section */}
+        {/* <Typography
                 variant="body2"
                 sx={{ color: "black", textAlign: "center" }}
               >
@@ -1506,16 +1547,16 @@ const Admin = () => {
                 Kenya
               </Typography>
             </Box>
-          </Box>
+          </Box> */}
 
-          {/* Item(s) Section */}
-          <Typography
+        {/* Item(s) Section */}
+        {/* <Typography
             variant="body2"
             sx={{ textAlign: "center", marginTop: "10px" }}
           >
             Item(s): iPhone 12, Hand Fan, Dell Laptop
           </Typography>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );
