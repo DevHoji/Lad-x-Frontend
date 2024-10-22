@@ -202,7 +202,7 @@ const AdminDel = () => {
           <List sx={{ color: "#D3D3D3" }}>
             <ListItem
               button
-              onClick={() => handleNavigation("/logout")}
+              onClick={() => handleNavigation("/admin")}
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
@@ -546,6 +546,7 @@ const AdminDel = () => {
                         height: "auto", // Adjust height for small screens
                       },
                     }}
+                    onClick={() => navigate("/Tdev-d")}
                   >
                     {/* Profile Image */}
                     <Box

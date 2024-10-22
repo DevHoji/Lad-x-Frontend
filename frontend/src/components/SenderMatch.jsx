@@ -31,6 +31,7 @@ import van from "../assets/Van.jpg";
 import { ArrowBack } from "@mui/icons-material"; // Arrow back icon
 import { useNavigate } from "react-router-dom";
 import NotificationsIcon from "@mui/icons-material/Notifications"; // Bell Icon
+import MessageIcon from "@mui/icons-material/Message";
 import susa from "../assets/susa.jpg";
 import men from "../assets/men.jpg";
 import af from "../assets/af.jpg";
@@ -46,7 +47,7 @@ const SenderMatch = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "#F5F5F5" }}>
+    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "#FFF" }}>
       {/* Sidebar with logo */}
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -68,7 +69,7 @@ const SenderMatch = () => {
         <Box
           sx={{
             backgroundColor: "#210947",
-            width: { xs: "80px", sm: "226px" }, // Responsive width
+            width: { xs: "80px", sm: "226px" }, // Width changes based on screen size
             height: "100%",
             borderTopRightRadius: "80px",
             display: "flex",
@@ -82,11 +83,11 @@ const SenderMatch = () => {
             {/* Home */}
             <ListItem
               button
-              onClick={() => handleNavigation("/user")}
+              onClick={() => handleNavigation("/admin")} // Navigate to admin
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -96,18 +97,18 @@ const SenderMatch = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Home"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Orders */}
             <ListItem
               button
-              onClick={() => handleNavigation("/admin-l")}
+              onClick={() => handleNavigation("/admin-l")} // Navigate to admin-l
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -117,18 +118,18 @@ const SenderMatch = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Orders"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Users */}
             <ListItem
               button
-              onClick={() => handleNavigation("/user")}
+              onClick={() => handleNavigation("/user")} // Navigate to user
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -138,39 +139,40 @@ const SenderMatch = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Users"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Message */}
             <ListItem
               button
-              onClick={() => handleNavigation("/admin-m")}
+              onClick={() => handleNavigation("/admin-m")} // Navigate to admin-m
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
                 sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
               >
-                <TextsmsIcon /> {/* Updated to Text Message Icon */}
+                <MessageIcon />{" "}
+                {/* Change this icon to your preferred text message icon */}
               </ListItemIcon>
               <ListItemText
-                primary="Message"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                primary="Messages"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Settings */}
             <ListItem
               button
-              onClick={() => handleNavigation("/settings")}
+              onClick={() => handleNavigation("/settings")} // Navigate to settings
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -180,7 +182,7 @@ const SenderMatch = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Settings"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
           </List>
@@ -189,11 +191,11 @@ const SenderMatch = () => {
           <List sx={{ color: "#D3D3D3" }}>
             <ListItem
               button
-              onClick={() => handleNavigation("/logout")}
+              onClick={() => handleNavigation("/admin")} // Logout to admin page
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -203,28 +205,27 @@ const SenderMatch = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Logout"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
           </List>
         </Box>
       </Box>
-
-      {/* User Info Box */}
       <Box
         sx={{
           position: "absolute",
-          top: "20px",
-          right: "20px",
-          width: "380px",
-          height: "99px",
+          top: isMobile ? "10px" : "20px", // Adjust top position for mobile
+          right: isMobile ? "10px" : "20px", // Adjust right position for mobile
+          width: isMobile ? "95%" : "380px", // Make box take full width on mobile
+          height: isMobile ? "auto" : "99px", // Adjust height for mobile
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
           boxShadow: 1,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center", // Center content horizontally
-          padding: "10px",
+          justifyContent: "space-between", // Adjust layout on mobile
+          padding: isMobile ? "8px" : "10px", // Adjust padding for mobile
+          flexDirection: isMobile ? "column" : "row", // Stack content vertically on mobile
         }}
       >
         {/* Bell Icon with Green Dot */}
@@ -237,31 +238,42 @@ const SenderMatch = () => {
             horizontal: "right",
           }}
           sx={{
-            marginRight: "2px", // Reduced space between bell and name
+            marginRight: isMobile ? "0" : "8px", // Remove margin on mobile
           }}
         >
           <Box
             sx={{
               backgroundColor: "#210947",
               borderRadius: "50%",
-              width: "40px",
-              height: "40px",
+              width: isMobile ? "30px" : "40px", // Reduce size on mobile
+              height: isMobile ? "30px" : "40px", // Reduce size on mobile
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <NotificationsIcon sx={{ color: "#FFFFFF" }} />
+            <NotificationsIcon
+              sx={{ color: "#FFFFFF", fontSize: isMobile ? "18px" : "24px" }}
+            />
           </Box>
         </Badge>
 
         {/* Name */}
-        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "center" }}>
+        <Typography
+          variant={isMobile ? "body1" : "h6"}
+          sx={{
+            flexGrow: 1,
+            textAlign: "center",
+            marginTop: isMobile ? "10px" : "0", // Add margin on mobile
+          }}
+        >
           Sam Adeniyi
-          {/* Admin text below the name */}
           <Typography
             variant="body2"
-            sx={{ textAlign: "center", marginTop: "2px" }} // Reduced margin above Admin text
+            sx={{
+              textAlign: "center",
+              marginTop: isMobile ? "4px" : "2px", // Adjust margin for mobile
+            }}
           >
             Admin
           </Typography>
@@ -272,20 +284,29 @@ const SenderMatch = () => {
           sx={{
             backgroundColor: "#210947",
             borderRadius: "4px",
-            width: "24px",
-            height: "24px",
+            width: isMobile ? "20px" : "24px", // Adjust size for mobile
+            height: isMobile ? "20px" : "24px", // Adjust size for mobile
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginLeft: "2px", // Reduced space between name and person icon
+            marginLeft: isMobile ? "0" : "8px", // Adjust margin for mobile
           }}
         >
-          <PersonIcon sx={{ color: "#FFFFFF", fontSize: "16px" }} />
+          <PersonIcon
+            sx={{ color: "#FFFFFF", fontSize: isMobile ? "14px" : "16px" }}
+          />
         </Box>
       </Box>
 
       {/* Main content section with original styles */}
-      <Box sx={{ padding: "10px", marginLeft: "80px", flexGrow: 1 }}>
+      <Box
+        sx={{
+          color: "#FFFFFF",
+          padding: "10px",
+          marginLeft: "80px",
+          flexGrow: 1,
+        }}
+      >
         {/* Back Arrow and Request Delivery text */}
         <Box
           sx={{
@@ -327,27 +348,24 @@ const SenderMatch = () => {
             alignItems: "center",
             justifyContent: "space-between",
             padding: "10px",
-            flexDirection: "row",
+            flexDirection: { xs: "column", sm: "row" }, // Stacks content vertically on small screens
+            height: { xs: "auto", sm: "200px" }, // Adjust height for small screens
             "&:hover": {
               cursor: "pointer", // Change cursor on hover
-              boxShadow: "0 0 10px rgba(0,0,0,0.3)", // Optional: add hover effect
-            },
-            "@media (max-width: 600px)": {
-              flexDirection: "column",
-              height: "auto", // Adjust height for small screens
+              boxShadow: "0 0 10px rgba(0,0,0,0.3)", // Optional hover effect
             },
           }}
         >
           {/* Profile Image */}
           <Box
             component="img"
-            src={susa} // Replace with the actual path
+            src={susa} // Replace with actual path
             alt="Profile"
             sx={{
               width: "60px",
               height: "60px",
               borderRadius: "50%",
-              marginBottom: { xs: "10px", sm: "0" },
+              marginBottom: { xs: "10px", sm: "0" }, // Adds margin below image on small screens
             }}
           />
 
@@ -357,10 +375,8 @@ const SenderMatch = () => {
               display: "flex",
               flexDirection: "column",
               width: "100%",
-              marginLeft: "25px",
-              "@media (max-width: 600px)": {
-                textAlign: "center", // Center text on small screens
-              },
+              marginLeft: { xs: "0", sm: "25px" }, // Adjust left margin for larger screens
+              textAlign: { xs: "center", sm: "left" }, // Center text on small screens
             }}
           >
             <Typography
@@ -369,23 +385,25 @@ const SenderMatch = () => {
             >
               Susan Sandra
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: { xs: "center", sm: "flex-start" },
+                gap: "5px",
+                flexWrap: { xs: "wrap", sm: "nowrap" },
+              }}
+            >
               <Typography variant="body2" sx={{ color: "black" }}>
                 iPhone XR
               </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{ display: "inline", color: "black" }}
-              >
+              <Typography variant="body2" sx={{ color: "black" }}>
                 <span style={{ color: "#28A745", marginRight: "5px" }}>•</span>
                 HP Laptop
               </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{ display: "inline", color: "black" }}
-              >
+              <Typography variant="body2" sx={{ color: "black" }}>
                 <span style={{ color: "#28A745", marginRight: "5px" }}>•</span>
                 Hand Fan
               </Typography>
@@ -396,10 +414,8 @@ const SenderMatch = () => {
               sx={{
                 display: "flex",
                 alignItems: "center",
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center profile details on small screens
                 marginTop: "5px",
-                "@media (max-width: 600px)": {
-                  justifyContent: "center", // Center profile details on small screens
-                },
               }}
             >
               <Typography

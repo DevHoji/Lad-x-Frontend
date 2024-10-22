@@ -33,6 +33,7 @@ import susa from "../assets/susa.jpg";
 import men from "../assets/men.jpg";
 import af from "../assets/af.jpg";
 import test from "../assets/test.jpg"; 
+
 const DelDetail = () => {
   const [selectedTab, setSelectedTab] = useState("senders");
   const theme = useTheme();
@@ -204,7 +205,7 @@ const DelDetail = () => {
           <List sx={{ color: "#D3D3D3" }}>
             <ListItem
               button
-              onClick={() => handleNavigation("/logout")}
+              onClick={() => handleNavigation("/admin")}
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },

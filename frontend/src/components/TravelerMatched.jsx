@@ -190,7 +190,7 @@ const TravelerMatched = () => {
           <List sx={{ color: "#D3D3D3" }}>
             <ListItem
               button
-              onClick={() => handleNavigation("/logout")}
+              onClick={() => handleNavigation("/admin")}
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },

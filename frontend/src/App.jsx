@@ -40,6 +40,7 @@ import TravelerDelDetail from "./components/TravelerDelDetail";
 import DelDetail from "./components/DelDetail";
 import AdminDel from "./components/AdminDel";
 import AdminMessage from "./components/AdminMessage";
+import AdminProfile from "./components/AdminProfile";
 import './App.css';
 
 
@@ -57,6 +58,7 @@ const App = () => {
         <Route path="/Settings" element={<Settings />} />
         <Route path="/Admin-m" element={<AdminMessage />} />
         <Route path="/Admin-l" element={<AdminDel />} />
+        <Route path="/Admin-p" element={<AdminProfile />} />
         <Route path="/dev-d" element={<DelDetail />} />
         <Route path="/Tdev-d" element={<TravelerDelDetail />} />
         <Route path="/Sender-M" element={<SenderMatch />} />
