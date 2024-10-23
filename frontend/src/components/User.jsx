@@ -28,8 +28,8 @@ import handpp from "../assets/handpp.jpg";
 import van from "../assets/Van.jpg"; 
 import susa from "../assets/susa.jpg";
 import men from "../assets/men.jpg";
-import af from "../assets/af.jpg";
 import test from "../assets/test.jpg";
+import mes from "../assets/mes.jpg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const User = () => {
@@ -47,7 +47,7 @@ const User = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "#F5F5F5" }}>
+    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "white" }}>
       {/* Sidebar with logo */}
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -55,7 +55,7 @@ const User = () => {
         {/* Logo at the top */}
         <Box
           component="img"
-          src="/path-to-logo.png" // Update with your logo path
+          src={test} // Update with your logo path
           alt="Ladx Logo"
           sx={{
             width: "150px",
@@ -212,22 +212,22 @@ const User = () => {
       </Box>
 
       {/* Main content section */}
-
       {/* User Info Box */}
       <Box
         sx={{
           position: "absolute",
           top: "20px",
           right: "20px",
-          width: "380px",
+          width: { xs: "300px", sm: "380px" }, // Fixed width for small screens and up
           height: "99px",
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
           boxShadow: 1,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center", // Center content horizontally
+          justifyContent: "space-between", // Keep space between items
           padding: "10px",
+          boxSizing: "border-box", // Include padding in box size
         }}
       >
         {/* Bell Icon with Green Dot */}
@@ -259,16 +259,33 @@ const User = () => {
         </Badge>
 
         {/* Name */}
-        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "center" }}>
-          Sam Adeniyi
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center", // Center items in the column
+            justifyContent: "center",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{ textAlign: "center", fontSize: { xs: "0.9rem", sm: "1rem" } }}
+          >
+            Sam Adeniyi
+          </Typography>
           {/* Admin text below the name */}
           <Typography
             variant="body2"
-            sx={{ textAlign: "center", marginTop: "2px" }} // Reduced margin above Admin text
+            sx={{
+              textAlign: "center",
+              marginTop: "2px",
+              fontSize: { xs: "0.7rem", sm: "0.8rem" },
+            }} // Adjusted font size for small screens
           >
             Admin
           </Typography>
-        </Typography>
+        </Box>
 
         {/* Small person icon to the right of the name */}
         <Box
@@ -286,6 +303,7 @@ const User = () => {
           <PersonIcon sx={{ color: "#FFFFFF", fontSize: "16px" }} />
         </Box>
       </Box>
+
       <Box
         sx={{
           flexGrow: 1,
@@ -380,7 +398,7 @@ const User = () => {
                 {/* Profile Image */}
                 <Box
                   component="img"
-                  src={susa} // Replace with actual path
+                  src={mes} // Replace with actual path
                   alt="Profile"
                   sx={{
                     width: "60px",
@@ -511,7 +529,7 @@ const User = () => {
                   {/* Profile Image */}
                   <Box
                     component="img"
-                    src={susa} // Replace with actual path
+                    src={mes} // Replace with actual path
                     alt="Profile"
                     sx={{
                       width: "60px",
@@ -639,7 +657,7 @@ const User = () => {
                   {/* Profile Image */}
                   <Box
                     component="img"
-                    src={susa} // Replace with actual path
+                    src={mes} // Replace with actual path
                     alt="Profile"
                     sx={{
                       width: "60px",
@@ -770,7 +788,7 @@ const User = () => {
                   {/* Profile Image */}
                   <Box
                     component="img"
-                    src={susa} // Replace with actual path
+                    src={mes} // Replace with actual path
                     alt="Profile"
                     sx={{
                       width: "60px",
@@ -898,7 +916,7 @@ const User = () => {
                   {/* Profile Image */}
                   <Box
                     component="img"
-                    src={susa} // Replace with actual path
+                    src={mes} // Replace with actual path
                     alt="Profile"
                     sx={{
                       width: "60px",
@@ -1026,7 +1044,7 @@ const User = () => {
                   {/* Profile Image */}
                   <Box
                     component="img"
-                    src={susa} // Replace with actual path
+                    src={mes} // Replace with actual path
                     alt="Profile"
                     sx={{
                       width: "60px",

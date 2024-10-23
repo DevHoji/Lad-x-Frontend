@@ -42,7 +42,7 @@ const Admin = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "#F5F5F5" }}>
+    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "white" }}>
       {/* Sidebar with logo */}
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -240,16 +240,11 @@ const Admin = () => {
                     {/* Content for first box */}
                     <Box sx={{ display: "flex", alignItems: "center" }}>
                       {/* Overlapping profile images */}
-                      <Box
-                        sx={{
-                          display: "flex",
-                          position: "relative",
-                          marginRight: "10px",
-                        }}
-                      >
+                      <Box sx={{ position: "relative", width: 50, height: 30 }}>
+                        {/* First Image */}
                         <Box
                           component="img"
-                          src={homepp}
+                          src={johnImg} // Replace with your first image src
                           sx={{
                             width: 30,
                             height: 30,
@@ -257,33 +252,41 @@ const Admin = () => {
                             border: "2px solid white",
                             position: "absolute",
                             left: 0,
+                            zIndex: 3, // Make this the top image
                           }}
                         />
+
+                        {/* Second Image */}
                         <Box
                           component="img"
-                          src={homepp}
+                          src={leilaImg} // Replace with your second image src
                           sx={{
                             width: 30,
                             height: 30,
                             borderRadius: "50%",
                             border: "2px solid white",
                             position: "absolute",
-                            left: 15,
+                            left: 10, // Closer overlap, reduced to 10px
+                            zIndex: 2, // Layer it below the first image
                           }}
                         />
+
+                        {/* Third Image */}
                         <Box
                           component="img"
-                          src={homepp}
+                          src={johnImg} // Replace with your third image src
                           sx={{
                             width: 30,
                             height: 30,
                             borderRadius: "50%",
                             border: "2px solid white",
                             position: "absolute",
-                            left: 30,
+                            left: 20, // Closer overlap, reduced to 20px
+                            zIndex: 1, // Layer it below the second image
                           }}
                         />
                       </Box>
+
                       {/* Text next to images */}
                       <Typography
                         variant="body2"
@@ -338,18 +341,55 @@ const Admin = () => {
                           }}
                         />
                         <Box
-                          component="img"
-                          src={homepp}
-                          sx={{
-                            width: 30,
-                            height: 30,
-                            borderRadius: "50%",
-                            border: "2px solid white",
-                            position: "absolute",
-                            left: 30,
-                          }}
-                        />
+                          sx={{ position: "relative", width: 50, height: 30 }}
+                        >
+                          {/* First Image */}
+                          <Box
+                            component="img"
+                            src={johnImg} // Replace with your first image src
+                            sx={{
+                              width: 30,
+                              height: 30,
+                              borderRadius: "50%",
+                              border: "2px solid white",
+                              position: "absolute",
+                              left: 0,
+                              zIndex: 3, // Make this the top image
+                            }}
+                          />
+
+                          {/* Second Image */}
+                          <Box
+                            component="img"
+                            src={leilaImg} // Replace with your second image src
+                            sx={{
+                              width: 30,
+                              height: 30,
+                              borderRadius: "50%",
+                              border: "2px solid white",
+                              position: "absolute",
+                              left: 10, // Closer overlap, reduced to 10px
+                              zIndex: 2, // Layer it below the first image
+                            }}
+                          />
+
+                          {/* Third Image */}
+                          <Box
+                            component="img"
+                            src={johnImg} // Replace with your third image src
+                            sx={{
+                              width: 30,
+                              height: 30,
+                              borderRadius: "50%",
+                              border: "2px solid white",
+                              position: "absolute",
+                              left: 20, // Closer overlap, reduced to 20px
+                              zIndex: 1, // Layer it below the second image
+                            }}
+                          />
+                        </Box>
                       </Box>
+
                       {/* Text next to images */}
                       <Typography
                         variant="body2"
@@ -637,7 +677,7 @@ const Admin = () => {
       {/* Main content box on the far right */}
       <Box
         sx={{
-          backgroundColor: "#F5F5F5",
+          backgroundColor: "white",
           width: "400px", // Adjust the width as needed
           height: "100vh", // Ensure it goes to the bottom of the page
           borderRadius: "8px",
@@ -925,6 +965,7 @@ const Admin = () => {
             Item(s): iPhone 12, Hand Fan, Dell Laptop
           </Typography>
         </Box>
+
         {/* New Box Below the Heading */}
         <Box
           sx={{

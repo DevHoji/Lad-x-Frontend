@@ -229,15 +229,16 @@ const TravelerDelDetail = () => {
           position: "absolute",
           top: "20px",
           right: "20px",
-          width: "380px",
+          width: { xs: "300px", sm: "380px" }, // Fixed width for small screens and up
           height: "99px",
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
           boxShadow: 1,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center", // Center content horizontally
+          justifyContent: "space-between", // Keep space between items
           padding: "10px",
+          boxSizing: "border-box", // Include padding in box size
         }}
       >
         {/* Bell Icon with Green Dot */}
@@ -269,16 +270,33 @@ const TravelerDelDetail = () => {
         </Badge>
 
         {/* Name */}
-        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "center" }}>
-          Sam Adeniyi
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center", // Center items in the column
+            justifyContent: "center",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{ textAlign: "center", fontSize: { xs: "0.9rem", sm: "1rem" } }}
+          >
+            Sam Adeniyi
+          </Typography>
           {/* Admin text below the name */}
           <Typography
             variant="body2"
-            sx={{ textAlign: "center", marginTop: "2px" }} // Reduced margin above Admin text
+            sx={{
+              textAlign: "center",
+              marginTop: "2px",
+              fontSize: { xs: "0.7rem", sm: "0.8rem" },
+            }} // Adjusted font size for small screens
           >
             Admin
           </Typography>
-        </Typography>
+        </Box>
 
         {/* Small person icon to the right of the name */}
         <Box
@@ -296,6 +314,7 @@ const TravelerDelDetail = () => {
           <PersonIcon sx={{ color: "#FFFFFF", fontSize: "16px" }} />
         </Box>
       </Box>
+
       <Box
         sx={{
           flexGrow: 1,

@@ -211,21 +211,22 @@ const SenderMatch = () => {
           </List>
         </Box>
       </Box>
+      {/* User Info Box */}
       <Box
         sx={{
           position: "absolute",
-          top: isMobile ? "10px" : "20px", // Adjust top position for mobile
-          right: isMobile ? "10px" : "20px", // Adjust right position for mobile
-          width: isMobile ? "95%" : "380px", // Make box take full width on mobile
-          height: isMobile ? "auto" : "99px", // Adjust height for mobile
+          top: "20px",
+          right: "20px",
+          width: { xs: "300px", sm: "380px" }, // Fixed width for small screens and up
+          height: "99px",
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
           boxShadow: 1,
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between", // Adjust layout on mobile
-          padding: isMobile ? "8px" : "10px", // Adjust padding for mobile
-          flexDirection: isMobile ? "column" : "row", // Stack content vertically on mobile
+          justifyContent: "space-between", // Keep space between items
+          padding: "10px",
+          boxSizing: "border-box", // Include padding in box size
         }}
       >
         {/* Bell Icon with Green Dot */}
@@ -238,63 +239,67 @@ const SenderMatch = () => {
             horizontal: "right",
           }}
           sx={{
-            marginRight: isMobile ? "0" : "8px", // Remove margin on mobile
+            marginRight: "2px", // Reduced space between bell and name
           }}
         >
           <Box
             sx={{
               backgroundColor: "#210947",
               borderRadius: "50%",
-              width: isMobile ? "30px" : "40px", // Reduce size on mobile
-              height: isMobile ? "30px" : "40px", // Reduce size on mobile
+              width: "40px",
+              height: "40px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <NotificationsIcon
-              sx={{ color: "#FFFFFF", fontSize: isMobile ? "18px" : "24px" }}
-            />
+            <NotificationsIcon sx={{ color: "#FFFFFF" }} />
           </Box>
         </Badge>
 
         {/* Name */}
-        <Typography
-          variant={isMobile ? "body1" : "h6"}
+        <Box
           sx={{
             flexGrow: 1,
-            textAlign: "center",
-            marginTop: isMobile ? "10px" : "0", // Add margin on mobile
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center", // Center items in the column
+            justifyContent: "center",
           }}
         >
-          Sam Adeniyi
+          <Typography
+            variant="h6"
+            sx={{ textAlign: "center", fontSize: { xs: "0.9rem", sm: "1rem" } }}
+          >
+            Sam Adeniyi
+          </Typography>
+          {/* Admin text below the name */}
           <Typography
             variant="body2"
             sx={{
               textAlign: "center",
-              marginTop: isMobile ? "4px" : "2px", // Adjust margin for mobile
-            }}
+              marginTop: "2px",
+              fontSize: { xs: "0.7rem", sm: "0.8rem" },
+            }} // Adjusted font size for small screens
           >
             Admin
           </Typography>
-        </Typography>
+        </Box>
 
         {/* Small person icon to the right of the name */}
         <Box
           sx={{
             backgroundColor: "#210947",
             borderRadius: "4px",
-            width: isMobile ? "20px" : "24px", // Adjust size for mobile
-            height: isMobile ? "20px" : "24px", // Adjust size for mobile
+            width: "24px",
+            height: "24px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginLeft: isMobile ? "0" : "8px", // Adjust margin for mobile
+            marginLeft: "2px", // Reduced space between name and person icon
           }}
         >
-          <PersonIcon
-            sx={{ color: "#FFFFFF", fontSize: isMobile ? "14px" : "16px" }}
-          />
+          <PersonIcon sx={{ color: "#FFFFFF", fontSize: "16px" }} />
         </Box>
       </Box>
 

@@ -25,38 +25,87 @@ import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search"; 
 import samImg from "../assets/sam.jpg";
 import johnImg from "../assets/john.jpg";
+import test from "../assets/test.jpg";
+import joanna from "../assets/joanna.jpg";
+import men from "../assets/men.jpg";
+import susan from "../assets/susa.jpg";
+import leila from "../assets/leila.jpg"; // Import image for Alex
+import john from "../assets/john.jpg"; // Import image for Emily
+
+const users = [
+  {
+    id: 1,
+    name: "Admin",
+    lastMessageTime: "4:12 PM",
+    lastMessage: "The traveler is close to...",
+    unreadMessages: 1,
+    image: joanna,
+  },
+  {
+    id: 2,
+    name: "User1",
+    lastMessageTime: "3:30 PM",
+    lastMessage: "Looking forward to the delivery.",
+    unreadMessages: 2,
+    image: men,
+  },
+  {
+    id: 3,
+    name: "User2",
+    lastMessageTime: "2:45 PM",
+    lastMessage: "What time will it arrive?",
+    unreadMessages: 0,
+    image: susan,
+  },
+  {
+    id: 4,
+    name: "Alex",
+    lastMessageTime: "1:30 PM",
+    lastMessage: "I need an update on my order.",
+    unreadMessages: 1,
+    image: leila, // Image for Alex
+  },
+  {
+    id: 5,
+    name: "Emily",
+    lastMessageTime: "12:15 PM",
+    lastMessage: "Can you confirm the delivery date?",
+    unreadMessages: 0,
+    image: john, // Image for Emily
+  },
+];
 
 const AdminMessage = () => {
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("senders");
-   const [isChatVisible, setIsChatVisible] = useState(false);
-   const [unreadMessages, setUnreadMessages] = useState(1);
-   const [messages, setMessages] = useState([]);
-   const [inputValue, setInputValue] = useState("");
+  const [isChatVisible, setIsChatVisible] = useState(false);
+  const [currentChatUser, setCurrentChatUser] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-   const handleUserClick = () => {
-     setIsChatVisible(true);
-     setUnreadMessages(0);
-   };
+  const handleUserClick = (user) => {
+    setIsChatVisible(true);
+    setCurrentChatUser(user);
+  };
 
-   const handleBackClick = () => {
-     setIsChatVisible(false); // Return to the left side
-   };
+  const handleBackClick = () => {
+    setIsChatVisible(false);
+  };
 
-   const handleSendMessage = () => {
-     if (inputValue.trim()) {
-       setMessages([...messages, { text: inputValue, sender: "User" }]);
-       setInputValue("");
-     }
-   };
-  // Navigation handler
+  const handleSendMessage = () => {
+    if (inputValue.trim()) {
+      setMessages([...messages, { text: inputValue, sender: "User" }]);
+      setInputValue("");
+    }
+  };
+
   const handleNavigation = (path) => {
     navigate(path);
   };
+
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
   };
-
   return (
     <Box sx={{ display: "flex", height: "100vh", backgroundColor: "white" }}>
       {/* Sidebar with logo */}
@@ -66,7 +115,7 @@ const AdminMessage = () => {
         {/* Logo at the top */}
         <Box
           component="img"
-          src="/path-to-logo.png" // Update with your logo path
+          src={test} // Update with your logo path
           alt="Ladx Logo"
           sx={{
             width: "150px",
@@ -230,15 +279,16 @@ const AdminMessage = () => {
           position: "absolute",
           top: "20px",
           right: "20px",
-          width: "380px",
+          width: { xs: "300px", sm: "380px" }, // Fixed width for small screens and up
           height: "99px",
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
           boxShadow: 1,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center", // Center content horizontally
+          justifyContent: "space-between", // Keep space between items
           padding: "10px",
+          boxSizing: "border-box", // Include padding in box size
         }}
       >
         {/* Bell Icon with Green Dot */}
@@ -270,16 +320,33 @@ const AdminMessage = () => {
         </Badge>
 
         {/* Name */}
-        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "center" }}>
-          Sam Adeniyi
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center", // Center items in the column
+            justifyContent: "center",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{ textAlign: "center", fontSize: { xs: "0.9rem", sm: "1rem" } }}
+          >
+            Sam Adeniyi
+          </Typography>
           {/* Admin text below the name */}
           <Typography
             variant="body2"
-            sx={{ textAlign: "center", marginTop: "2px" }} // Reduced margin above Admin text
+            sx={{
+              textAlign: "center",
+              marginTop: "2px",
+              fontSize: { xs: "0.7rem", sm: "0.8rem" },
+            }} // Adjusted font size for small screens
           >
             Admin
           </Typography>
-        </Typography>
+        </Box>
 
         {/* Small person icon to the right of the name */}
         <Box
@@ -297,6 +364,7 @@ const AdminMessage = () => {
           <PersonIcon sx={{ color: "#FFFFFF", fontSize: "16px" }} />
         </Box>
       </Box>
+
       <Box
         sx={{
           flexGrow: 1,
@@ -370,154 +438,25 @@ const AdminMessage = () => {
           {/* Tab Content */}
           {selectedTab === "senders" ? (
             <Box sx={{ padding: "10px" }}>
-              {/* Left Side */}
-              <Box
-                sx={{
-                  display: isChatVisible ? "none" : "flex", // Hide left side when chat is visible
-                  flexDirection: "column",
-                  width: { xs: "100%", md: "50%" },
-                  paddingRight: { xs: "10px", md: "20px" },
-                  transition: "all 0.3s ease", // Smooth transition when collapsing
-                }}
-              >
-                {/* Message Text Section */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    padding: { xs: "10px", md: "20px" },
-                  }}
-                >
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontWeight: "bold",
-                      textAlign: "left",
-                      fontSize: { xs: "24px", md: "32px" },
-                    }}
-                  >
-                    Messages
-                  </Typography>
-                </Box>
-
-                {/* Profile and Message Details Section */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    padding: { xs: "10px 0", md: "20px 0" },
-                    alignItems: "flex-start",
-                  }}
-                >
-                  {/* Profile Image, Name, and Time */}
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "16px",
-                      cursor: "pointer",
-                      padding: "12px", // Add padding for touch targets
-                      borderRadius: "8px", // Slight rounding for a modern look
-                      "&:hover": {
-                        backgroundColor: "#F5F5F5", // Light background on hover
-                      },
-                    }}
-                    onClick={handleUserClick}
-                  >
-                    <Avatar
-                      alt="Admin"
-                      src={samImg}
-                      sx={{
-                        width: { xs: "50px", md: "60px" },
-                        height: { xs: "50px", md: "60px" },
-                        marginRight: "16px",
-                      }}
-                    />
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontWeight: "bold",
-                          marginRight: "16px",
-                          fontSize: { xs: "18px", md: "20px" },
-                        }}
-                      >
-                        Admin
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        sx={{ fontSize: { xs: "14px", md: "16px" } }}
-                      >
-                        4:12 PM
-                      </Typography>
-                    </Box>
-                  </Box>
-
-                  {/* Subtext and Notification Badge */}
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "flex-start",
-                      width: "100%",
-                    }}
-                  >
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: { xs: "14px", md: "16px" },
-                        marginRight: "8px",
-                      }}
-                    >
-                      The traveler is close to...
-                    </Typography>
-                    {unreadMessages > 0 && (
-                      <Box
-                        sx={{
-                          backgroundColor: "green",
-                          color: "white",
-                          borderRadius: "50%",
-                          width: { xs: "20px", md: "24px" },
-                          height: { xs: "20px", md: "24px" },
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          fontSize: { xs: "12px", md: "14px" },
-                        }}
-                      >
-                        {unreadMessages}
-                      </Box>
-                    )}
-                  </Box>
-                </Box>
-              </Box>
               <Box
                 sx={{
                   display: "flex",
                   height: "100vh",
-                  paddingLeft: { xs: "15px", md: "60px" }, // Adjusted padding for responsiveness
+                  paddingLeft: { xs: "15px", md: "60px" },
                   paddingRight: { xs: "15px", md: "60px" },
-                  backgroundColor: "#FFFFFF", // Set background color to white
+                  backgroundColor: "#FFFFFF",
                   boxSizing: "border-box",
-                  paddingTop: { xs: "20px", md: "20px" }, // Adjusted padding to reduce gap
+                  paddingTop: { xs: "20px", md: "20px" },
                 }}
               >
                 {/* Left Side */}
                 <Box
                   sx={{
-                    display: isChatVisible ? "none" : "flex", // Hide left side when chat is visible
+                    display: isChatVisible ? "none" : "flex",
                     flexDirection: "column",
                     width: { xs: "100%", md: "50%" },
                     paddingRight: { xs: "10px", md: "20px" },
-                    transition: "all 0.3s ease", // Smooth transition when collapsing
+                    transition: "all 0.3s ease",
                   }}
                 >
                   {/* Message Text Section */}
@@ -540,39 +479,11 @@ const AdminMessage = () => {
                       Messages
                     </Typography>
                   </Box>
-                  {/* Left Side */}
-                  <Box
-                    sx={{
-                      display: isChatVisible ? "none" : "flex", // Hide left side when chat is visible
-                      flexDirection: "column",
-                      width: { xs: "100%", md: "50%" },
-                      paddingRight: { xs: "10px", md: "20px" },
-                      transition: "all 0.3s ease", // Smooth transition when collapsing
-                    }}
-                  >
-                    {/* Message Text Section */}
-                    {/* <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                        padding: { xs: "10px", md: "20px" },
-                      }}
-                    >
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontWeight: "bold",
-                          textAlign: "left",
-                          fontSize: { xs: "24px", md: "32px" },
-                        }}
-                      >
-                        Messages
-                      </Typography>
-                    </Box> */}
 
-                    {/* Profile and Message Details Section */}
+                  {/* Profile and Message Details Section */}
+                  {users.map((user) => (
                     <Box
+                      key={user.id}
                       sx={{
                         display: "flex",
                         flexDirection: "column",
@@ -587,17 +498,17 @@ const AdminMessage = () => {
                           alignItems: "center",
                           marginBottom: "16px",
                           cursor: "pointer",
-                          padding: "12px", // Add padding for touch targets
-                          borderRadius: "8px", // Slight rounding for a modern look
+                          padding: "12px",
+                          borderRadius: "8px",
                           "&:hover": {
-                            backgroundColor: "#F5F5F5", // Light background on hover
+                            backgroundColor: "#F5F5F5",
                           },
                         }}
-                        onClick={handleUserClick}
+                        onClick={() => handleUserClick(user)}
                       >
                         <Avatar
-                          alt="Admin"
-                          src={samImg}
+                          alt={user.name}
+                          src={user.image}
                           sx={{
                             width: { xs: "50px", md: "60px" },
                             height: { xs: "50px", md: "60px" },
@@ -619,14 +530,14 @@ const AdminMessage = () => {
                               fontSize: { xs: "18px", md: "20px" },
                             }}
                           >
-                            Admin
+                            {user.name}
                           </Typography>
                           <Typography
                             variant="body2"
                             color="textSecondary"
                             sx={{ fontSize: { xs: "14px", md: "16px" } }}
                           >
-                            4:12 PM
+                            {user.lastMessageTime}
                           </Typography>
                         </Box>
                       </Box>
@@ -647,9 +558,9 @@ const AdminMessage = () => {
                             marginRight: "8px",
                           }}
                         >
-                          The traveler is close to...
+                          {user.lastMessage}
                         </Typography>
-                        {unreadMessages > 0 && (
+                        {user.unreadMessages > 0 && (
                           <Box
                             sx={{
                               backgroundColor: "green",
@@ -663,113 +574,16 @@ const AdminMessage = () => {
                               fontSize: { xs: "12px", md: "14px" },
                             }}
                           >
-                            {unreadMessages}
+                            {user.unreadMessages}
                           </Box>
                         )}
                       </Box>
                     </Box>
-                  </Box>
-                  {/* Profile and Message Details Section */}
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      padding: { xs: "10px 0", md: "20px 0" },
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    {/* Profile Image, Name, and Time */}
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginBottom: "16px",
-                        cursor: "pointer",
-                        padding: "12px", // Add padding for touch targets
-                        borderRadius: "8px", // Slight rounding for a modern look
-                        "&:hover": {
-                          backgroundColor: "#F5F5F5", // Light background on hover
-                        },
-                      }}
-                      onClick={handleUserClick}
-                    >
-                      <Avatar
-                        alt="Admin"
-                        src={samImg}
-                        sx={{
-                          width: { xs: "50px", md: "60px" },
-                          height: { xs: "50px", md: "60px" },
-                          marginRight: "16px",
-                        }}
-                      />
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: "bold",
-                            marginRight: "16px",
-                            fontSize: { xs: "18px", md: "20px" },
-                          }}
-                        >
-                          Admin
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          color="textSecondary"
-                          sx={{ fontSize: { xs: "14px", md: "16px" } }}
-                        >
-                          4:12 PM
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    {/* Subtext and Notification Badge */}
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                        width: "100%",
-                      }}
-                    >
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          fontSize: { xs: "14px", md: "16px" },
-                          marginRight: "8px",
-                        }}
-                      >
-                        The traveler is close to...
-                      </Typography>
-                      {unreadMessages > 0 && (
-                        <Box
-                          sx={{
-                            backgroundColor: "green",
-                            color: "white",
-                            borderRadius: "50%",
-                            width: { xs: "20px", md: "24px" },
-                            height: { xs: "20px", md: "24px" },
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            fontSize: { xs: "12px", md: "14px" },
-                          }}
-                        >
-                          {unreadMessages}
-                        </Box>
-                      )}
-                    </Box>
-                  </Box>
+                  ))}
                 </Box>
 
                 {/* Right Side (Chat Box) */}
-                {isChatVisible && (
+                {isChatVisible && currentChatUser && (
                   <Box
                     sx={{
                       width: { xs: "100%", md: "50%" },
@@ -780,8 +594,7 @@ const AdminMessage = () => {
                       boxSizing: "border-box",
                       backgroundColor: "#FAFAFA",
                       transition: "all 0.3s ease",
-                      borderRadius: "8px", // Rounded corners for chat box
-                      // boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+                      borderRadius: "8px",
                     }}
                   >
                     {/* Header for Chat */}
@@ -789,7 +602,7 @@ const AdminMessage = () => {
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "space-between", // Space between for back arrow and title
+                        justifyContent: "space-between",
                         marginBottom: "16px",
                       }}
                     >
@@ -809,7 +622,7 @@ const AdminMessage = () => {
                           fontSize: { xs: "18px", md: "20px" },
                         }}
                       >
-                        Chat with Admin
+                        Chat with {currentChatUser.name}
                       </Typography>
                     </Box>
 
@@ -840,8 +653,8 @@ const AdminMessage = () => {
                         }}
                       >
                         <Avatar
-                          alt="User"
-                          src={johnImg}
+                          alt={currentChatUser.name}
+                          src={currentChatUser.image}
                           sx={{
                             width: { xs: "40px", md: "50px" },
                             height: { xs: "40px", md: "50px" },
@@ -852,42 +665,52 @@ const AdminMessage = () => {
                           sx={{
                             backgroundColor: "#E0E0E0",
                             padding: { xs: "8px 12px", md: "10px 16px" },
-                            borderRadius: "20px",
-                            maxWidth: "80%",
+                            borderRadius: "8px",
+                            maxWidth: "70%",
                           }}
                         >
-                          <Typography
-                            variant="body1"
-                            sx={{ fontSize: { xs: "14px", md: "16px" } }}
-                          >
-                            The traveler is close to reaching their destination.
-                          </Typography>
+                          <Typography variant="body1">Hello!</Typography>
                         </Box>
                       </Box>
 
-                      {/* User's Own Messages */}
                       {messages.map((message, index) => (
                         <Box
                           key={index}
                           sx={{
                             display: "flex",
-                            justifyContent: "flex-end",
+                            alignItems: "flex-end",
                             marginBottom: "16px",
+                            justifyContent:
+                              message.sender === "Admin"
+                                ? "flex-start"
+                                : "flex-end",
                           }}
                         >
+                          {message.sender === "Admin" && (
+                            <Avatar
+                              alt="Admin"
+                              src={currentChatUser.image}
+                              sx={{
+                                width: { xs: "40px", md: "50px" },
+                                height: { xs: "40px", md: "50px" },
+                                marginRight: "8px",
+                              }}
+                            />
+                          )}
                           <Box
                             sx={{
-                              backgroundColor: "#007BFF",
-                              color: "white",
+                              backgroundColor:
+                                message.sender === "Admin"
+                                  ? "#E0E0E0"
+                                  : "#4CAF50",
+                              color:
+                                message.sender === "Admin" ? "black" : "white",
                               padding: { xs: "8px 12px", md: "10px 16px" },
-                              borderRadius: "20px",
-                              maxWidth: "80%",
+                              borderRadius: "8px",
+                              maxWidth: "70%",
                             }}
                           >
-                            <Typography
-                              variant="body1"
-                              sx={{ fontSize: { xs: "14px", md: "16px" } }}
-                            >
+                            <Typography variant="body1">
                               {message.text}
                             </Typography>
                           </Box>
@@ -895,27 +718,32 @@ const AdminMessage = () => {
                       ))}
                     </Box>
 
-                    {/* Input Area */}
+                    {/* Input Section */}
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
                         marginTop: "16px",
+                        padding: "10px",
+                        backgroundColor: "#FFFFFF",
+                        borderRadius: "8px",
                       }}
                     >
                       <InputBase
-                        sx={{
-                          flex: 1,
-                          padding: "10px",
-                          borderRadius: "20px",
-                          backgroundColor: "#F5F5F5",
-                          marginRight: "8px",
-                        }}
                         placeholder="Type a message..."
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
+                        sx={{
+                          flex: 1,
+                          padding: "8px",
+                          borderRadius: "4px",
+                          backgroundColor: "#F5F5F5",
+                        }}
                       />
-                      <IconButton onClick={handleSendMessage}>
+                      <IconButton
+                        onClick={handleSendMessage}
+                        sx={{ color: "green" }}
+                      >
                         <SendIcon />
                       </IconButton>
                     </Box>
@@ -929,145 +757,157 @@ const AdminMessage = () => {
                 sx={{
                   display: "flex",
                   height: "100vh",
-                  paddingLeft: { xs: "15px", md: "60px" }, // Adjusted padding for responsiveness
+                  paddingLeft: { xs: "15px", md: "60px" },
                   paddingRight: { xs: "15px", md: "60px" },
-                  backgroundColor: "#FFFFFF", // Set background color to white
+                  backgroundColor: "#FFFFFF", // Background color set to white
                   boxSizing: "border-box",
-                  paddingTop: { xs: "20px", md: "20px" }, // Adjusted padding to reduce gap
+                  paddingTop: { xs: "20px", md: "20px" },
                 }}
               >
-                {/* Left Side */}
+                {/* Left Side: Specific Users */}
                 <Box
                   sx={{
-                    display: isChatVisible ? "none" : "flex", // Hide left side when chat is visible
-                    flexDirection: "column",
-                    width: { xs: "100%", md: "50%" },
-                    paddingRight: { xs: "10px", md: "20px" },
-                    transition: "all 0.3s ease", // Smooth transition when collapsing
+                    marginTop: "20px",
+                    padding: "10px",
+                    backgroundColor: "#FFFFFF", // Background color removed (set to white)
+                    borderRadius: "8px",
+                    width: { xs: "100%", md: "50%" }, // Ensuring it matches the size
+                    transition: "opacity 0.3s ease", // Smooth transition for visibility
+                    opacity: isChatVisible ? 0 : 1, // Hide when chat is visible
+                    display: isChatVisible ? "none" : "block", // Collapse when chat is visible
                   }}
                 >
-                  {/* Message Text Section */}
+                  {/* User: Leila */}
                   <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "flex-start",
-                      padding: { xs: "10px", md: "20px" },
+                      marginBottom: "10px",
+                      cursor: "pointer",
+                      padding: "12px",
+                      borderRadius: "8px",
+                      backgroundColor: "white",
+                      "&:hover": {
+                        backgroundColor: "#E0E0E0",
+                      },
                     }}
+                    onClick={() =>
+                      handleUserClick({ name: "Leila", image: leila })
+                    }
                   >
-                    <Typography
-                      variant="h4"
+                    <Avatar
+                      alt="Leila"
+                      src={leila}
                       sx={{
-                        fontWeight: "bold",
-                        textAlign: "left",
-                        fontSize: { xs: "24px", md: "32px" },
+                        width: "40px",
+                        height: "40px",
+                        marginRight: "10px",
                       }}
-                    >
-                      Messages
-                    </Typography>
-                  </Box>
-
-                  {/* Profile and Message Details Section */}
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      padding: { xs: "10px 0", md: "20px 0" },
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    {/* Profile Image, Name, and Time */}
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginBottom: "16px",
-                        cursor: "pointer",
-                        padding: "12px", // Add padding for touch targets
-                        borderRadius: "8px", // Slight rounding for a modern look
-                        "&:hover": {
-                          backgroundColor: "#F5F5F5", // Light background on hover
-                        },
-                      }}
-                      onClick={handleUserClick}
-                    >
-                      <Avatar
-                        alt="Admin"
-                        src={samImg}
-                        sx={{
-                          width: { xs: "50px", md: "60px" },
-                          height: { xs: "50px", md: "60px" },
-                          marginRight: "16px",
-                        }}
-                      />
+                    />
+                    <Box sx={{ flex: 1, marginTop: "40px" }}>
+                      <Typography variant="body1">
+                        Leila{" "}
+                        <span
+                          style={{
+                            fontWeight: "normal",
+                            marginLeft: "100px",
+                          }}
+                        >
+                          4:00 PM
+                        </span>
+                      </Typography>
                       <Box
                         sx={{
                           display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
+                          flexDirection: "column",
+                          alignItems: "flex-end",
+                          marginLeft: "auto",
                         }}
                       >
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: "bold",
-                            marginRight: "16px",
-                            fontSize: { xs: "18px", md: "20px" },
-                          }}
-                        >
-                          Admin
+                        <Typography variant="body2" sx={{ marginRight: "5px" }}>
+                          The traveler is close to...
                         </Typography>
                         <Typography
                           variant="body2"
-                          color="textSecondary"
-                          sx={{ fontSize: { xs: "14px", md: "16px" } }}
+                          sx={{
+                            backgroundColor: "green", // Changed background color to green
+                            borderRadius: "12px",
+                            padding: "4px 8px",
+                            color: "#FFFFFF",
+                            fontWeight: "bold",
+                          }}
                         >
-                          4:12 PM
+                          3 {/* Example unread messages */}
                         </Typography>
                       </Box>
                     </Box>
+                  </Box>
 
-                    {/* Subtext and Notification Badge */}
-                    <Box
+                  {/* User: John */}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      padding: "12px",
+                      borderRadius: "8px",
+                      backgroundColor: "white",
+                      "&:hover": {
+                        backgroundColor: "#E0E0E0",
+                      },
+                    }}
+                    onClick={() =>
+                      handleUserClick({ name: "John", image: john })
+                    }
+                  >
+                    <Avatar
+                      alt="John"
+                      src={john}
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                        width: "100%",
+                        width: "40px",
+                        height: "40px",
+                        marginRight: "10px",
                       }}
-                    >
-                      <Typography
-                        variant="body1"
+                    />
+                    <Box sx={{ flex: 1, marginTop: "40px" }}>
+                      <Typography variant="body1">
+                        John{" "}
+                        <span
+                          style={{ fontWeight: "normal", marginLeft: "100px" }}
+                        >
+                          5:30 AM
+                        </span>
+                      </Typography>
+                      <Box
                         sx={{
-                          fontSize: { xs: "14px", md: "16px" },
-                          marginRight: "8px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "flex-end",
+                          marginLeft: "auto",
                         }}
                       >
-                        The traveler is close to...
-                      </Typography>
-                      {unreadMessages > 0 && (
-                        <Box
+                        <Typography variant="body2" sx={{ marginRight: "5px" }}>
+                          The traveler is close to...
+                        </Typography>
+                        <Typography
+                          variant="body2"
                           sx={{
-                            backgroundColor: "green",
-                            color: "white",
-                            borderRadius: "50%",
-                            width: { xs: "20px", md: "24px" },
-                            height: { xs: "20px", md: "24px" },
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            fontSize: { xs: "12px", md: "14px" },
+                            backgroundColor: "green", // Changed background color to green
+                            borderRadius: "12px",
+                            padding: "4px 8px",
+                            color: "#FFFFFF",
+                            fontWeight: "bold",
                           }}
                         >
-                          {unreadMessages}
-                        </Box>
-                      )}
+                          1 {/* Example unread messages */}
+                        </Typography>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
 
-                {/* Right Side (Chat Box) */}
-                {isChatVisible && (
+                {/* Right Side: Chat Box */}
+                {isChatVisible && currentChatUser && (
                   <Box
                     sx={{
                       width: { xs: "100%", md: "50%" },
@@ -1078,8 +918,7 @@ const AdminMessage = () => {
                       boxSizing: "border-box",
                       backgroundColor: "#FAFAFA",
                       transition: "all 0.3s ease",
-                      borderRadius: "8px", // Rounded corners for chat box
-                      // boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+                      borderRadius: "8px",
                     }}
                   >
                     {/* Header for Chat */}
@@ -1087,19 +926,16 @@ const AdminMessage = () => {
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "space-between", // Space between for back arrow and title
+                        justifyContent: "space-between",
                         marginBottom: "16px",
                       }}
                     >
-                      {/* Back Arrow */}
                       <IconButton
                         onClick={handleBackClick}
                         sx={{ color: "black" }}
                       >
                         <ArrowBackIcon fontSize="large" />
                       </IconButton>
-
-                      {/* Chat Title */}
                       <Typography
                         variant="h6"
                         sx={{
@@ -1107,7 +943,7 @@ const AdminMessage = () => {
                           fontSize: { xs: "18px", md: "20px" },
                         }}
                       >
-                        Chat with Admin
+                        Chat with {currentChatUser.name}
                       </Typography>
                     </Box>
 
@@ -1138,8 +974,8 @@ const AdminMessage = () => {
                         }}
                       >
                         <Avatar
-                          alt="User"
-                          src={johnImg}
+                          alt={currentChatUser.name}
+                          src={currentChatUser.image}
                           sx={{
                             width: { xs: "40px", md: "50px" },
                             height: { xs: "40px", md: "50px" },
@@ -1150,42 +986,52 @@ const AdminMessage = () => {
                           sx={{
                             backgroundColor: "#E0E0E0",
                             padding: { xs: "8px 12px", md: "10px 16px" },
-                            borderRadius: "20px",
-                            maxWidth: "80%",
+                            borderRadius: "8px",
+                            maxWidth: "70%",
                           }}
                         >
-                          <Typography
-                            variant="body1"
-                            sx={{ fontSize: { xs: "14px", md: "16px" } }}
-                          >
-                            The traveler is close to reaching their destination.
-                          </Typography>
+                          <Typography variant="body1">Hello!</Typography>
                         </Box>
                       </Box>
 
-                      {/* User's Own Messages */}
                       {messages.map((message, index) => (
                         <Box
                           key={index}
                           sx={{
                             display: "flex",
-                            justifyContent: "flex-end",
+                            alignItems: "flex-end",
                             marginBottom: "16px",
+                            justifyContent:
+                              message.sender === "Admin"
+                                ? "flex-start"
+                                : "flex-end",
                           }}
                         >
+                          {message.sender === "Admin" && (
+                            <Avatar
+                              alt="Admin"
+                              src={currentChatUser.image}
+                              sx={{
+                                width: { xs: "40px", md: "50px" },
+                                height: { xs: "40px", md: "50px" },
+                                marginRight: "8px",
+                              }}
+                            />
+                          )}
                           <Box
                             sx={{
-                              backgroundColor: "#007BFF",
-                              color: "white",
+                              backgroundColor:
+                                message.sender === "Admin"
+                                  ? "#E0E0E0"
+                                  : "#4CAF50",
+                              color:
+                                message.sender === "Admin" ? "black" : "white",
                               padding: { xs: "8px 12px", md: "10px 16px" },
-                              borderRadius: "20px",
-                              maxWidth: "80%",
+                              borderRadius: "8px",
+                              maxWidth: "70%",
                             }}
                           >
-                            <Typography
-                              variant="body1"
-                              sx={{ fontSize: { xs: "14px", md: "16px" } }}
-                            >
+                            <Typography variant="body1">
                               {message.text}
                             </Typography>
                           </Box>
@@ -1193,27 +1039,32 @@ const AdminMessage = () => {
                       ))}
                     </Box>
 
-                    {/* Input Area */}
+                    {/* Input Section */}
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
                         marginTop: "16px",
+                        padding: "10px",
+                        backgroundColor: "#FFFFFF",
+                        borderRadius: "8px",
                       }}
                     >
                       <InputBase
-                        sx={{
-                          flex: 1,
-                          padding: "10px",
-                          borderRadius: "20px",
-                          backgroundColor: "#F5F5F5",
-                          marginRight: "8px",
-                        }}
                         placeholder="Type a message..."
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
+                        sx={{
+                          flex: 1,
+                          padding: "8px",
+                          borderRadius: "4px",
+                          backgroundColor: "#F5F5F5",
+                        }}
                       />
-                      <IconButton onClick={handleSendMessage}>
+                      <IconButton
+                        onClick={handleSendMessage}
+                        sx={{ color: "green" }}
+                      >
                         <SendIcon />
                       </IconButton>
                     </Box>
