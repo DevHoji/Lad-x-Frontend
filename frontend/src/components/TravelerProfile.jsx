@@ -20,19 +20,9 @@ import {
   Logout as LogoutIcon,
 } from "@mui/icons-material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import LADXLogo from "../images/TLOGO.jpeg";
 import profilePic from "../images/Profilebox2.jpeg";
 import test from "../assets/test.jpg";
-import Home from "./Home"; // adjust the path based on your file structure
-import Delivery from "./Delivery"; // adjust the path based on your file structure
-import Message from "./Message"; // adjust the path based on your file structure
-import Profile from "./Profile";
-import AccountSettings from "./AccountSettings";
-//import TravelerProfile from "./TravelerProfile";
-import DeliveryTracking from "./DeliveryTraking";
-//import TravelerProfile from "./TravelerProfile";
 import SwitchRightIcon from "@mui/icons-material/SwitchRight"; 
-import DeliveryCancelled from "./DeliveryCancelled";
 import { useNavigate } from "react-router-dom";
 
 const notifications = [

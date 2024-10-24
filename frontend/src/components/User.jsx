@@ -15,22 +15,13 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import TextsmsIcon from "@mui/icons-material/Textsms"; // Text Message Icon
 import NotificationsIcon from "@mui/icons-material/Notifications"; // Bell Icon
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
-import homepp from "../assets/homepp.jpg";
-import gadgets from "../assets/gadgets.jpg";
-import sam from "../assets/sam.jpg";
-import john from "../assets/john.jpg";
-import shoepp from "../assets/shoepp.jpg";
-import handpp from "../assets/handpp.jpg";
-import van from "../assets/Van.jpg"; 
-import susa from "../assets/susa.jpg";
-import men from "../assets/men.jpg";
 import test from "../assets/test.jpg";
 import mes from "../assets/mes.jpg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import MessageIcon from "@mui/icons-material/Message";
 
 const User = () => {
   const navigate = useNavigate();
@@ -50,7 +41,16 @@ const User = () => {
     <Box sx={{ display: "flex", height: "100vh", backgroundColor: "white" }}>
       {/* Sidebar with logo */}
       <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "fixed", // Make the sidebar fixed
+          top: 0,
+          left: 0,
+          height: "100vh", // Full height to avoid scrolling
+          zIndex: 1000, // Ensures it's above other content
+        }}
       >
         {/* Logo at the top */}
         <Box
@@ -69,8 +69,8 @@ const User = () => {
         <Box
           sx={{
             backgroundColor: "#210947",
-            width: { xs: "80px", sm: "226px" }, // Responsive width
-            height: "100%",
+            width: { xs: "80px", sm: "226px" }, // Width changes based on screen size
+            height: "100%", // Full height
             borderTopRightRadius: "80px",
             display: "flex",
             flexDirection: "column",
@@ -83,11 +83,11 @@ const User = () => {
             {/* Home */}
             <ListItem
               button
-              onClick={() => handleNavigation("/user")}
+              onClick={() => handleNavigation("/admin")} // Navigate to admin
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -97,18 +97,18 @@ const User = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Home"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Orders */}
             <ListItem
               button
-              onClick={() => handleNavigation("/admin-l")}
+              onClick={() => handleNavigation("/admin-l")} // Navigate to admin-l
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -118,18 +118,18 @@ const User = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Orders"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Users */}
             <ListItem
               button
-              onClick={() => handleNavigation("/user")}
+              onClick={() => handleNavigation("/user")} // Navigate to user
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -139,39 +139,40 @@ const User = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Users"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Message */}
             <ListItem
               button
-              onClick={() => handleNavigation("/admin-m")}
+              onClick={() => handleNavigation("/admin-m")} // Navigate to admin-m
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
                 sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
               >
-                <TextsmsIcon /> {/* Updated to Text Message Icon */}
+                <MessageIcon />{" "}
+                {/* Change this icon to your preferred text message icon */}
               </ListItemIcon>
               <ListItemText
-                primary="Message"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                primary="Messages"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Settings */}
             <ListItem
               button
-              onClick={() => handleNavigation("/settings")}
+              onClick={() => handleNavigation("/settings")} // Navigate to settings
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -181,7 +182,7 @@ const User = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Settings"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
           </List>
@@ -190,11 +191,11 @@ const User = () => {
           <List sx={{ color: "#D3D3D3" }}>
             <ListItem
               button
-              onClick={() => handleNavigation("/admin")}
+              onClick={() => handleNavigation("/admin")} // Logout to admin page
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -204,21 +205,20 @@ const User = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Logout"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
           </List>
         </Box>
       </Box>
 
-      {/* Main content section */}
       {/* User Info Box */}
       <Box
         sx={{
           position: "absolute",
           top: "20px",
           right: "20px",
-          width: { xs: "300px", sm: "380px" }, // Fixed width for small screens and up
+          width: { xs: "200px", sm: "280px" }, // Fixed width for small screens and up
           height: "99px",
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
@@ -307,9 +307,12 @@ const User = () => {
       <Box
         sx={{
           flexGrow: 1,
+          marginLeft: { xs: "100px", sm: "226px" },
           padding: "20px",
           position: "relative",
           marginTop: "110px",
+          height: "100vh",
+          overflow: "auto",
         }}
       >
         <Typography>Users</Typography>

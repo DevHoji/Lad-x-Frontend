@@ -19,19 +19,13 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import TextsmsIcon from "@mui/icons-material/Textsms"; // Text Message Icon
 import NotificationsIcon from "@mui/icons-material/Notifications"; // Bell Icon
-import homepp from "../assets/homepp.jpg";
 import gadgets from "../assets/gadgets.jpg";
-import sam from "../assets/sam.jpg";
-import john from "../assets/john.jpg";
-import shoepp from "../assets/shoepp.jpg";
-import handpp from "../assets/handpp.jpg";
 import van from "../assets/Van.jpg";
 import { Link } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import susa from "../assets/susa.jpg";
 import men from "../assets/men.jpg";
-import af from "../assets/af.jpg";
+
 const TravelerDelDetail = () => {
   const [selectedTab, setSelectedTab] = useState("senders");
   const theme = useTheme();
@@ -414,8 +408,6 @@ const TravelerDelDetail = () => {
               </Typography>
             </Box>
 
-            {/* Single Delivery Box Section */}
-            {/* <Link to="/Tdev-d" style={{ textDecoration: "none" }}> */}
             <Box
               sx={{
                 width: "100%",
@@ -556,8 +548,7 @@ const TravelerDelDetail = () => {
                 Match
               </Button>
             </Box>
-            {/* </Link> */}
-            {/* Shipping Address Section */}
+    
             <Box
               sx={{
                 display: "flex",
@@ -683,8 +674,7 @@ const TravelerDelDetail = () => {
                 Go Back
               </Typography>
             </Box>
-            {/* Single Delivery Box Section */}
-            {/* <Link to="/dev-d" style={{ textDecoration: "none" }}> */}
+     
             <Box
               sx={{
                 width: "100%",
@@ -825,8 +815,7 @@ const TravelerDelDetail = () => {
                 Match
               </Button>
             </Box>
-            {/* </Link> */}
-            {/* Shipping Address Section */}
+
             <Box
               sx={{
                 display: "flex",

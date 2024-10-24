@@ -10,14 +10,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeIcon from "@mui/icons-material/Home";
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import MessageIcon from "@mui/icons-material/Message";
-import PersonIcon from "@mui/icons-material/Person";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import LogoutIcon from "@mui/icons-material/Logout";
-import test from "../assets/test.jpg"; // Adjust path if necessary
-import homepp from "../assets/homepp.jpg";
 
 const DeliveryTracking = ({ setContent }) => {
   const navigate = useNavigate();

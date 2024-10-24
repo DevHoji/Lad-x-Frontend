@@ -22,17 +22,11 @@ import homepp from "../assets/homepp.jpg";
 const AccountSettings = ({ setContent }) => {
   const navigate = useNavigate();
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
-
-  const handleListItemClick = (index) => {
-    setSelectedIndex(index);
-  };
   const handleprofileclick = () => {
  setContent("Profile")
   }
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      {/* Navbar */}
-
       {/* Left Sidebar and Main Content */}
       <Box
         sx={{
@@ -42,9 +36,7 @@ const AccountSettings = ({ setContent }) => {
           backgroundColor: "white", // Set main content background to white
         }}
       >
-        {/* Left Sidebar */}
-
-        {/* Main Content */}
+       {/* Main Content */}
         <Box
           sx={{
             flex: 1,
@@ -65,7 +57,6 @@ const AccountSettings = ({ setContent }) => {
             onClick={handleprofileclick}
           >
             <Box
-              // onClick={() => navigate("/profile")}
               sx={{
                 width: "40px",
                 height: "40px",

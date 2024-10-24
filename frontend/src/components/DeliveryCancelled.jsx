@@ -3,22 +3,9 @@ import { useNavigate, Link } from "react-router-dom";
 import {
   Box,
   Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeIcon from "@mui/icons-material/Home";
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import MessageIcon from "@mui/icons-material/Message";
-import PersonIcon from "@mui/icons-material/Person";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import LogoutIcon from "@mui/icons-material/Logout";
-import test from "../assets/test.jpg"; // Adjust path if necessary
-import homepp from "../assets/homepp.jpg";
-//import MessageIcon from "@mui/icons-material/Message";
 
 const DeliveryCancelled = ({setContent}) => {
   const navigate = useNavigate();
@@ -27,9 +14,13 @@ const DeliveryCancelled = ({setContent}) => {
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
   };
+    const handlemessageclick = () => {
+      setContent("Message");
+    };
 const hadlebackarrow = () => {
   setContent("Delivery");
 };
+
   return (
     <Box
       sx={{
@@ -91,8 +82,6 @@ const hadlebackarrow = () => {
             }}
           >
             <Box
-              component={Link}
-              to="/Message"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -101,18 +90,18 @@ const hadlebackarrow = () => {
                 borderRadius: "5px",
                 padding: "10px 15px",
                 height: "47px",
-                width: "180px",
+                width: { xs: "150px", md: "180px" }, // Responsive button width
                 textDecoration: "none",
                 "&:hover": {
                   backgroundColor: "#2c0e6d", // Change color on hover for better UX
                 },
               }}
+              onClick={handlemessageclick}
             >
               <MessageIcon sx={{ marginRight: "10px" }} />
               <Typography variant="body2">Message Traveler</Typography>
             </Box>
           </Box>
-
           {/* Delivery Tracking Information */}
           <Box
             sx={{

@@ -17,20 +17,13 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import TextsmsIcon from "@mui/icons-material/Textsms"; // Text Message Icon
 import NotificationsIcon from "@mui/icons-material/Notifications"; // Bell Icon
-import homepp from "../assets/homepp.jpg";
-import gadgets from "../assets/gadgets.jpg";
-import sam from "../assets/sam.jpg";
-import john from "../assets/john.jpg";
-import shoepp from "../assets/shoepp.jpg";
-import handpp from "../assets/handpp.jpg";
 import van from "../assets/Van.jpg"; 
 import { useNavigate } from "react-router-dom";
 import susa from "../assets/susa.jpg";
-import men from "../assets/men.jpg";
-import af from "../assets/af.jpg";
 import test from "../assets/test.jpg"; 
+import MessageIcon from "@mui/icons-material/Message";
+
 const AdminDel = () => {
   const navigate = useNavigate(); // Hook for navigation
   const [selectedTab, setSelectedTab] = useState("senders"); // State to track selected tab
@@ -62,7 +55,16 @@ const AdminDel = () => {
     <Box sx={{ display: "flex", height: "100vh", backgroundColor: "white" }}>
       {/* Sidebar with logo */}
       <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "fixed", // Make the sidebar fixed
+          top: 0,
+          left: 0,
+          height: "100vh", // Full height to avoid scrolling
+          zIndex: 1000, // Ensures it's above other content
+        }}
       >
         {/* Logo at the top */}
         <Box
@@ -81,8 +83,8 @@ const AdminDel = () => {
         <Box
           sx={{
             backgroundColor: "#210947",
-            width: { xs: "80px", sm: "226px" }, // Responsive width
-            height: "100%",
+            width: { xs: "80px", sm: "226px" }, // Width changes based on screen size
+            height: "100%", // Full height
             borderTopRightRadius: "80px",
             display: "flex",
             flexDirection: "column",
@@ -95,11 +97,11 @@ const AdminDel = () => {
             {/* Home */}
             <ListItem
               button
-              onClick={() => handleNavigation("/admin")}
+              onClick={() => handleNavigation("/admin")} // Navigate to admin
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -109,18 +111,18 @@ const AdminDel = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Home"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Orders */}
             <ListItem
               button
-              onClick={() => handleNavigation("/admin-l")}
+              onClick={() => handleNavigation("/admin-l")} // Navigate to admin-l
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -130,18 +132,18 @@ const AdminDel = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Orders"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Users */}
             <ListItem
               button
-              onClick={() => handleNavigation("/user")}
+              onClick={() => handleNavigation("/user")} // Navigate to user
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -151,39 +153,39 @@ const AdminDel = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Users"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Message */}
             <ListItem
               button
-              onClick={() => handleNavigation("/admin-m")}
+              onClick={() => handleNavigation("/admin-m")} // Navigate to admin-m
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
                 sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
               >
-                <TextsmsIcon /> {/* Updated to Text Message Icon */}
+                <MessageIcon />{" "}
               </ListItemIcon>
               <ListItemText
-                primary="Message"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                primary="Messages"
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
 
             {/* Settings */}
             <ListItem
               button
-              onClick={() => handleNavigation("/settings")}
+              onClick={() => handleNavigation("/settings")} // Navigate to settings
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -193,7 +195,7 @@ const AdminDel = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Settings"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
           </List>
@@ -202,11 +204,11 @@ const AdminDel = () => {
           <List sx={{ color: "#D3D3D3" }}>
             <ListItem
               button
-              onClick={() => handleNavigation("/admin")}
+              onClick={() => handleNavigation("/admin")} // Logout to admin page
               sx={{
                 "&:hover": { color: "#FFF" },
                 "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" },
+                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
               }}
             >
               <ListItemIcon
@@ -216,12 +218,22 @@ const AdminDel = () => {
               </ListItemIcon>
               <ListItemText
                 primary="Logout"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
               />
             </ListItem>
           </List>
         </Box>
       </Box>
+
+      <Box
+        sx={{
+          marginLeft: { xs: "60px", sm: "176px" }, // Leave space for the fixed sidebar
+          padding: "20px",
+          flexGrow: 1,
+          height: "100vh",
+          overflow: "auto",
+        }}
+      ></Box>
 
       {/* User Info Box */}
       <Box
@@ -229,7 +241,7 @@ const AdminDel = () => {
           position: "absolute",
           top: "20px",
           right: "20px",
-          width: { xs: "300px", sm: "380px" }, // Fixed width for small screens and up
+          width: { xs: "200px", sm: "380px" }, // Fixed width for small screens and up
           height: "99px",
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
@@ -320,8 +332,12 @@ const AdminDel = () => {
         sx={{
           flexGrow: 1,
           marginTop: "100px",
+          //marginLeft: { xs: "80px", sm: "226px" },
           position: "relative",
-          padding: isMobile ? "10px" : "20px", // Reduce padding for mobile
+          padding: "20px",
+          flexGrow: 1,
+          height: "100vh",
+          overflow: "auto", // Reduce padding for mobile
         }}
       >
         {/* Header */}
@@ -450,6 +466,9 @@ const AdminDel = () => {
                       }}
                     >
                       <Typography variant="body2" sx={{ color: "black" }}>
+                        <span style={{ color: "#28A745", marginRight: "5px" }}>
+                          •
+                        </span>
                         iPhone XR
                       </Typography>
                       <Typography
@@ -678,8 +697,6 @@ const AdminDel = () => {
                 </Link>
               ))}
             </Box>
-
-            {/* Your traveler details content goes here */}
           </Box>
         )}
       </Box>

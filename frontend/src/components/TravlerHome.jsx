@@ -2,20 +2,8 @@ import React, { useState } from "react";
 import {
   Box,
   Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
 } from "@mui/material";
-import test from "../assets/test.jpg";
 import sam from "../assets/sam.jpg"; // Replace with actual image paths
-import HomeIcon from "@mui/icons-material/Home"; // Icons for navigation
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
-import MessageIcon from "@mui/icons-material/Message";
-import LogoutIcon from "@mui/icons-material/Logout";
-import PersonIcon from "@mui/icons-material/Person";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Add as AddIcon } from "@mui/icons-material"; // Plus sign icon
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
@@ -23,7 +11,6 @@ import Checkbox from "@mui/material/Checkbox";
 import { Link, useNavigate } from "react-router-dom";
 import InputBase from "@mui/material/InputBase";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import homepp from "../assets/homepp.jpg";
 import leilaImg from "../assets/leila.jpg";
 import johnImg from "../assets/john.jpg";
 import samImg from "../assets/sam.jpg";
@@ -34,9 +21,9 @@ const TravelerHome = () => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width:600px)");
 
-  const handleListItemClick = (index) => {
-    setSelectedIndex(index);
-  };
+  // const handleListItemClick = (index) => {
+  //   setSelectedIndex(index);
+  // };
 
   const handleRequest = () => {
     navigate("/traveler-request"); // Navigate to request page
@@ -54,7 +41,6 @@ const TravelerHome = () => {
             marginTop: "60px",
           }}
         >
-          {/* Boxes Section */}
           {/* Boxes Section */}
           <Box
             sx={{

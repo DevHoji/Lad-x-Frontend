@@ -7,12 +7,10 @@ import {
   ListItemText,
   TextField,
   Typography,
-  Button,
   Grid,
-  Divider, // Import Divider
+  Divider, 
   InputBase,
   Avatar,
-
   Checkbox,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
@@ -45,7 +43,16 @@ const Admin = () => {
     <Box sx={{ display: "flex", height: "100vh", backgroundColor: "white" }}>
       {/* Sidebar with logo */}
       <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "fixed", // Make the sidebar fixed
+          top: 0,
+          left: 0,
+          height: "100vh", // Full height to avoid scrolling
+          zIndex: 1000, // Ensures it's above other content
+        }}
       >
         {/* Logo at the top */}
         <Box
@@ -65,7 +72,7 @@ const Admin = () => {
           sx={{
             backgroundColor: "#210947",
             width: { xs: "80px", sm: "226px" }, // Width changes based on screen size
-            height: "100%",
+            height: "100%", // Full height
             borderTopRightRadius: "80px",
             display: "flex",
             flexDirection: "column",
@@ -152,7 +159,6 @@ const Admin = () => {
                 sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
               >
                 <MessageIcon />{" "}
-                {/* Change this icon to your preferred text message icon */}
               </ListItemIcon>
               <ListItemText
                 primary="Messages"
@@ -210,13 +216,16 @@ const Admin = () => {
       {/* Space between sidebar and right content */}
       <Box
         sx={{
+          marginLeft: { xs: "80px", sm: "226px" }, // Leave space for the fixed sidebar
+          padding: "20px",
           flexGrow: 1,
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          height: "100%",
+          height: "100vh",
+          overflow: "auto",
+          
         }}
       >
+        {/* Main content here */}
+
         {/* Three equal boxes in a responsive grid */}
         <Grid container spacing={2} sx={{ flexGrow: 0 }}>
           {Array.from(Array(3)).map((_, index) => (
@@ -502,9 +511,10 @@ const Admin = () => {
           sx={{
             backgroundColor: "white",
             flexGrow: 1,
+            
             borderRadius: "8px",
             padding: "20px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+           // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
         >
           <h2>Update Delivery Status</h2>
@@ -513,13 +523,14 @@ const Admin = () => {
           <Box
             sx={{
               backgroundColor: "white",
+              
               padding: {
                 xs: "10px",
                 sm: "15px",
                 md: "20px",
               },
               borderRadius: "10px",
-              boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
+            //  boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
               marginTop: "20px",
               width: "100%",
               height: {
@@ -684,8 +695,13 @@ const Admin = () => {
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           padding: "20px",
           display: "flex",
+          //marginLeft: { xs: "80px", sm: "226px" }, // Leave space for the fixed sidebar
+          padding: "20px",
           flexDirection: "column",
           alignItems: "center", // Center content horizontally
+          overflow: "auto",
+          flexGrow: 1,
+          height: "100vh",
           justifyContent: "flex-start", // Align items to the top
         }}
       >
@@ -806,7 +822,7 @@ const Admin = () => {
             }}
           >
             <Typography variant="body1" sx={{ color: "white" }}>
-              23
+              3
             </Typography>
           </Box>
         </Box>
@@ -1276,329 +1292,6 @@ const Admin = () => {
             Item(s): iPhone 12, Hand Fan, Dell Laptop
           </Typography>
         </Box>
-
-        {/* New Box Below the Heading
-        <Box
-          sx={{
-            backgroundColor: "white",
-            width: "100%", // Keep it within the container
-            height: "auto", // Allow auto height to fit content
-            borderRadius: "8px",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            padding: "10px",
-            marginTop: "20px", // Space above the new box
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {/* Top Section with Time Left */}
-        {/* <Typography
-            variant="body1"
-            sx={{ textAlign: "center", marginBottom: "10px" }}
-          >
-            3 hours left
-          </Typography>
-
-          {/* From and To Section */}
-        {/* <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              width: "100%",
-              position: "relative",
-            }}
-          >  */}
-        {/* Left Side */}
-        {/* <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            > */}
-        {/* Profile Image */}
-        {/* <Avatar
-                src="/path/to/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
-              <Typography
-                variant="body2"
-                sx={{ color: "#FF0000", marginTop: "5px" }}
-              >
-                Sender
-              </Typography> */}
-
-        {/* From Section */}
-        {/* <Typography
-                variant="body2"
-                sx={{ color: "black", textAlign: "center" }}
-              >
-                From
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "red", textAlign: "center" }}
-              >
-                Canada
-              </Typography>
-            </Box> */}
-
-        {/* Center Circle and Horizontal Lines */}
-        {/* <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-              }}
-            >
-              <Divider
-                orientation="horizontal"
-                sx={{
-                  width: "70px",
-                  borderColor: "black",
-                  borderStyle: "dashed",
-                }}
-              />
-              <Box
-                sx={{
-                  width: "25px",
-                  height: "25px",
-                  backgroundColor: "#F66F1E",
-                  borderRadius: "50%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  position: "absolute", // Positioning the circle in the center
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              >
-                <Typography variant="body2" sx={{ color: "white" }}>
-                  25
-                </Typography>
-              </Box>
-              <Divider
-                orientation="horizontal"
-                sx={{
-                  width: "70px",
-                  borderColor: "black",
-                  borderStyle: "dashed",
-                }}
-              />
-              <Typography
-                variant="body2"
-                sx={{ color: "black", marginLeft: "5px", marginTop: "5px" }}
-              >
-                &gt;
-              </Typography>
-            </Box> */}
-
-        {/* Right Side */}
-        {/* <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar
-                src="/path/to/other/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
-              <Typography
-                variant="body2"
-                sx={{ color: "#FF0000", marginTop: "5px" }}
-              >
-                Traveler
-              </Typography>
-
-              {/* To Section */}
-        {/* <Typography
-                variant="body2"
-                sx={{ color: "black", textAlign: "center" }}
-              >
-                To
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "red", textAlign: "center" }}
-              >
-                Kenya
-              </Typography>
-            </Box>
-          </Box> */}
-
-        {/* Item(s) Section */}
-        {/* <Typography
-            variant="body2"
-            sx={{ textAlign: "center", marginTop: "10px" }}
-          >
-            Item(s): iPhone 12, Hand Fan, Dell Laptop
-          </Typography>
-        </Box> */}
-        {/* New Box Below the Heading */}
-        {/* <Box
-          sx={{
-            backgroundColor: "white",
-            width: "100%", // Keep it within the container
-            height: "auto", // Allow auto height to fit content
-            borderRadius: "8px",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            padding: "10px",
-            marginTop: "20px", // Space above the new box
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {/* Top Section with Time Left */}
-        {/* <Typography
-            variant="body1"
-            sx={{ textAlign: "center", marginBottom: "10px" }}
-          >
-            3 hours left
-          </Typography>
-
-          {/* From and To Section */}
-        {/* <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              width: "100%",
-              position: "relative",
-            }}
-          >  */}
-        {/* Left Side */}
-        {/* <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            > */}
-        {/* Profile Image */}
-        {/* <Avatar
-                src="/path/to/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
-              <Typography
-                variant="body2"
-                sx={{ color: "#FF0000", marginTop: "5px" }}
-              >
-                Sender
-              </Typography> */}
-
-        {/* From Section */}
-        {/* <Typography
-                variant="body2"
-                sx={{ color: "black", textAlign: "center" }}
-              >
-                From
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "red", textAlign: "center" }}
-              >
-                Canada
-              </Typography>
-            </Box> */}
-
-        {/* Center Circle and Horizontal Lines */}
-        {/* <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-              }}
-            >
-              <Divider
-                orientation="horizontal"
-                sx={{
-                  width: "70px",
-                  borderColor: "black",
-                  borderStyle: "dashed",
-                }}
-              />
-              <Box
-                sx={{
-                  width: "25px",
-                  height: "25px",
-                  backgroundColor: "#F66F1E",
-                  borderRadius: "50%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  position: "absolute", // Positioning the circle in the center
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              >
-                <Typography variant="body2" sx={{ color: "white" }}>
-                  25
-                </Typography>
-              </Box>
-              <Divider
-                orientation="horizontal"
-                sx={{
-                  width: "70px",
-                  borderColor: "black",
-                  borderStyle: "dashed",
-                }}
-              />
-              <Typography
-                variant="body2"
-                sx={{ color: "black", marginLeft: "5px", marginTop: "5px" }}
-              >
-                &gt;
-              </Typography>
-            </Box> */}
-
-        {/* Right Side */}
-        {/* <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar
-                src="/path/to/other/profile/image.jpg"
-                sx={{ width: 40, height: 40 }}
-              />
-              <Typography
-                variant="body2"
-                sx={{ color: "#FF0000", marginTop: "5px" }}
-              >
-                Traveler
-              </Typography> */}
-
-        {/* To Section */}
-        {/* <Typography
-                variant="body2"
-                sx={{ color: "black", textAlign: "center" }}
-              >
-                To
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "red", textAlign: "center" }}
-              >
-                Kenya
-              </Typography>
-            </Box>
-          </Box> */}
-
-        {/* Item(s) Section */}
-        {/* <Typography
-            variant="body2"
-            sx={{ textAlign: "center", marginTop: "10px" }}
-          >
-            Item(s): iPhone 12, Hand Fan, Dell Laptop
-          </Typography>
-        </Box> */}
       </Box>
     </Box>
   );

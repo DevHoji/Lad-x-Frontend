@@ -20,13 +20,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import TextsmsIcon from "@mui/icons-material/Textsms"; // Text Message Icon
-import homepp from "../assets/homepp.jpg";
-import gadgets from "../assets/gadgets.jpg";
-import sam from "../assets/sam.jpg";
-import john from "../assets/john.jpg";
-import shoepp from "../assets/shoepp.jpg";
-import handpp from "../assets/handpp.jpg";
 import van from "../assets/Van.jpg"; 
 import { ArrowBack } from "@mui/icons-material"; // Arrow back icon
 import { useNavigate } from "react-router-dom";
@@ -36,6 +29,7 @@ import susa from "../assets/susa.jpg";
 import men from "../assets/men.jpg";
 import af from "../assets/af.jpg";
 import test from "../assets/test.jpg";
+
 const SenderMatch = () => {
   const navigate = useNavigate(); // Hook for navigation
   const theme = useTheme();
@@ -47,177 +41,188 @@ const SenderMatch = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "#FFF" }}>
+    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "white" }}>
       {/* Sidebar with logo */}
-      <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+<Box
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "fixed", // Make the sidebar fixed
+    top: 0,
+    left: 0,
+    height: "100vh", // Full height to avoid scrolling
+    zIndex: 1000, // Ensures it's above other content
+  }}
+>
+  {/* Logo at the top */}
+  <Box
+    component="img"
+    src={test} // Update with your logo path
+    alt="Ladx Logo"
+    sx={{
+      width: "150px",
+      height: "auto",
+      marginTop: "20px",
+      marginBottom: "30px",
+    }}
+  />
+
+  {/* Sidebar below the logo with curved top */}
+  <Box
+    sx={{
+      backgroundColor: "#210947",
+      width: { xs: "80px", sm: "226px" }, // Width changes based on screen size
+      height: "100%", // Full height
+      borderTopRightRadius: "80px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      padding: "20px 0",
+    }}
+  >
+    {/* List of navigation items */}
+    <List sx={{ color: "#D3D3D3" }}>
+      {/* Home */}
+      <ListItem
+        button
+        onClick={() => handleNavigation("/admin")} // Navigate to admin
+        sx={{
+          "&:hover": { color: "#FFF" },
+          "&:active": { color: "#F66F1E" },
+          justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
+        }}
       >
-        {/* Logo at the top */}
-        <Box
-          component="img"
-          src={test} // Update with your logo path
-          alt="Ladx Logo"
-          sx={{
-            width: "150px",
-            height: "auto",
-            marginTop: "20px",
-            marginBottom: "30px",
-          }}
-        />
-
-        {/* Sidebar below the logo with curved top */}
-        <Box
-          sx={{
-            backgroundColor: "#210947",
-            width: { xs: "80px", sm: "226px" }, // Width changes based on screen size
-            height: "100%",
-            borderTopRightRadius: "80px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            padding: "20px 0",
-          }}
+        <ListItemIcon
+          sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
         >
-          {/* List of navigation items */}
-          <List sx={{ color: "#D3D3D3" }}>
-            {/* Home */}
-            <ListItem
-              button
-              onClick={() => handleNavigation("/admin")} // Navigate to admin
-              sx={{
-                "&:hover": { color: "#FFF" },
-                "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
-              }}
-            >
-              <ListItemIcon
-                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
-              >
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Home"
-                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
-              />
-            </ListItem>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="Home"
+          sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+        />
+      </ListItem>
 
-            {/* Orders */}
-            <ListItem
-              button
-              onClick={() => handleNavigation("/admin-l")} // Navigate to admin-l
-              sx={{
-                "&:hover": { color: "#FFF" },
-                "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
-              }}
-            >
-              <ListItemIcon
-                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
-              >
-                <LocalShippingIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Orders"
-                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
-              />
-            </ListItem>
+      {/* Orders */}
+      <ListItem
+        button
+        onClick={() => handleNavigation("/admin-l")} // Navigate to admin-l
+        sx={{
+          "&:hover": { color: "#FFF" },
+          "&:active": { color: "#F66F1E" },
+          justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
+        }}
+      >
+        <ListItemIcon
+          sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+        >
+          <LocalShippingIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="Orders"
+          sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+        />
+      </ListItem>
 
-            {/* Users */}
-            <ListItem
-              button
-              onClick={() => handleNavigation("/user")} // Navigate to user
-              sx={{
-                "&:hover": { color: "#FFF" },
-                "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
-              }}
-            >
-              <ListItemIcon
-                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
-              >
-                <PersonIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Users"
-                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
-              />
-            </ListItem>
+      {/* Users */}
+      <ListItem
+        button
+        onClick={() => handleNavigation("/user")} // Navigate to user
+        sx={{
+          "&:hover": { color: "#FFF" },
+          "&:active": { color: "#F66F1E" },
+          justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
+        }}
+      >
+        <ListItemIcon
+          sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+        >
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="Users"
+          sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+        />
+      </ListItem>
 
-            {/* Message */}
-            <ListItem
-              button
-              onClick={() => handleNavigation("/admin-m")} // Navigate to admin-m
-              sx={{
-                "&:hover": { color: "#FFF" },
-                "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
-              }}
-            >
-              <ListItemIcon
-                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
-              >
-                <MessageIcon />{" "}
-                {/* Change this icon to your preferred text message icon */}
-              </ListItemIcon>
-              <ListItemText
-                primary="Messages"
-                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
-              />
-            </ListItem>
+      {/* Message */}
+      <ListItem
+        button
+        onClick={() => handleNavigation("/admin-m")} // Navigate to admin-m
+        sx={{
+          "&:hover": { color: "#FFF" },
+          "&:active": { color: "#F66F1E" },
+          justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
+        }}
+      >
+        <ListItemIcon
+          sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+        >
+          <MessageIcon />{" "}
+          {/* Change this icon to your preferred text message icon */}
+        </ListItemIcon>
+        <ListItemText
+          primary="Messages"
+          sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+        />
+      </ListItem>
 
-            {/* Settings */}
-            <ListItem
-              button
-              onClick={() => handleNavigation("/settings")} // Navigate to settings
-              sx={{
-                "&:hover": { color: "#FFF" },
-                "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
-              }}
-            >
-              <ListItemIcon
-                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
-              >
-                <SettingsIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Settings"
-                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
-              />
-            </ListItem>
-          </List>
+      {/* Settings */}
+      <ListItem
+        button
+        onClick={() => handleNavigation("/settings")} // Navigate to settings
+        sx={{
+          "&:hover": { color: "#FFF" },
+          "&:active": { color: "#F66F1E" },
+          justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
+        }}
+      >
+        <ListItemIcon
+          sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+        >
+          <SettingsIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="Settings"
+          sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+        />
+      </ListItem>
+    </List>
 
-          {/* Logout near the bottom */}
-          <List sx={{ color: "#D3D3D3" }}>
-            <ListItem
-              button
-              onClick={() => handleNavigation("/admin")} // Logout to admin page
-              sx={{
-                "&:hover": { color: "#FFF" },
-                "&:active": { color: "#F66F1E" },
-                justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
-              }}
-            >
-              <ListItemIcon
-                sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
-              >
-                <ExitToAppIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Logout"
-                sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
-              />
-            </ListItem>
-          </List>
-        </Box>
-      </Box>
+    {/* Logout near the bottom */}
+    <List sx={{ color: "#D3D3D3" }}>
+      <ListItem
+        button
+        onClick={() => handleNavigation("/admin")} // Logout to admin page
+        sx={{
+          "&:hover": { color: "#FFF" },
+          "&:active": { color: "#F66F1E" },
+          justifyContent: { xs: "center", sm: "flex-start" }, // Center icon on small screens
+        }}
+      >
+        <ListItemIcon
+          sx={{ minWidth: { xs: "unset", sm: "40px" }, color: "#D3D3D3" }}
+        >
+          <ExitToAppIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="Logout"
+          sx={{ display: { xs: "none", sm: "block" } }} // Hide text on small screens
+        />
+      </ListItem>
+    </List>
+  </Box>
+</Box>
+
+
       {/* User Info Box */}
       <Box
         sx={{
           position: "absolute",
           top: "20px",
           right: "20px",
-          width: { xs: "300px", sm: "380px" }, // Fixed width for small screens and up
+          width: { xs: "200px", sm: "280px" }, // Fixed width for small screens and up
           height: "99px",
           backgroundColor: "#FFFFFF",
           borderRadius: "10px",
@@ -307,9 +312,12 @@ const SenderMatch = () => {
       <Box
         sx={{
           color: "#FFFFFF",
-          padding: "10px",
-          marginLeft: "80px",
+          marginLeft: { xs: "100px", sm: "226px" }, 
+          padding: "20px",
           flexGrow: 1,
+          height: "100vh",
+          overflow: "auto",
+         
         }}
       >
         {/* Back Arrow and Request Delivery text */}
@@ -318,22 +326,34 @@ const SenderMatch = () => {
             display: "flex",
             alignItems: "center",
             marginBottom: "20px",
-            marginTop: "120px",
+            marginTop: { xs: "120px", sm: "120px" }, // Adjust marginTop based on screen size
+            flexDirection: { xs: "column", sm: "row" }, // Stack items vertically on small screens
+            justifyContent: { xs: "flex-start", sm: "flex-start" }, // Move to the left on small screens
+            paddingLeft: { xs: "16px", sm: "0px" }, // Add padding on mobile screens to shift content left
           }}
         >
-          {" "}
-          {/* Adjusted marginTop */}
+          {/* Adjusted Back Arrow Button for mobile */}
           <IconButton
             onClick={() => handleNavigation("/admin-l")}
             sx={{
               backgroundColor: "#F5F5F5",
               borderRadius: "50%",
               padding: "10px",
+              marginBottom: { xs: "10px", sm: "0px" }, // Add bottom margin on small screens
             }}
           >
             <ArrowBack sx={{ color: "#F66F1E" }} />
           </IconButton>
-          <Typography variant="h6" sx={{ marginLeft: "8px" }}>
+
+          {/* Responsive Text */}
+          <Typography
+            variant="h6"
+            sx={{
+              marginLeft: { xs: "0px", sm: "8px" }, // Remove left margin on mobile
+              textAlign: { xs: "left", sm: "left" }, // Ensure text is aligned left on small screens
+              fontSize: { xs: "16px", sm: "inherit" }, // Adjust font size for mobile
+            }}
+          >
             Match
             <span style={{ color: "#F66F1E", marginLeft: "10px" }}>
               Susan Sandra
@@ -450,28 +470,6 @@ const SenderMatch = () => {
               Delivery ID: 345YH3456
             </Typography>
           </Box>
-
-          {/* Match Button */}
-          {/* <Button
-            variant="contained"
-            // onClick={handleMatchClick} // Separate click handler for the button
-            sx={{
-              backgroundColor: "#210947",
-              color: "#FFF",
-              borderRadius: "5px",
-              padding: { xs: "8px 10px", sm: "10px 20px" },
-              flexShrink: 0,
-              "@media (max-width: 600px)": {
-                width: "100%", // Make the button take full width on small screens
-                marginTop: "10px",
-              },
-              "&:hover": {
-                backgroundColor: "#3E2B69",
-              },
-            }}
-          >
-            Match
-          </Button> */}
         </Box>
         <Typography
           variant="h6"
@@ -504,8 +502,6 @@ const SenderMatch = () => {
           />
         </Box>
 
-        {/* Single Delivery Box Section */}
-        {/* <Link to="/dev-d" style={{ textDecoration: "none" }}> */}
         <Box
           sx={{
             width: "100%",
@@ -644,8 +640,6 @@ const SenderMatch = () => {
           </Button>
         </Box>
 
-        {/* Single Delivery Box Section */}
-        {/* <Link to="/dev-d" style={{ textDecoration: "none" }}> */}
         <Box
           sx={{
             width: "100%",

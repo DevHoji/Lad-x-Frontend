@@ -7,22 +7,9 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-//import test from "../assets/test.jpg"; // Adjust the path to your logo if necessary
-//import homepp from "../assets/homepp.jpg";
 import gadgets from "../assets/gadgets.jpg";
 import sam from "../assets/sam.jpg";
-//import john from "../assets/john.jpg";
-//import shoepp from "../assets/shoepp.jpg";
-//import handpp from "../assets/handpp.jpg";
 import van from "../assets/Van.jpg";
-//import HomeIcon from "@mui/icons-material/Home";
-
-//mport DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
-//import MessageIcon from "@mui/icons-material/Message";
-//import PersonIcon from "@mui/icons-material/Person";
-//import NotificationsIcon from "@mui/icons-material/Notifications";
-// Add this import for navigation
-//import LogoutIcon from "@mui/icons-material/Logout";
 import TravelerLayout from "./TravelerLayOut"; 
 const DeliveryOrder = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(1); // Set default to "Delivery"
@@ -80,7 +67,6 @@ const DeliveryOrder = () => {
               padding: { xs: "10px", sm: "20px" }, // Responsive padding
               height: "calc(100vh - 64px)", // Full height minus navbar
               overflowY: "auto", // Scrollable content if needed
-              // boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Shadow for the main content
               backgroundColor: "#FFF",
               borderRadius: "8px",
             }}

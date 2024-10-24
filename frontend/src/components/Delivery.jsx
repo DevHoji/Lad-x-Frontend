@@ -2,28 +2,12 @@ import React from "react";
 import {
   Box,
   Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,Button,
+ Button,
 } from "@mui/material";
-import test from "../assets/test.jpg";  // Adjust the path to your logo if necessary
-import homepp from "../assets/homepp.jpg"; 
 import gadgets from "../assets/gadgets.jpg"; 
 import sam from "../assets/sam.jpg"; 
-import john from "../assets/john.jpg";
-import shoepp from "../assets/shoepp.jpg";  
-import handpp from "../assets/handpp.jpg"; 
 import van from "../assets/Van.jpg"; 
-import HomeIcon from "@mui/icons-material/Home";
-
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
-import MessageIcon from "@mui/icons-material/Message";
-import PersonIcon from "@mui/icons-material/Person";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Link, useNavigate } from "react-router-dom"; // Add this import for navigation
-import LogoutIcon from "@mui/icons-material/Logout";
+import {  useNavigate } from "react-router-dom"; // Add this import for navigation
 
 const Delivery = ({setContent}) => {
   const [selectedIndex, setSelectedIndex] = React.useState(1); // Set default to "Delivery"
