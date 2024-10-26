@@ -32,7 +32,7 @@ const Message = () => {
       sx={{
         display: "flex",
         height: "100vh",
-        paddingTop: { xs: "60px", md: "80px" },
+        paddingTop: { xs: "80px", md: "80px" },
         paddingLeft: { xs: "20px", md: "80px" },
         width: "100%",
         boxSizing: "border-box",

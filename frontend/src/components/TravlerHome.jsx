@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
+import { Box,
+   Typography, 
+   useMediaQuery ,
 } from "@mui/material";
 import sam from "../assets/sam.jpg"; // Replace with actual image paths
 import { Add as AddIcon } from "@mui/icons-material"; // Plus sign icon
@@ -10,7 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Checkbox from "@mui/material/Checkbox";
 import { Link, useNavigate } from "react-router-dom";
 import InputBase from "@mui/material/InputBase";
-import useMediaQuery from "@mui/material/useMediaQuery";
+
 import leilaImg from "../assets/leila.jpg";
 import johnImg from "../assets/john.jpg";
 import samImg from "../assets/sam.jpg";
@@ -20,10 +20,6 @@ const TravelerHome = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width:600px)");
-
-  // const handleListItemClick = (index) => {
-  //   setSelectedIndex(index);
-  // };
 
   const handleRequest = () => {
     navigate("/traveler-request"); // Navigate to request page
@@ -41,15 +37,14 @@ const TravelerHome = () => {
             marginTop: "60px",
           }}
         >
-          {/* Boxes Section */}
           <Box
             sx={{
               display: "flex",
-              flexWrap: "wrap", // Allow boxes to wrap in smaller screens
+              flexWrap: "wrap", // Enable wrapping on smaller screens
               justifyContent: "center",
               marginTop: "20px",
               gap: "20px", // Space between boxes
-              padding: { xs: "0 10px", sm: "0 20px" }, // Add padding to avoid touching edges on mobile
+              padding: { xs: "10px", sm: "20px" }, // Add padding for mobile
               overflow: "hidden", // Prevent horizontal scroll
             }}
           >
@@ -62,7 +57,7 @@ const TravelerHome = () => {
                   sm: "calc(50% - 20px)",
                   md: "calc(33.33% - 20px)",
                 },
-                height: "180px", // Increased height for cards
+                height: { xs: "140px", md: "180px" }, // Adjust height for smaller screens
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
@@ -72,6 +67,7 @@ const TravelerHome = () => {
                 boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
                 textAlign: "center",
                 color: "inherit",
+                cursor: "pointer",
               }}
               onClick={handleRequest}
             >
@@ -79,11 +75,11 @@ const TravelerHome = () => {
               <Typography
                 sx={{
                   color: "#210947",
-                  fontSize: { xs: "14px", md: "16px" },
+                  fontSize: { xs: "12px", md: "16px" },
                   marginTop: "10px",
                 }}
               >
-              Upload Travler Details
+                Upload Traveler Details
               </Typography>
             </Box>
 
@@ -96,7 +92,7 @@ const TravelerHome = () => {
                   sm: "calc(50% - 20px)",
                   md: "calc(33.33% - 20px)",
                 },
-                height: "180px", // Increased height for cards
+                height: { xs: "140px", md: "180px" },
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
@@ -114,7 +110,7 @@ const TravelerHome = () => {
                   textAlign: "center",
                 }}
               >
-              Sender
+                Sender
               </Typography>
 
               <Box
@@ -138,17 +134,17 @@ const TravelerHome = () => {
                   sx={{
                     color: "#210947",
                     fontSize: { xs: "12px", md: "14px" },
-                    textAlign: "start",
+                    textAlign: "center",
                   }}
                 >
-                 Ken Bonolo
+                  Ken Bonolo
                 </Typography>
               </Box>
 
               <Typography
                 sx={{
                   color: "#210947",
-                  fontSize: { xs: "16px", md: "18px" },
+                  fontSize: { xs: "14px", md: "18px" },
                   fontWeight: "bold",
                   textAlign: "center",
                 }}
@@ -156,20 +152,16 @@ const TravelerHome = () => {
                 Hand Bags
               </Typography>
 
-              <Box
+              <Typography
                 sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginTop: "5px",
+                  color: "green",
+                  fontSize: { xs: "10px", md: "14px" },
+                  marginLeft: "5px",
+                  textAlign: "center",
                 }}
               >
-              
-                <Typography
-                  sx={{ color: "green", fontSize: { xs: "12px", md: "14px",marginLeft:"5px" } }}
-                >
-                 You're 5 Hours Away
-                </Typography>
-              </Box>
+                You're 5 Hours Away
+              </Typography>
             </Box>
 
             {/* Third Box */}
@@ -181,16 +173,16 @@ const TravelerHome = () => {
                   sm: "calc(50% - 20px)",
                   md: "calc(33.33% - 20px)",
                 },
-                height: "180px", // Increased height for cards
+                height: { xs: "140px", md: "180px" },
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "flex-start",
+                justifyContent: "center",
                 borderRadius: "10px",
                 boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
-                textAlign: "center",
                 padding: "10px",
+                textAlign: "center",
               }}
             >
               <Box
@@ -220,14 +212,13 @@ const TravelerHome = () => {
               <Typography
                 sx={{
                   color: "#210947",
-                  fontSize: { xs: "24px", md: "28px" },
+                  fontSize: { xs: "20px", md: "28px" },
                   fontWeight: "bold",
                   marginTop: "10px",
                 }}
               >
                 51
               </Typography>
-
               <Typography
                 sx={{
                   color: "#210947",
@@ -235,7 +226,7 @@ const TravelerHome = () => {
                   marginTop: "5px",
                 }}
               >
-                Total Amount of Package <br /> Delivered
+                Total Amount of Package Delivered
               </Typography>
             </Box>
 
@@ -248,46 +239,33 @@ const TravelerHome = () => {
                   sm: "calc(50% - 20px)",
                   md: "calc(33.33% - 20px)",
                 },
-                height: "180px", // Increased height for cards
+                height: { xs: "140px", md: "180px" },
                 backgroundColor: "white",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "flex-start",
+                justifyContent: "center",
                 borderRadius: "10px",
                 boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
-                textAlign: "center",
                 padding: "10px",
+                textAlign: "center",
               }}
             >
-              <Box
-                sx={{
-                  alignSelf: "flex-start",
-                  display: "flex",
-                  alignItems: "center",
-                }}
+              <Typography
+                sx={{ color: "#F66F1E", fontSize: { xs: "14px", md: "16px" } }}
               >
-                <Typography
-                  sx={{
-                    color: "#F66F1E",
-                    fontSize: { xs: "14px", md: "16px" },
-                  }}
-                >
-                  Wallet
-                </Typography>
-              </Box>
-
+                Wallet
+              </Typography>
               <Typography
                 sx={{
                   color: "#210947",
-                  fontSize: { xs: "24px", md: "28px" },
+                  fontSize: { xs: "20px", md: "28px" },
                   fontWeight: "bold",
                   marginTop: "10px",
                 }}
               >
                 $2,000
               </Typography>
-
               <Typography
                 sx={{
                   color: "green",
@@ -337,7 +315,7 @@ const TravelerHome = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "space-between", // Added space-between to evenly space items
+                justifyContent: { xs: "center", md: "space-between" },
                 alignItems: "center",
                 backgroundColor: "#F5F5F5",
                 borderRadius: "10px",
@@ -347,33 +325,24 @@ const TravelerHome = () => {
                   md: "10px",
                 },
                 marginBottom: "20px",
-                flexWrap: { xs: "wrap", md: "nowrap" },
+                flexWrap: "wrap",
               }}
             >
-              <Typography
-                sx={{
-                  fontWeight: "bold",
-                  fontSize: { xs: "12px", md: "16px" },
-                }}
-              >
-                Items to be Delivered
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: "bold",
-                  fontSize: { xs: "12px", md: "16px" },
-                }}
-              >
-                Traveler
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: "bold",
-                  fontSize: { xs: "12px", md: "16px" },
-                }}
-              >
-                Status
-              </Typography>
+              {["Items to be Delivered", "Traveler", "Status"].map(
+                (text, index) => (
+                  <Typography
+                    key={index}
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: { xs: "12px", md: "16px" },
+                      textAlign: "center",
+                      flex: { xs: "1 1 100%", md: "auto" },
+                    }}
+                  >
+                    {text}
+                  </Typography>
+                )
+              )}
             </Box>
 
             {/* Search Bar */}
@@ -404,13 +373,14 @@ const TravelerHome = () => {
                   <Box
                     key={index}
                     sx={{
-                      display: "flex", // Use flexbox for alignment
-                      justifyContent: "space-between", // Space between elements
+                      display: "flex",
+                      justifyContent: "space-between",
                       alignItems: "center",
                       marginBottom: "10px",
                       borderBottom: index < 3 ? "1px solid #E0E0E0" : "none",
                       paddingBottom: "10px",
                       paddingX: { xs: "10px", sm: "0" },
+                      flexDirection: { xs: "column", md: "row" },
                     }}
                   >
                     {/* Item Name and Checkbox */}
@@ -427,7 +397,13 @@ const TravelerHome = () => {
                     </Box>
 
                     {/* Traveler Information */}
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: { xs: "8px", md: "0" },
+                      }}
+                    >
                       <Box
                         component="img"
                         src={[johnImg, leilaImg, samImg, johnImg][index]}
@@ -460,6 +436,7 @@ const TravelerHome = () => {
                         color:
                           index === 1 ? "red" : index === 2 ? "green" : "blue",
                         fontSize: { xs: "14px", md: "16px" },
+                        marginTop: { xs: "8px", md: "0" },
                       }}
                     >
                       {

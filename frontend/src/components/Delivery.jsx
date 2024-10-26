@@ -56,7 +56,7 @@ const handleviewclick = () =>{
             padding: { xs: "10px", sm: "20px" }, // Responsive padding
             height: "calc(100vh - 64px)", // Full height minus navbar
             overflowY: "auto", // Scrollable content if needed
-            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Shadow for the main content
+           // boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Shadow for the main content
             backgroundColor: "#FFF",
             borderRadius: "8px",
           }}
@@ -620,6 +620,10 @@ const handleviewclick = () =>{
               </Box>
             )}
           </Box>
+
+
+
+          
         </Box>
       </Box>
     </Box>

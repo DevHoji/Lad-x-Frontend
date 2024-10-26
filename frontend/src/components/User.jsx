@@ -511,6 +511,7 @@ const User = () => {
 
               <Box sx={{ padding: "10px" }}>
                 <Box
+                  onClick={() => navigate("/Admin-p")} // Navigate to Admin-p when the white box is clicked
                   sx={{
                     width: "100%",
                     maxWidth: "900px", // Decrease the size of the white box
@@ -601,7 +602,10 @@ const User = () => {
                   >
                     {/* Message Button */}
                     <Box
-                      onClick={handleNavigate} // Navigate to Admin-M when clicked
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents the box click from triggering
+                        navigate("/Admin-m"); // Navigate to Admin-m when the message button is clicked
+                      }}
                       sx={{
                         backgroundColor: "#210947",
                         color: "#FFF",
@@ -639,6 +643,7 @@ const User = () => {
               </Box>
               <Box sx={{ padding: "10px" }}>
                 <Box
+                  onClick={() => navigate("/Admin-p")} // Navigate to Admin-p when the white box is clicked
                   sx={{
                     width: "100%",
                     maxWidth: "900px", // Decrease the size of the white box
@@ -729,7 +734,10 @@ const User = () => {
                   >
                     {/* Message Button */}
                     <Box
-                      onClick={handleNavigate} // Navigate to Admin-M when clicked
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents the box click from triggering
+                        navigate("/Admin-m"); // Navigate to Admin-m when the message button is clicked
+                      }}
                       sx={{
                         backgroundColor: "#210947",
                         color: "#FFF",
@@ -770,6 +778,7 @@ const User = () => {
             <Box sx={{ padding: "10px" }}>
               <Box sx={{ padding: "10px" }}>
                 <Box
+                  onClick={() => navigate("/Admin-p")} // Navigate to Admin-p when the white box is clicked
                   sx={{
                     width: "100%",
                     maxWidth: "900px", // Decrease the size of the white box
@@ -860,7 +869,10 @@ const User = () => {
                   >
                     {/* Message Button */}
                     <Box
-                      onClick={handleNavigate} // Navigate to Admin-M when clicked
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents the box click from triggering
+                        navigate("/Admin-m"); // Navigate to Admin-m when the message button is clicked
+                      }}
                       sx={{
                         backgroundColor: "#210947",
                         color: "#FFF",

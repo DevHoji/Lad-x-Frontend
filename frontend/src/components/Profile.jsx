@@ -171,7 +171,7 @@ console.log(updatedProfile);
           sx={{
             backgroundColor: "white", // Changed background color
             color: "#2E2E2E",
-            borderRadius: "50px",
+            borderRadius: "35px",
             padding: "15px",
             paddingX: 2,
             "&:hover": {

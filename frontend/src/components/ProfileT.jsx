@@ -179,7 +179,7 @@ const ProfileT = () => {
             sx={{
               backgroundColor: "white",
               color: "#2E2E2E",
-              borderRadius: "50px",
+              borderRadius: "35px",
               padding: "15px",
               paddingX: 2,
             }}
@@ -248,7 +248,7 @@ const ProfileT = () => {
             </Typography>
 
             {/* Reviewer Info */}
-            <Box sx={{ display: "flex", alignItems: "center", marginTop: 2 }}>
+            <Box sx={{ display: "flex", alignItems: "center", marginTop: 5 }}>
               <Avatar
                 alt="Ken Bonolo"
                 src={johnImg} // Replace with actual image path
@@ -263,7 +263,7 @@ const ProfileT = () => {
             </Box>
             <Box>
               {" "}
-              <Typography variant="body1" sx={{ marginTop: 1 }}>
+              <Typography variant="body1" sx={{ marginTop: 3 }}>
                 As a sender, John is very proactive and gentle when traveling
                 with items. He gives updates at the right time!!
               </Typography>

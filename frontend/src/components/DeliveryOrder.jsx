@@ -83,7 +83,6 @@ const DeliveryOrder = () => {
             >
               Deliveries
             </Typography>
-
             {/* Add your content here */}
             <Box
               sx={{
@@ -466,6 +465,7 @@ const DeliveryOrder = () => {
                           <Typography variant="body2">on 25/09/2024</Typography>
                         </Box>
                       </Box>
+
                       {/* View Button */}
                       <Button
                         variant="contained"
@@ -483,7 +483,7 @@ const DeliveryOrder = () => {
                             backgroundColor: "#3E2B69",
                           },
                         }}
-                        onClick={handleViewTClick} // Attach the click event handler here
+                        onClick={handleViewTClick}
                       >
                         View
                       </Button>
@@ -659,7 +659,7 @@ const DeliveryOrder = () => {
                             backgroundColor: "#3E2B69",
                           },
                         }}
-                        onClick={handleViewClick} // Attach the click event handler here
+                        onClick={handleViewClick}
                       >
                         View
                       </Button>

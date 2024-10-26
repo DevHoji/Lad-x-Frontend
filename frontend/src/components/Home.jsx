@@ -5,6 +5,7 @@ import {
   IconButton,
   List,
   ListItem,
+ useMediaQuery,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
@@ -22,7 +23,7 @@ import SearchIcon from "@mui/icons-material/Search"; // Add this line to import 
 import Checkbox from "@mui/material/Checkbox"; // Add this line to import Checkbox
 import { Link, useNavigate } from "react-router-dom"; // Ensure only one 'Link' import is here
 import InputBase from "@mui/material/InputBase"; // Add this line to import InputBase
-import useMediaQuery from "@mui/material/useMediaQuery";
+// import useMediaQuery from "@mui/material/useMediaQuery";
 import homepp from "../assets/homepp.jpg";
 import leilaImg from '../assets/leila.jpg';
 import samImg from '../assets/sam.jpg';
@@ -31,22 +32,21 @@ import johnImg from '../assets/john.jpg';
 // Rest of your Home component code
 const Home = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
-  
- const navigate =useNavigate();
-//  const handleRequestClick = () => {
-//    navigate("/delivery");
-//  };
+  const navigate = useNavigate();
+  const isMobile = useMediaQuery("(max-width:600px)"); // Mobile breakpoint
+
+  const handleRequest = () => {
+    navigate("/request");
+  };
+
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
   };
+
   const handleLogout = () => {
-    navigate("/login"); // Navigate back to the login page
+    navigate("/login");
   };
-  const isMobile = useMediaQuery("(max-width:600px)"); // Adjust the breakpoint as needed
-const handleRequest = () => {
-  navigate("/request")
-}
- 
+
   return (
     <Box sx={{ display: "flex" }}>
       {/* Right Section */}
@@ -63,23 +63,22 @@ const handleRequest = () => {
         <Box
           sx={{
             display: "flex",
-            flexWrap: "wrap", // Allow boxes to wrap in smaller screens
+            flexWrap: "wrap",
             justifyContent: "center",
-            marginTop: "20px",
-            gap: "20px", // Space between boxes
-            padding: { xs: "0 10px", sm: "0 20px" }, // Add padding to avoid touching edges on mobile
-            overflow: "hidden", // Prevent horizontal scroll
+            gap: "20px",
+            padding: { xs: "10px", sm: "20px" }, // Adjust padding for smaller screens
+            overflow: "hidden",
           }}
         >
           <Box
             sx={{
-              flex: "1 1 100%", // Full width on small screens
+              flex: "1 1 100%",
               maxWidth: {
                 xs: "100%",
                 sm: "calc(50% - 20px)",
                 md: "calc(33.33% - 20px)",
-              }, // Limit on larger screens
-              height: "180px", // Increased height for cards
+              },
+              height: "180px",
               backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
@@ -88,8 +87,8 @@ const handleRequest = () => {
               borderRadius: "10px",
               boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
               textAlign: "center",
-              textDecoration: "none",
               color: "inherit",
+              cursor: "pointer",
             }}
             onClick={handleRequest}
           >
@@ -113,11 +112,12 @@ const handleRequest = () => {
                 sm: "calc(50% - 20px)",
                 md: "calc(33.33% - 20px)",
               },
-              height: "180px", // Increased height for cards
+              height: "180px",
               backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
+              alignItems: "center",
               borderRadius: "10px",
               boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
               padding: "20px",
@@ -133,7 +133,6 @@ const handleRequest = () => {
             >
               Traveler
             </Typography>
-
             <Box
               sx={{
                 display: "flex",
@@ -155,13 +154,12 @@ const handleRequest = () => {
                 sx={{
                   color: "#210947",
                   fontSize: { xs: "12px", md: "14px" },
-                  textAlign: "start",
+                  textAlign: "center",
                 }}
               >
                 Sam Kethin
               </Typography>
             </Box>
-
             <Typography
               sx={{
                 color: "#210947",
@@ -172,12 +170,12 @@ const handleRequest = () => {
             >
               Hand Bags
             </Typography>
-
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
                 marginTop: "5px",
+                width: "100%", // Adjusted to span container
               }}
             >
               <Typography
@@ -201,7 +199,7 @@ const handleRequest = () => {
                 sm: "calc(50% - 20px)",
                 md: "calc(33.33% - 20px)",
               },
-              height: "180px", // Increased height for cards
+              height: "180px",
               backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
@@ -209,7 +207,6 @@ const handleRequest = () => {
               justifyContent: "flex-start",
               borderRadius: "10px",
               boxShadow: "0 1px 5px rgba(0,0,0,0.1)",
-              textAlign: "center",
               padding: "10px",
             }}
           >
@@ -236,7 +233,6 @@ const handleRequest = () => {
                 }}
               />
             </Box>
-
             <Typography
               sx={{
                 color: "#210947",
@@ -247,15 +243,15 @@ const handleRequest = () => {
             >
               34
             </Typography>
-
             <Typography
               sx={{
                 color: "#210947",
                 fontSize: { xs: "12px", md: "14px" },
                 marginTop: "5px",
+                textAlign: "center",
               }}
             >
-              Total Amount of Package <br /> Delivered
+              Total Amount of Package Delivered
             </Typography>
           </Box>
         </Box>
@@ -283,7 +279,6 @@ const handleRequest = () => {
           Deliveries
         </Typography>
 
-        {/* White Container */}
         <Box
           sx={{
             backgroundColor: "white",
@@ -309,7 +304,7 @@ const handleRequest = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between", // Added space-between to evenly space items
+              justifyContent: { xs: "center", md: "space-between" },
               alignItems: "center",
               backgroundColor: "#F5F5F5",
               borderRadius: "10px",
@@ -319,24 +314,24 @@ const handleRequest = () => {
                 md: "10px",
               },
               marginBottom: "20px",
-              flexWrap: { xs: "wrap", md: "nowrap" },
+              flexWrap: "wrap",
             }}
           >
-            <Typography
-              sx={{ fontWeight: "bold", fontSize: { xs: "12px", md: "16px" } }}
-            >
-              Items to be Delivered
-            </Typography>
-            <Typography
-              sx={{ fontWeight: "bold", fontSize: { xs: "12px", md: "16px" } }}
-            >
-              Traveler
-            </Typography>
-            <Typography
-              sx={{ fontWeight: "bold", fontSize: { xs: "12px", md: "16px" } }}
-            >
-              Status
-            </Typography>
+            {["Items to be Delivered", "Traveler", "Status"].map(
+              (text, index) => (
+                <Typography
+                  key={index}
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xs: "12px", md: "16px" },
+                    textAlign: "center",
+                    flex: { xs: "1 1 100%", md: "auto" },
+                  }}
+                >
+                  {text}
+                </Typography>
+              )
+            )}
           </Box>
 
           {/* Search Bar */}
@@ -367,13 +362,14 @@ const handleRequest = () => {
                 <Box
                   key={index}
                   sx={{
-                    display: "flex", // Use flexbox for alignment
-                    justifyContent: "space-between", // Space between elements
+                    display: "flex",
+                    justifyContent: "space-between",
                     alignItems: "center",
                     marginBottom: "10px",
                     borderBottom: index < 3 ? "1px solid #E0E0E0" : "none",
                     paddingBottom: "10px",
                     paddingX: { xs: "10px", sm: "0" },
+                    flexDirection: { xs: "column", md: "row" },
                   }}
                 >
                   {/* Item Name and Checkbox */}
@@ -390,7 +386,13 @@ const handleRequest = () => {
                   </Box>
 
                   {/* Traveler Information */}
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginTop: { xs: "8px", md: "0" },
+                    }}
+                  >
                     <Box
                       component="img"
                       src={[johnImg, leilaImg, samImg, johnImg][index]}
@@ -423,6 +425,7 @@ const handleRequest = () => {
                       color:
                         index === 1 ? "red" : index === 2 ? "green" : "blue",
                       fontSize: { xs: "14px", md: "16px" },
+                      marginTop: { xs: "8px", md: "0" },
                     }}
                   >
                     {["In Process", "Failed", "Delivered", "In Process"][index]}
@@ -432,10 +435,10 @@ const handleRequest = () => {
             )}
           </Box>
         </Box>
+        
       </Box>
     </Box>
   );
-  
 };
 
 
